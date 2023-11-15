@@ -25,7 +25,9 @@ module risc_v_mike_top ();
     logic  alu_zero;
     logic  alu_slt;
 
-
+    logic [DATA_32_W - 1:0] reg_file_rd_data_2;
+    logic [DATA_32_W - 1:0] data_mem_rd_data;
+    logic [DATA_32_W - 1:0] reg_file_wr_data;
 
 
 risc_v_mike_ctrl i_risc_v_mike_ctrl(
@@ -57,6 +59,34 @@ risc_v_mike_alu i_risc_v_mike_alu(
     .alu_result(alu_result),
     .alu_zero(alu_zero),
     .alu_slt(alu_slt)
+);
+
+//ALU SRC MUX: CHOOSE BETWEEN SIGN EXTEND AND REG_FILE READ PORT 2
+//TODO: imm_ext module and connection
+assign alu_src_b = (alu_src) ? imm_ext : reg_file_rd_data_2;
+
+risc_v_mike_reg_file i_risc_v_mike_reg_file(
+    .clk(clk),
+    .rst(rst),
+    .reg_file_rd_addr_1(rs1),    // rs1,
+    .reg_file_rd_addr_2(rs2),    // rs2,
+    .reg_file_wr_addr(rsd),      // rsd,
+    .reg_file_write(reg_write),                  //reg_write,
+    .reg_file_wr_data(reg_file_wr_data),
+    .reg_file_rd_data_1(alu_src_a),
+    .reg_file_rd_data_2(reg_file_rd_data_2)
+);
+
+//RESULT SRC MUX: CHOOSE BETWEEN DATA MEMORY OUTPUT OR ALU RESULT
+assign reg_file_wr_data = (result_src)? data_mem_rd_data : alu_result;
+
+risc_v_mike_data_memory i_risc_v_mike_data_memory (
+    .clk(clk),
+    .rst(rst),
+    .data_mem_addr(alu_result),
+    .data_mem_write(mem_write),
+    .data_mem_wr_data(reg_file_rd_data_2),
+    .data_mem_rd_data(data_mem_rd_data)
 );
 
 
