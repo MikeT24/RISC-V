@@ -38,21 +38,17 @@ always_comb begin
             if (alu_signed) begin
                 if ($signed(alu_src_a) < $signed(alu_src_b)) begin
                     alu_result  = 'h1;
-                    alu_slt     = 'h1;
                 end
                 else begin
                     alu_result  = 'h0;
-                    alu_slt     = 'h0;
                 end
             end
             else begin 
                 if (alu_src_a < alu_src_b) begin
                     alu_result  = 'h1;
-                    alu_slt     = 'h1;
                 end
                 else begin
                     alu_result  = 'h0;
-                    alu_slt     = 'h0;
                 end                
             end
         end
@@ -77,6 +73,12 @@ always_comb begin
     endcase
 end
 
-assign zero = |alu_result;
+always_comb begin
+    if (alu_signed) alu_slt = ($signed(alu_src_a) < $signed(alu_src_b)) ? 1'b1 : 1'b0;
+    else            alu_slt = (alu_src_a < alu_src_b)? 1'b1 : 1'b0;
+end
+
+assign zero = |(alu_result);
+
 
 endmodule
