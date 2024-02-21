@@ -115,7 +115,7 @@ logic [DATA_32_W-1:0] gpio_in1;
 
 
 risc_v_mike_data_memory #(
-    .DATA_MEM_DEPTH(64)
+    .DATA_MEM_DEPTH(`DATA_MEM_DEPTH)
 ) i_risc_v_mike_data_memory (
     .clk(clk),
     .rst(~rst),
@@ -123,12 +123,6 @@ risc_v_mike_data_memory #(
     .data_mem_write(mem_write),
     .data_mem_wr_data(reg_file_rd_data_2),
     .data_mem_rd_data(data_mem_rd_data)
-    // FOR UART GPIO WILL IMPLEMENT A DIRECT MAPPED MEMORY
-    // IFDEF ADDED HERE IN THE FUTURE
-    // .gpio_out0(gpio_out0),
-    // .gpio_out1(gpio_out1),
-    // .gpio_in0(gpio_in0),
-    // .gpio_in1(gpio_in1)
 );
 
 

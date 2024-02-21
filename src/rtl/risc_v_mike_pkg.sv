@@ -8,9 +8,18 @@ parameter INSTR_OPCODE_W = 7;
 parameter FUNCT3_W = 3;
 parameter FUNCT7_W = 7;
 parameter U_IMM_W = 25;
-parameter PC_CNT_ADDR_WIDTH = 1024;
+parameter PC_CNT_ADDR_WIDTH = `INST_MEM_DEPTH;
 parameter PC_CNT_ADDR_SIZE = $clog2(PC_CNT_ADDR_WIDTH);
 
+// .text    --> 0x00400000
+// .data    --> 0x10010000
+// .stack   --> 0x7fffeffc
+// .MMIO    --> 0xffff0000
+
+parameter STACK_UPPER   = 32'h7fffeffc;
+parameter TEXT_LOWER    = 32'h00400000;
+parameter DATA_LOWER    = 32'h10010000;
+parameter MMIO_LOWER    = 32'hffff0000;
 
 
 typedef logic [REG_ADDR_W - 1:0] t_register_addr; 

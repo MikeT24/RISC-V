@@ -14,13 +14,6 @@ module risc_v_mike_data_memory #(
     input logic data_mem_write,              // mem_write
     input logic [DATA_32_W - 1:0] data_mem_wr_data,
     output logic [DATA_32_W - 1:0] data_mem_rd_data
-    //IFDEF HERE
-    `ifdef DATA_MEM_GPIO
-    output logic [DATA_32_W-1:0] gpio_out0,
-    output logic [DATA_32_W-1:0] gpio_out1,
-    input logic [DATA_32_W-1:0] gpio_in0,
-    input logic [DATA_32_W-1:0] gpio_in1
-    `endif
     //ENDIF
 );
 
@@ -29,11 +22,7 @@ logic [DATA_MEM_DEPTH - 1:0][DATA_32_W - 1:0] data_mem;
 logic [DATA_MEM_DEPTH - 1:0][DATA_32_W - 1:0] data_mem_ff;
 
 genvar depth;
-genvar depth_gpio;
 
-//GPIO INPUTS ARE NOT WRITABLE
-//assign data_mem[DATA_MEM_DEPTH-2] = gpio_in0;   // GPIO_IN0 == 62
-//assign data_mem[DATA_MEM_DEPTH-1] = gpio_in1;   // GPIO_IN1 == 63
 
 generate
     for (depth = 0; depth < DATA_MEM_DEPTH; depth++) begin : g_data_mem //depth-2 for having gpio ins 
@@ -44,10 +33,8 @@ generate
 endgenerate
 
 //Data read assignments
+//Should some sort of address error be added? 
 assign data_mem_rd_data = (data_mem_addr < DATA_MEM_DEPTH) ? data_mem_ff[data_mem_addr] : 'b0;
-
-assign gpio_out0 =  data_mem_ff[DATA_MEM_DEPTH-4]; // GPIO_OUT0 == 60
-assign gpio_out1 =  data_mem_ff[DATA_MEM_DEPTH-3]; // GPIO_OUT1 == 61
 
 
 

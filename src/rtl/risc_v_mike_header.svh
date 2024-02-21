@@ -35,3 +35,9 @@
 			else if (en) q <= i ;									\
 			else q <= q ;												\
 		end																	
+
+`define DATA_MEM_DEPTH 128;
+`define INST_MEM_DEPTH 1024;
+`define MMIO_MEM_SIZE 8;
+
+`define BYTE_T 8;
