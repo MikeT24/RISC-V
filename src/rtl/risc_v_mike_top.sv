@@ -122,13 +122,13 @@ risc_v_mike_data_memory #(
     .data_mem_addr(alu_result),
     .data_mem_write(mem_write),
     .data_mem_wr_data(reg_file_rd_data_2),
-    .data_mem_rd_data(data_mem_rd_data),
+    .data_mem_rd_data(data_mem_rd_data)
     // FOR UART GPIO WILL IMPLEMENT A DIRECT MAPPED MEMORY
     // IFDEF ADDED HERE IN THE FUTURE
-    .gpio_out0(gpio_out0),
-    .gpio_out1(gpio_out1),
-    .gpio_in0(gpio_in0),
-    .gpio_in1(gpio_in1)
+    // .gpio_out0(gpio_out0),
+    // .gpio_out1(gpio_out1),
+    // .gpio_in0(gpio_in0),
+    // .gpio_in1(gpio_in1)
 );
 
 
