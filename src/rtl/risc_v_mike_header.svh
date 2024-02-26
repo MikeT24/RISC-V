@@ -1,3 +1,7 @@
+`define DATA_MEM_DEPTH 512
+`define INST_MEM_DEPTH 1024
+`define MMIO_MEM_SIZE 16
+`define BYTE_T 8
 
 `define MIKE_FF(q, i, clk)			\
 	always_ff @(posedge clk) q <= i  \
@@ -36,8 +40,3 @@
 			else q <= q ;												\
 		end																	
 
-`define DATA_MEM_DEPTH 128;
-`define INST_MEM_DEPTH 1024;
-`define MMIO_MEM_SIZE 8;
-
-`define BYTE_T 8;

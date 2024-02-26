@@ -1,7 +1,5 @@
 import risc_v_mike_pkg::*;
-//IFDEF HERE
-import UART_MIKE_pkg::*;
-//ENDIF
+
 
 `include "risc_v_mike_header.svh"
 

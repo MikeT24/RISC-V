@@ -1,4 +1,5 @@
 package risc_v_mike_pkg;
+`include "risc_v_mike_header.svh"
 
 parameter ADDRESS_32_W = 32;
 parameter DATA_32_W = ADDRESS_32_W;
@@ -8,7 +9,7 @@ parameter INSTR_OPCODE_W = 7;
 parameter FUNCT3_W = 3;
 parameter FUNCT7_W = 7;
 parameter U_IMM_W = 25;
-parameter PC_CNT_ADDR_WIDTH = `INST_MEM_DEPTH;
+parameter PC_CNT_ADDR_WIDTH = `INST_MEM_DEPTH ;
 parameter PC_CNT_ADDR_SIZE = $clog2(PC_CNT_ADDR_WIDTH);
 
 // .text    --> 0x00400000
