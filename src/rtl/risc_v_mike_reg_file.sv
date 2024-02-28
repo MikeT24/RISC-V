@@ -27,11 +27,15 @@ assign reg_file_rd_data_2 = reg_file_ff[reg_file_rd_addr_2];
 
 
 //TODO: Asserts to prevent undesired addresses
+//TODO: Add reset value to stack pointer
 
+
+
+assign reg_file[0] = 32'h0;
 
 genvar depth;
 generate
-    for ( depth = 0; depth < REG_FILE_DEPTH; depth++) begin: gen_reg_file
+    for ( depth = 1; depth < REG_FILE_DEPTH; depth++) begin: gen_reg_file
         // Write to reg_file if reg_write is asserted
         // Write just to the enabled address
         assign reg_file[depth] = (reg_file_write & (depth == reg_file_wr_addr))? reg_file_wr_data : reg_file_ff[depth];

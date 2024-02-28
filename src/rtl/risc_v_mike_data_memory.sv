@@ -37,10 +37,6 @@ endgenerate
 assign data_mem_rd_data = (data_mem_addr < DATA_MEM_DEPTH) ? data_mem_ff[data_mem_addr] : 'b0;
 
 
-
-
-
 //TODO: Asserts to prevent undesired addresses
-
 
 endmodule
