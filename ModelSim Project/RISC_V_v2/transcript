@@ -1326,3 +1326,8 @@ vsim work.risc_v_mike_tb_uni
 # Loading work.risc_v_mike_instruction_memory
 do wave.do
 run
+quit -sim
+# Project file C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/ModelSim Project/RISC_V_v2/RISCV_V2.mpf is write protected, data cannot be saved.
+# Unable to save project.
+# End time: 23:44:01 on Mar 03,2024, Elapsed time: 0:13:05
+# Errors: 0, Warnings: 3
