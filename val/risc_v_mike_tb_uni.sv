@@ -5,7 +5,7 @@ import risc_v_mike_pkg::*;
 module risc_v_mike_tb_uni ();
 
 
-logic clk;
+logic clk_in;
 logic rst;
 `ifdef GPIO_ENABLED
     logic [GPIO_BYTE - 1:0] gpio_port_in;
@@ -18,13 +18,13 @@ risc_v_mike_top dut (
         .gpio_port_in(gpio_port_in),
         .gpio_port_out(gpio_port_out),
     `endif  
-    .clk(clk), 
+    .clk_in(clk_in), 
     .rst(rst));
  integer depth;
 
   initial begin
     gpio_port_in = 0;
-    clk = 0;
+    clk_in = 0;
     rst = 0;
     #20
     rst = 1;
@@ -32,7 +32,7 @@ risc_v_mike_top dut (
 
   
   initial begin 
-    forever #5 clk = ~clk;
+    forever #5 clk_in = ~clk_in;
   end
 
 endmodule

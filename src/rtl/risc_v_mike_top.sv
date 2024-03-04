@@ -8,9 +8,12 @@ module risc_v_mike_top (
     input logic [GPIO_BYTE - 1:0] gpio_port_in,
     output logic [GPIO_BYTE - 1:0] gpio_port_out,
 `endif    
-    input logic clk,
+    input logic clk_in,
     input logic rst
 );
+    
+    logic clk;
+    logic [31:0] pre_clk_cnt;
 
     logic [INSTR_32_W - 1:0] instruction;
     t_instr_register rs1;
@@ -50,6 +53,16 @@ module risc_v_mike_top (
     t_instr_nmemonic intr_nmen;
 
     assign rst_test = ~rst;
+
+    parameter CLK_DIV = 50000000;
+    //parameter CLK_DIV = 500;
+
+    always @(posedge clk_in) begin
+        if (~rst) pre_clk_cnt <= 'h0;
+        else if(pre_clk_cnt >= (CLK_DIV-1)) pre_clk_cnt <= 'h0;
+        else pre_clk_cnt <= pre_clk_cnt + 'h1;
+        clk <= (pre_clk_cnt < CLK_DIV/2) ? 1'b1 : 1'b0;
+    end
 
 risc_v_mike_ctrl i_risc_v_mike_ctrl(
     .alu_zero(alu_zero),
