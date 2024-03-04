@@ -1,0 +1,109 @@
+# Compile of risc_v_mem_ctrl.sv was successful.
+# Compile of risc_v_mike_header.svh was successful.
+# Compile of risc_v_mike_pkg.sv was successful.
+# Compile of risc_v_mem_ctrl_tb.sv was successful.
+# Compile of risc_v_mike_data_memory.sv was successful.
+# 5 compiles, 0 failed with no errors.
+vsim work.risc_v_mem_ctrl_tb
+# vsim work.risc_v_mem_ctrl_tb 
+# Start time: 18:02:04 on Mar 03,2024
+# Loading sv_std.std
+# Loading work.risc_v_mike_pkg
+# Loading work.risc_v_mem_ctrl_tb_sv_unit
+# Loading work.risc_v_mem_ctrl_tb
+# Loading work.risc_v_mem_ctrl_sv_unit
+# Loading work.risc_v_mem_ctrl
+# Loading work.risc_v_mike_data_memory_sv_unit
+# Loading work.risc_v_mike_data_memory
+do wave2.do
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/sva_clk
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/MEM_MAP_TEXT_UPPER_LIMIT
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/MEM_MAP_TEXT_LOWER_LIMIT
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/MEM_MAP_STACK_UPPER_LIMIT
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/MEM_MAP_STACK_LOWER_LIMIT
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/MEM_MAP_MMIO_UPPER_LIMIT
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/MEM_MAP_MMIO_LOWER_LIMIT
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/MEM_MAP_DATA_UPPER_LIMIT
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/MEM_MAP_DATA_LOWER_LIMIT
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/mem_bus_write
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/mem_bus_wr_addr_error
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/mem_bus_wr_addr
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/mem_bus_read
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/mem_bus_rd_addr_error
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/mem_bus_rd_addr
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/data_stack_wr_addr_val
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/data_stack_wr_addr
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/data_stack_rd_addr_val
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/data_stack_rd_addr
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/data_mmio_wr_addr_val
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/data_mmio_wr_addr
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/data_mmio_rd_addr_val
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/data_mmio_rd_addr
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/data_mem_wr_addr_val
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/data_mem_wr_addr
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/data_mem_rd_addr_val
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/data_mem_rd_addr
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/DATA_MAPPING_STACK_DIV
+run
+run
+# BKMARK_ERROR: Unknown client: .main_pane.source
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/mem_bus_read
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/data_mmio_wr_addr_val
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/data_mmio_rd_addr_val
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/data_mem_rd_addr_val
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/data_stack_rd_addr_val
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/mem_bus_rd_addr_error
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/mem_bus_wr_addr_error
+# Compile of risc_v_mem_ctrl.sv was successful.
+# Compile of risc_v_mike_header.svh was successful.
+# Compile of risc_v_mike_pkg.sv was successful.
+# Compile of risc_v_mem_ctrl_tb.sv was successful.
+# Compile of risc_v_mike_data_memory.sv was successful.
+# 5 compiles, 0 failed with no errors.
+vsim work.risc_v_mem_ctrl_tb
+# End time: 18:17:51 on Mar 03,2024, Elapsed time: 0:15:47
+# Errors: 0, Warnings: 3
+# vsim work.risc_v_mem_ctrl_tb 
+# Start time: 18:17:51 on Mar 03,2024
+# Loading sv_std.std
+# Loading work.risc_v_mike_pkg
+# Loading work.risc_v_mem_ctrl_tb_sv_unit
+# Loading work.risc_v_mem_ctrl_tb
+# Loading work.risc_v_mem_ctrl_sv_unit
+# Loading work.risc_v_mem_ctrl
+# Loading work.risc_v_mike_data_memory_sv_unit
+# Loading work.risc_v_mike_data_memory
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/sva_clk
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/MEM_MAP_TEXT_UPPER_LIMIT
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/MEM_MAP_TEXT_LOWER_LIMIT
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/MEM_MAP_STACK_UPPER_LIMIT
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/MEM_MAP_STACK_LOWER_LIMIT
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/MEM_MAP_MMIO_UPPER_LIMIT
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/MEM_MAP_MMIO_LOWER_LIMIT
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/MEM_MAP_DATA_UPPER_LIMIT
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/MEM_MAP_DATA_LOWER_LIMIT
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/mem_bus_write
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/mem_bus_wr_addr_error
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/mem_bus_wr_addr
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/mem_bus_read
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/mem_bus_rd_addr_error
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/mem_bus_rd_addr
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/data_stack_wr_addr_val
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/data_stack_wr_addr
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/data_stack_rd_addr_val
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/data_stack_rd_addr
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/data_mmio_wr_addr_val
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/data_mmio_wr_addr
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/data_mmio_rd_addr_val
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/data_mmio_rd_addr
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/data_mem_wr_addr_val
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/data_mem_wr_addr
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/data_mem_rd_addr_val
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/data_mem_rd_addr
+add wave -position end  sim:/risc_v_mem_ctrl_tb/dut/DATA_MAPPING_STACK_DIV
+run
+quit-sim
+# invalid command name "quit-sim"
+quit -sim
+# End time: 19:12:01 on Mar 03,2024, Elapsed time: 0:54:10
+# Errors: 0, Warnings: 1

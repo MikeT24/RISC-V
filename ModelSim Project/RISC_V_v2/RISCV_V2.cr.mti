@@ -1,0 +1,89 @@
+{C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_instruction_memory.sv} {1 {vlog -work work -sv -stats=none {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_instruction_memory.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package risc_v_mike_instruction_memory_sv_unit
+-- Importing package risc_v_mike_pkg
+-- Compiling module risc_v_mike_instruction_memory
+
+Top level modules:
+	risc_v_mike_instruction_memory
+
+} {} {}} {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_data_memory.sv} {1 {vlog -work work -sv -stats=none {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_data_memory.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package risc_v_mike_data_memory_sv_unit
+-- Importing package risc_v_mike_pkg
+-- Compiling module risc_v_mike_data_memory
+
+Top level modules:
+	risc_v_mike_data_memory
+
+} {} {}} {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_alu.sv} {1 {vlog -work work -sv -stats=none {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_alu.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package risc_v_mike_alu_sv_unit
+-- Importing package risc_v_mike_pkg
+-- Compiling module risc_v_mike_alu
+
+Top level modules:
+	risc_v_mike_alu
+
+} {} {}} {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_top.sv} {1 {vlog -work work -sv -stats=none {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_top.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package risc_v_mike_top_sv_unit
+-- Importing package risc_v_mike_pkg
+-- Compiling module risc_v_mike_top
+
+Top level modules:
+	risc_v_mike_top
+
+} {} {}} {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv} {1 {vlog -work work -sv -stats=none {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package risc_v_mike_tb_uni_sv_unit
+-- Importing package risc_v_mike_pkg
+-- Compiling module risc_v_mike_tb_uni
+
+Top level modules:
+	risc_v_mike_tb_uni
+
+} {} {}} {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_reg_file.sv} {1 {vlog -work work -sv -stats=none {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_reg_file.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package risc_v_mike_reg_file_sv_unit
+-- Importing package risc_v_mike_pkg
+-- Compiling module risc_v_mike_reg_file
+
+Top level modules:
+	risc_v_mike_reg_file
+
+} {} {}} {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_sign_extend.sv} {1 {vlog -work work -sv -stats=none {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_sign_extend.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package risc_v_mike_sign_extend_sv_unit
+-- Importing package risc_v_mike_pkg
+-- Compiling module risc_v_mike_sign_extend
+
+Top level modules:
+	risc_v_mike_sign_extend
+
+} {} {}} {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_pkg.sv} {1 {vlog -work work -sv -stats=none {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_pkg.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package risc_v_mike_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_ctrl.sv} {1 {vlog -work work -sv -stats=none {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_ctrl.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package risc_v_mike_ctrl_sv_unit
+-- Importing package risc_v_mike_pkg
+-- Compiling module risc_v_mike_ctrl
+
+Top level modules:
+	risc_v_mike_ctrl
+
+} {} {}} {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mem_ctrl.sv} {1 {vlog -work work -sv -stats=none {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mem_ctrl.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package risc_v_mem_ctrl_sv_unit
+-- Importing package risc_v_mike_pkg
+-- Compiling module risc_v_mem_ctrl
+
+Top level modules:
+	risc_v_mem_ctrl
+
+} {} {}}
