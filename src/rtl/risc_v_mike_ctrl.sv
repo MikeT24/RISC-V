@@ -16,11 +16,15 @@ module risc_v_mike_ctrl (
     output logic mem_write,
     output logic reg_write,
     output logic alu_src_sel_a,
-    output logic alu_src_sel_b,
+    output logic [1:0] alu_src_sel_b,
     output t_alu_opcode alu_ctrl,
     output logic alu_signed,
     output logic [2:0] imm_src,
-    output t_instr_nmemonic intr_nmen
+    output t_instr_nmemonic intr_nmen,
+    output logic pc_update,
+    output logic pc_source,
+    output logic pc_write,
+    output logic I_or_D
 
 );
 

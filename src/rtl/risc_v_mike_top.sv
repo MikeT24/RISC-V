@@ -22,7 +22,7 @@ module risc_v_mike_top (
     logic result_src;
     logic mem_write;
     logic reg_write;
-    logic alu_src_sel_b;
+    logic [1:0] alu_src_sel_b;
     logic alu_src_sel_a;
     logic [2:0] imm_src;
     logic [DATA_32_W - 1:0] alu_src_a;
@@ -35,8 +35,11 @@ module risc_v_mike_top (
 
     logic [DATA_32_W - 1:0] reg_file_rd_data_1;
     logic [DATA_32_W - 1:0] reg_file_rd_data_2;
+    logic [DATA_32_W - 1:0] reg_file_rd_data_1_ff;
+    logic [DATA_32_W - 1:0] reg_file_rd_data_2_ff;
     logic [DATA_32_W - 1:0] data_mem_rd_data;
     logic [DATA_32_W - 1:0] data_mem_bus_rd_data;
+    logic [DATA_32_W - 1:0] data_mem_bus_rd_data_ff;
     logic [DATA_32_W - 1:0] data_mmio_rd_data;
     logic [DATA_32_W - 1:0] reg_file_wr_data;
     logic [DATA_32_W - 1:0] imm_ext;
@@ -50,6 +53,9 @@ module risc_v_mike_top (
     t_instr_nmemonic intr_nmen;
 
     assign rst_test = ~rst;
+    logic pc_update;
+    logic pc_write;
+
 
 risc_v_mike_ctrl i_risc_v_mike_ctrl(
     .alu_zero(alu_zero),
@@ -85,8 +91,24 @@ risc_v_mike_alu i_risc_v_mike_alu(
 
 //ALU SRC MUX: CHOOSE BETWEEN SIGN EXTEND AND REG_FILE READ PORT 2
 //TODO: imm_ext module and connection
-assign alu_src_a = (alu_src_sel_a) ? pc_addr : reg_file_rd_data_1;
-assign alu_src_b = (alu_src_sel_b) ? imm_ext : reg_file_rd_data_2;
+// MUX Src_A
+assign alu_src_a = (alu_src_sel_a) ? pc_addr : reg_file_rd_data_1_ff;
+
+// MUX Src_B
+always_comb begin 
+    case (alu_src_sel_b)
+        0 : alu_src_b = reg_file_rd_data_2_ff;
+        1 : alu_src_b = 32'h4;
+        2 : alu_src_b = imm_ext;
+        default : alu_src_b = 32'hFFFFFFFF;
+    endcase
+end
+
+assign alu_src_b = (alu_src_sel_b) ? imm_ext : reg_file_rd_data_2_ff;
+
+`MIKE_FF_NRST(reg_file_rd_data_1_ff, reg_file_rd_data_1, clk, rst)
+`MIKE_FF_NRST(reg_file_rd_data_2_ff, reg_file_rd_data_2, clk, rst)
+
 
 risc_v_mike_reg_file #(
     .REG_FILE_DEPTH(32)
@@ -109,7 +131,7 @@ risc_v_mike_sign_extend i_risc_v_mike_sign_extend (
 );
 
 //RESULT SRC MUX: CHOOSE BETWEEN DATA MEMORY OUTPUT OR ALU RESULT
-assign reg_file_wr_data = (result_src)? data_mem_bus_rd_data : alu_result;
+assign reg_file_wr_data = (result_src)? data_mem_bus_rd_data_ff : alu_result_ff;
 
 
 logic [ADDRESS_32_W-1:0] data_text_wr_addr;
@@ -136,6 +158,16 @@ logic data_mem_write;
 
 //hello world
 
+logic [ADDRESS_32_W-1:0] mem_bus_address_input;
+logic [DATA_32_W - 1:0] alu_result_ff;
+logic [DATA_32_W - 1:0] alu_result_select;
+
+
+`MIKE_FF_EN_NRST(alu_result_ff, alu_result, clk, rst)
+assign mem_bus_address_input = (I_or_D) ? pc_addr : alu_result_ff;
+assign alu_result_select = (pc_source) ? alu_result_ff : alu_result;
+
+
 risc_v_mem_ctrl i_risc_v_mem_ctrl (
     `ifdef MEM_BUS_INSTRUCTIONS
         .data_text_wr_addr_val(data_text_wr_addr_val),
@@ -144,8 +176,8 @@ risc_v_mem_ctrl i_risc_v_mem_ctrl (
         .data_text_rd_addr(),
     `endif
     .sva_clk(clk),
-    .mem_bus_rd_addr(alu_result),
-    .mem_bus_wr_addr(alu_result),
+    .mem_bus_rd_addr(mem_bus_address_input), // Address input
+    .mem_bus_wr_addr(mem_bus_address_input), // Address input
     .mem_bus_write(mem_write),
     .mem_bus_read(1'b1), // Always read enabled
     .mem_bus_wr_addr_error(),
@@ -214,6 +246,8 @@ always_comb begin
 
 end
 
+`MIKE_FF_NRST(data_mem_bus_rd_data_ff, data_mem_bus_rd_data, clk, rst)
+
 
 
 risc_v_mike_data_memory #(
@@ -226,6 +260,8 @@ risc_v_mike_data_memory #(
     .data_mem_wr_data(reg_file_rd_data_2),
     .data_mem_rd_data(data_mem_rd_data)
 );
+
+
 
 `ifdef GPIO_ENABLED
     risc_v_mike_gpio_module i_risc_v_mike_gpio_module(
@@ -241,6 +277,8 @@ risc_v_mike_data_memory #(
 `endif  
 
 
+ 
+    
 // Program counter additions
 // First is normal addition
 assign pc_plus4 = pc_addr + 32'h4;
@@ -249,7 +287,9 @@ assign pc_branch = pc_addr + imm_ext;
 // Selection of the next count
 assign pc_addr_nxt = (pc_src)? pc_branch : pc_plus4;
 // PC Flip flop
- `MIKE_FF_INIT_NRST(pc_addr, pc_addr_nxt, 32'h00400000, clk, rst) // PC COUNTER INIT it starts on 32'h00400000 - 4 for the initial propagation
+ `MIKE_FF_INIT_EN_NRST(pc_addr, pc_addr_nxt, 32'h00400000, pc_update, clk, rst) // PC COUNTER INIT it starts on 32'h00400000 - 4 for the initial propagation
+
+
 
 risc_v_mike_instruction_memory #(
     .DATA_MEM_DEPTH(PC_CNT_ADDR_WIDTH)
