@@ -39,6 +39,8 @@ module risc_v_mem_ctrl (
 // .data    --> 0x10010000
 // .stack   --> 0x7fffeffc
 // .MMIO    --> 0xffff0000
+// THIS PRACTICE DOES NOT COMPLY WITH OFFICIAL MMIO MAPPING
+
 
 
 // WRITE ADDRESS DECODE

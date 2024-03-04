@@ -11,6 +11,7 @@ parameter FUNCT7_W = 7;
 parameter U_IMM_W = 25;
 parameter PC_CNT_ADDR_WIDTH = `INST_MEM_DEPTH ;
 parameter PC_CNT_ADDR_SIZE = $clog2(PC_CNT_ADDR_WIDTH);
+parameter GPIO_BYTE = 8;
 
 // .text    --> 0x00400000
 // .data    --> 0x10010000
@@ -20,7 +21,9 @@ parameter PC_CNT_ADDR_SIZE = $clog2(PC_CNT_ADDR_WIDTH);
 parameter STACK_UPPER   = 32'h7fffeffc;
 parameter TEXT_LOWER    = 32'h00400000;
 parameter DATA_LOWER    = 32'h10010000;
-parameter MMIO_LOWER    = 32'hffff0000;
+// THIS PRACTICE DOES NOT COMPLY WITH OFFICIAL MMIO MAPPING
+
+parameter MMIO_LOWER    = 32'h10010024;
 
 
 typedef logic [REG_ADDR_W - 1:0] t_register_addr; 
@@ -167,39 +170,39 @@ typedef enum {
     OP_NA
 } t_instr_nmemonic;
 
-typedef enum logic[INSTR_OPCODE_W-1:0] { 
-    ZERO    = 7'd0,
-    RA      = 7'd1,
-    SP      = 7'd2,
-    GP      = 7'd3,
-    TP      = 7'd4,
-    T0      = 7'd5,
-    T1      = 7'd6,
-    T2      = 7'd7,
-    S0      = 7'd8,
-    S1      = 7'd9,
-    A0      = 7'd10,
-    A1      = 7'd11,
-    A2      = 7'd12,
-    A3      = 7'd13,
-    A4      = 7'd14,
-    A5      = 7'd15,
-    A6      = 7'd16,
-    A7      = 7'd17,
-    S2      = 7'd18,
-    S3      = 7'd19,
-    S4      = 7'd20,
-    S5      = 7'd21,
-    S6      = 7'd22,
-    S7      = 7'd23,
-    S8      = 7'd24,
-    S9      = 7'd25,
-    S10     = 7'd26,
-    S11     = 7'd27,
-    T3      = 7'd28,
-    T4      = 7'd29,
-    T5      = 7'd30,
-    T6      = 7'd31
+typedef enum logic[REG_ADDR_W-1:0] { 
+    ZERO    = 5'd0,
+    RA      = 5'd1,
+    SP      = 5'd2,
+    GP      = 5'd3,
+    TP      = 5'd4,
+    T0      = 5'd5,
+    T1      = 5'd6,
+    T2      = 5'd7,
+    S0      = 5'd8,
+    S1      = 5'd9,
+    A0      = 5'd10,
+    A1      = 5'd11,
+    A2      = 5'd12,
+    A3      = 5'd13,
+    A4      = 5'd14,
+    A5      = 5'd15,
+    A6      = 5'd16,
+    A7      = 5'd17,
+    S2      = 5'd18,
+    S3      = 5'd19,
+    S4      = 5'd20,
+    S5      = 5'd21,
+    S6      = 5'd22,
+    S7      = 5'd23,
+    S8      = 5'd24,
+    S9      = 5'd25,
+    S10     = 5'd26,
+    S11     = 5'd27,
+    T3      = 5'd28,
+    T4      = 5'd29,
+    T5      = 5'd30,
+    T6      = 5'd31
 } t_instr_register;
 
 

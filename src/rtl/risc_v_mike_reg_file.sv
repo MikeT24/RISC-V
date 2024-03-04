@@ -8,9 +8,9 @@ module risc_v_mike_reg_file #(
 )(
     input logic clk,
     input logic rst,
-    input t_register_addr reg_file_rd_addr_1,    // rs1,
-    input t_register_addr reg_file_rd_addr_2,    // rs2,
-    input t_register_addr reg_file_wr_addr,      // rsd,
+    input t_instr_register reg_file_rd_addr_1,    // rs1,
+    input t_instr_register reg_file_rd_addr_2,    // rs2,
+    input t_instr_register reg_file_wr_addr,      // rsd,
     input logic reg_file_write,                  //reg_write,
     input logic [DATA_32_W - 1:0] reg_file_wr_data,
     output logic [DATA_32_W - 1:0] reg_file_rd_data_1,

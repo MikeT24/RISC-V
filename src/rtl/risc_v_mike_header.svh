@@ -2,7 +2,7 @@
 `define INST_MEM_DEPTH 1024
 `define MMIO_MEM_SIZE 16
 `define BYTE_T 8
-
+`define GPIO_ENABLED
 `define MIKE_FF(q, i, clk)			\
 	always_ff @(posedge clk) q <= i  \
 

@@ -6,9 +6,9 @@ module risc_v_mike_ctrl (
     input logic alu_zero,
     input logic alu_slt,
     input logic [INSTR_32_W - 1:0] instruction,
-    output t_register_addr rs1,
-    output t_register_addr rs2,
-    output t_register_addr rsd,
+    output t_instr_register rs1,
+    output t_instr_register rs2,
+    output t_instr_register rsd,
     output logic [FUNCT3_W - 1:0] funct3,
     output logic [FUNCT7_W - 1:0] funct7,
     output logic pc_src,
@@ -27,9 +27,9 @@ module risc_v_mike_ctrl (
 t_instr_opcode opcode;
 
 assign opcode   = t_instr_opcode'(instruction[INST_OPCODE_MSB:0]);
-assign rsd      = instruction[INST_RD_MSB:INST_RD_LSB];
-assign rs1      = instruction[INST_RS1_MSB:INST_RS1_LSB];
-assign rs2      = instruction[INST_RS2_MSB:INST_RS2_LSB];
+assign rsd      = t_instr_register'(instruction[INST_RD_MSB:INST_RD_LSB]);
+assign rs1      = t_instr_register'(instruction[INST_RS1_MSB:INST_RS1_LSB]);
+assign rs2      = t_instr_register'(instruction[INST_RS2_MSB:INST_RS2_LSB]);
 assign funct3   = instruction[INST_FUNCT3_MSB:INST_FUNCT3_LSB];
 assign funct7   = instruction[INST_FUNCT7_MSB:INST_FUNCT7_LSB];
 
