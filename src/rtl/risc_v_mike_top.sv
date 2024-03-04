@@ -134,6 +134,8 @@ logic [ADDRESS_32_W-1:0] data_mem_addr;
 logic data_mem_write;
 
 
+//hello world
+
 risc_v_mem_ctrl i_risc_v_mem_ctrl (
     `ifdef MEM_BUS_INSTRUCTIONS
         .data_text_wr_addr_val(data_text_wr_addr_val),
