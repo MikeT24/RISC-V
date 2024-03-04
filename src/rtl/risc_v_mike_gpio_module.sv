@@ -12,7 +12,7 @@ module risc_v_mike_gpio_module (
     input logic [GPIO_BYTE-1:0] gpio_port_in,
     output logic [GPIO_BYTE-1:0] gpio_port_out,
     input logic [DATA_32_W-1:0] data_mmio_wr_data,
-    output [DATA_32_W-1:0] data_mmio_rd_data
+    output logic [DATA_32_W-1:0] data_mmio_rd_data
 );
 
 
@@ -29,8 +29,8 @@ assign gpio_out1 = (data_mmio_wr_addr_val & (32'h0 == data_mmio_addr))? data_mmi
 assign gpio_port_out = gpio_out1;
 
 
-`MIKE_FF_RST(gpio_out1_ff, gpio_out1, clk, rst)
-`MIKE_FF_RST(gpio_in1, gpio_port_in, clk, rst)
+`MIKE_FF_NRST(gpio_out1_ff, gpio_out1, clk, rst)
+`MIKE_FF_NRST(gpio_in1, gpio_port_in, clk, rst)
 
 always_comb begin
     if (~data_mmio_wr_addr_val) begin 

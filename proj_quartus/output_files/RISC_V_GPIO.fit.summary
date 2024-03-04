@@ -1,11 +1,11 @@
-Fitter Status : Successful - Mon Mar  4 01:47:06 2024
+Fitter Status : Successful - Mon Mar  4 16:28:28 2024
 Quartus Prime Version : 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 Revision Name : RISC_V_GPIO
 Top-level Entity Name : risc_v_mike_top
 Family : Cyclone V
 Device : 5CSXFC6D6F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 1,513 / 41,910 ( 4 % )
+Logic utilization (in ALMs) : 1,518 / 41,910 ( 4 % )
 Total registers : 1385
 Total pins : 18 / 499 ( 4 % )
 Total virtual pins : 0

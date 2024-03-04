@@ -1,5 +1,5 @@
 Analysis & Synthesis report for RISC_V_GPIO
-Mon Mar  4 01:44:03 2024
+Mon Mar  4 16:24:06 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -52,7 +52,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +---------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Mon Mar  4 01:44:03 2024          ;
+; Analysis & Synthesis Status     ; Successful - Mon Mar  4 16:24:06 2024          ;
 ; Quartus Prime Version           ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                   ; RISC_V_GPIO                                    ;
 ; Top-level Entity Name           ; risc_v_mike_top                                ;
@@ -852,7 +852,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:15     ;
+; Top            ; 00:00:17     ;
 +----------------+--------------+
 
 
@@ -862,7 +862,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Mon Mar  4 01:43:28 2024
+    Info: Processing started: Mon Mar  4 16:23:33 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RISC_V_GPIO -c RISC_V_GPIO
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -914,9 +914,9 @@ Info (21057): Implemented 3318 device resources after synthesis - the final reso
     Info (21059): Implemented 8 output pins
     Info (21061): Implemented 3300 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 9 warnings
-    Info: Peak virtual memory: 4862 megabytes
-    Info: Processing ended: Mon Mar  4 01:44:03 2024
-    Info: Elapsed time: 00:00:35
-    Info: Total CPU time (on all processors): 00:00:32
+    Info: Peak virtual memory: 4869 megabytes
+    Info: Processing ended: Mon Mar  4 16:24:06 2024
+    Info: Elapsed time: 00:00:33
+    Info: Total CPU time (on all processors): 00:00:27
 
 

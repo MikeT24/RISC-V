@@ -13,7 +13,7 @@ vrisc_v_mem_ctrl
 Z0 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
 Z1 DXx4 work 15 risc_v_mike_pkg 0 22 QEPLOZg;?c=`?n[@_<cz@0
 DXx4 work 23 risc_v_mem_ctrl_sv_unit 0 22 LHNf@PDUHDaacbVL3kdI91
-Z2 !s110 1709535471
+Z2 !s110 1709590274
 Z3 VDg1SIo80bB@j0V0VzS_@n1
 r1
 !s85 0
@@ -26,11 +26,11 @@ Z4 dC:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/proj_model
 w1709521555
 Z5 8C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mem_ctrl.sv
 Z6 FC:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mem_ctrl.sv
-!i122 27
+!i122 52
 L0 7 97
 Z7 OV;L;2020.1;71
 31
-Z8 !s108 1709535471.000000
+Z8 !s108 1709590274.000000
 Z9 !s107 C:\Users\matriana\Personal\Masters\Diseno de Micros\RISC-V\RISC-V\src\rtl\risc_v_mike_header.svh|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mem_ctrl.sv|
 Z10 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mem_ctrl.sv|
 !i113 1
@@ -53,7 +53,7 @@ Z13 w1709534652
 R5
 R6
 Z14 FC:\Users\matriana\Personal\Masters\Diseno de Micros\RISC-V\RISC-V\src\rtl\risc_v_mike_header.svh
-!i122 27
+!i122 52
 Z15 L0 1 0
 R7
 31
@@ -80,7 +80,7 @@ R4
 w1706057822
 Z16 8C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_alu.sv
 Z17 FC:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_alu.sv
-!i122 28
+!i122 53
 L0 5 70
 R7
 31
@@ -107,7 +107,7 @@ R13
 R16
 R17
 R14
-!i122 28
+!i122 53
 R15
 R7
 31
@@ -134,7 +134,7 @@ R4
 R13
 Z20 8C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_ctrl.sv
 Z21 FC:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_ctrl.sv
-!i122 29
+!i122 54
 L0 5 557
 R7
 31
@@ -161,7 +161,7 @@ R13
 R20
 R21
 R14
-!i122 29
+!i122 54
 R15
 R7
 31
@@ -188,7 +188,7 @@ R4
 w1709519635
 Z24 8C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_data_memory.sv
 Z25 FC:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_data_memory.sv
-!i122 30
+!i122 55
 L0 7 41
 R7
 31
@@ -215,7 +215,7 @@ R13
 R24
 R25
 R14
-!i122 30
+!i122 55
 R15
 R7
 31
@@ -228,27 +228,27 @@ R12
 vrisc_v_mike_gpio_module
 R0
 R1
-DXx4 work 31 risc_v_mike_gpio_module_sv_unit 0 22 ;_SXBCW02gb1TCmi8^9]k3
-Z28 !s110 1709535472
+DXx4 work 31 risc_v_mike_gpio_module_sv_unit 0 22 mT_o;KBWO?N@JTQ5>ZDYP2
+Z28 !s110 1709590496
 R3
 r1
 !s85 0
 !i10b 1
-!s100 dQZWUEm9M@ZUmlfc0o]H<3
-I3@a=VE[]b>ASbnz>lKBIf1
+!s100 a[`j>b@IM2C`f2h?;H0je0
+I]28W^G`FKQM3^RkhM=CCS0
 !s105 risc_v_mike_gpio_module_sv_unit
 S1
 R4
-w1709531161
-Z29 8C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_gpio_module.sv
-Z30 FC:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_gpio_module.sv
-!i122 31
-L0 7 42
+Z29 w1709590488
+Z30 8C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_gpio_module.sv
+Z31 FC:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_gpio_module.sv
+!i122 64
+L0 7 45
 R7
 31
-R8
-Z31 !s107 C:\Users\matriana\Personal\Masters\Diseno de Micros\RISC-V\RISC-V\src\rtl\risc_v_mike_header.svh|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_gpio_module.sv|
-Z32 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_gpio_module.sv|
+Z32 !s108 1709590496.000000
+!s107 C:\Users\matriana\Personal\Masters\Diseno de Micros\RISC-V\RISC-V\src\rtl\risc_v_mike_header.svh|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_gpio_module.sv|
+Z33 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_gpio_module.sv|
 !i113 1
 R11
 R12
@@ -256,26 +256,26 @@ Xrisc_v_mike_gpio_module_sv_unit
 R0
 R1
 R28
-V;_SXBCW02gb1TCmi8^9]k3
+VmT_o;KBWO?N@JTQ5>ZDYP2
 r1
 !s85 0
 !i10b 1
-!s100 A9kCP2Q2PhA6@b0UN6BWS3
-I;_SXBCW02gb1TCmi8^9]k3
+!s100 Q?2@aE>3FOinzhciR3E<c1
+ImT_o;KBWO?N@JTQ5>ZDYP2
 !i103 1
 S1
 R4
-R13
 R29
 R30
+R31
 R14
-!i122 31
+!i122 64
 L0 2 0
 R7
 31
-R8
-R31
 R32
+Z34 !s107 C:\Users\matriana\Personal\Masters\Diseno de Micros\RISC-V\RISC-V\src\rtl\risc_v_mike_header.svh|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_gpio_module.sv|
+R33
 !i113 1
 R11
 R12
@@ -283,7 +283,7 @@ vrisc_v_mike_instruction_memory
 R0
 R1
 DXx4 work 38 risc_v_mike_instruction_memory_sv_unit 0 22 H2H`Jk5Wm@Z6L6O>mn7Yd0
-R28
+Z35 !s110 1709590275
 R3
 r1
 !s85 0
@@ -294,22 +294,22 @@ I0kJ;IS;E;SR[5Z:E;2AWM2
 S1
 R4
 w1709528777
-Z33 8C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_instruction_memory.sv
-Z34 FC:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_instruction_memory.sv
-!i122 32
+Z36 8C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_instruction_memory.sv
+Z37 FC:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_instruction_memory.sv
+!i122 57
 L0 5 194
 R7
 31
-Z35 !s108 1709535472.000000
-Z36 !s107 C:\Users\matriana\Personal\Masters\Diseno de Micros\RISC-V\RISC-V\src\rtl\risc_v_mike_header.svh|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_instruction_memory.sv|
-Z37 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_instruction_memory.sv|
+Z38 !s108 1709590275.000000
+Z39 !s107 C:\Users\matriana\Personal\Masters\Diseno de Micros\RISC-V\RISC-V\src\rtl\risc_v_mike_header.svh|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_instruction_memory.sv|
+Z40 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_instruction_memory.sv|
 !i113 1
 R11
 R12
 Xrisc_v_mike_instruction_memory_sv_unit
 R0
 R1
-R28
+R35
 VH2H`Jk5Wm@Z6L6O>mn7Yd0
 r1
 !s85 0
@@ -320,22 +320,22 @@ IH2H`Jk5Wm@Z6L6O>mn7Yd0
 S1
 R4
 R13
-R33
-R34
+R36
+R37
 R14
-!i122 32
+!i122 57
 R15
 R7
 31
-R35
-R36
-R37
+R38
+R39
+R40
 !i113 1
 R11
 R12
 Xrisc_v_mike_pkg
 R0
-R28
+Z41 !s110 1709590276
 !i10b 1
 !s100 d]c=<PbN[2TRadzDc7[OH0
 !s11b Dg1SIo80bB@j0V0VzS_@n1
@@ -347,13 +347,13 @@ R13
 8C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_pkg.sv
 FC:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_pkg.sv
 R14
-!i122 33
+!i122 58
 R15
 R7
 r1
 !s85 0
 31
-R35
+R38
 !s107 C:\Users\matriana\Personal\Masters\Diseno de Micros\RISC-V\RISC-V\src\rtl\risc_v_mike_header.svh|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_pkg.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_pkg.sv|
 !i113 1
@@ -363,7 +363,7 @@ vrisc_v_mike_reg_file
 R0
 R1
 DXx4 work 28 risc_v_mike_reg_file_sv_unit 0 22 kSX0?:lIEmG0:BHd47e:h1
-R28
+R41
 R3
 r1
 !s85 0
@@ -374,22 +374,22 @@ ILPAbM@=d`C;Tmc;0f[R293
 S1
 R4
 w1709526463
-Z38 8C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_reg_file.sv
-Z39 FC:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_reg_file.sv
-!i122 34
+Z42 8C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_reg_file.sv
+Z43 FC:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_reg_file.sv
+!i122 59
 L0 5 43
 R7
 31
-R35
-Z40 !s107 C:\Users\matriana\Personal\Masters\Diseno de Micros\RISC-V\RISC-V\src\rtl\risc_v_mike_header.svh|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_reg_file.sv|
-Z41 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_reg_file.sv|
+Z44 !s108 1709590276.000000
+Z45 !s107 C:\Users\matriana\Personal\Masters\Diseno de Micros\RISC-V\RISC-V\src\rtl\risc_v_mike_header.svh|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_reg_file.sv|
+Z46 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_reg_file.sv|
 !i113 1
 R11
 R12
 Xrisc_v_mike_reg_file_sv_unit
 R0
 R1
-R28
+R41
 VkSX0?:lIEmG0:BHd47e:h1
 r1
 !s85 0
@@ -400,16 +400,16 @@ IkSX0?:lIEmG0:BHd47e:h1
 S1
 R4
 R13
-R38
-R39
+R42
+R43
 R14
-!i122 34
+!i122 59
 R15
 R7
 31
-R35
-R40
-R41
+R44
+R45
+R46
 !i113 1
 R11
 R12
@@ -417,7 +417,7 @@ vrisc_v_mike_sign_extend
 R0
 R1
 DXx4 work 31 risc_v_mike_sign_extend_sv_unit 0 22 <X<RMWUUJ01[3E>=J6<I?1
-Z42 !s110 1709535473
+R41
 R3
 r1
 !s85 0
@@ -428,22 +428,22 @@ I7^UzeTe8]14M_Y6VeZIkg1
 S1
 R4
 w1709513233
-Z43 8C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_sign_extend.sv
-Z44 FC:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_sign_extend.sv
-!i122 35
+Z47 8C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_sign_extend.sv
+Z48 FC:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_sign_extend.sv
+!i122 60
 L0 5 18
 R7
 31
-Z45 !s108 1709535473.000000
-Z46 !s107 C:\Users\matriana\Personal\Masters\Diseno de Micros\RISC-V\RISC-V\src\rtl\risc_v_mike_header.svh|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_sign_extend.sv|
-Z47 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_sign_extend.sv|
+R44
+Z49 !s107 C:\Users\matriana\Personal\Masters\Diseno de Micros\RISC-V\RISC-V\src\rtl\risc_v_mike_header.svh|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_sign_extend.sv|
+Z50 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_sign_extend.sv|
 !i113 1
 R11
 R12
 Xrisc_v_mike_sign_extend_sv_unit
 R0
 R1
-R42
+R41
 V<X<RMWUUJ01[3E>=J6<I?1
 r1
 !s85 0
@@ -454,16 +454,16 @@ I<X<RMWUUJ01[3E>=J6<I?1
 S1
 R4
 R13
-R43
-R44
+R47
+R48
 R14
-!i122 35
+!i122 60
 R15
 R7
 31
-R45
-R46
-R47
+R44
+R49
+R50
 !i113 1
 R11
 R12
@@ -471,7 +471,7 @@ vrisc_v_mike_tb_uni
 R0
 R1
 DXx4 work 26 risc_v_mike_tb_uni_sv_unit 0 22 GfjFi`R_cYi8MNS4Q_8j<3
-R42
+Z51 !s110 1709590277
 R3
 r1
 !s85 0
@@ -481,23 +481,23 @@ IoKnFIC67aZJ8F1W4;YTN[3
 !s105 risc_v_mike_tb_uni_sv_unit
 S1
 R4
-Z48 w1709535431
-Z49 8C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv
-Z50 FC:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv
-!i122 37
+Z52 w1709535431
+Z53 8C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv
+Z54 FC:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv
+!i122 62
 L0 5 34
 R7
 31
-R45
-Z51 !s107 ../src/rtl/risc_v_mike_header.svh|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv|
-Z52 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv|
+Z55 !s108 1709590277.000000
+Z56 !s107 ../src/rtl/risc_v_mike_header.svh|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv|
+Z57 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv|
 !i113 1
 R11
 R12
 Xrisc_v_mike_tb_uni_sv_unit
 R0
 R1
-R42
+R51
 VGfjFi`R_cYi8MNS4Q_8j<3
 r1
 !s85 0
@@ -507,17 +507,17 @@ IGfjFi`R_cYi8MNS4Q_8j<3
 !i103 1
 S1
 R4
-R48
-R49
-R50
+R52
+R53
+R54
 F../src/rtl/risc_v_mike_header.svh
-!i122 37
+!i122 62
 R15
 R7
 31
-R45
-R51
-R52
+R55
+R56
+R57
 !i113 1
 R11
 R12
@@ -525,7 +525,7 @@ vrisc_v_mike_top
 R0
 R1
 DXx4 work 23 risc_v_mike_top_sv_unit 0 22 g4EWn5TAJI9eR54A?XVY:0
-Z53 !s110 1709536150
+Z58 !s110 1709590327
 R3
 r1
 !s85 0
@@ -535,23 +535,23 @@ I=CZDaHm]Y2XG8Ui?;@Zd83
 !s105 risc_v_mike_top_sv_unit
 S1
 R4
-Z54 w1709536144
-Z55 8C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_top.sv
-Z56 FC:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_top.sv
-!i122 40
+Z59 w1709590319
+Z60 8C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_top.sv
+Z61 FC:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_top.sv
+!i122 63
 L0 6 272
 R7
 31
-Z57 !s108 1709536150.000000
-!s107 C:\Users\matriana\Personal\Masters\Diseno de Micros\RISC-V\RISC-V\src\rtl\risc_v_mike_header.svh|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_top.sv|
-Z58 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_top.sv|
+Z62 !s108 1709590326.000000
+Z63 !s107 C:\Users\matriana\Personal\Masters\Diseno de Micros\RISC-V\RISC-V\src\rtl\risc_v_mike_header.svh|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_top.sv|
+Z64 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_top.sv|
 !i113 1
 R11
 R12
 Xrisc_v_mike_top_sv_unit
 R0
 R1
-R53
+R58
 Vg4EWn5TAJI9eR54A?XVY:0
 r1
 !s85 0
@@ -561,17 +561,17 @@ Ig4EWn5TAJI9eR54A?XVY:0
 !i103 1
 S1
 R4
-R54
-R55
-R56
+R59
+R60
+R61
 R14
-!i122 40
+!i122 63
 R15
 R7
 31
-R57
-Z59 !s107 C:\Users\matriana\Personal\Masters\Diseno de Micros\RISC-V\RISC-V\src\rtl\risc_v_mike_header.svh|C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_top.sv|
-R58
+R62
+R63
+R64
 !i113 1
 R11
 R12

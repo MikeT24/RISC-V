@@ -147,15 +147,15 @@ add wave -noupdate /risc_v_mike_tb_uni/dut/i_risc_v_mike_gpio_module/clk
 add wave -noupdate /risc_v_mike_tb_uni/dut/i_risc_v_mike_gpio_module/data_mmio_addr
 add wave -noupdate /risc_v_mike_tb_uni/dut/i_risc_v_mike_gpio_module/data_mmio_rd_data
 add wave -noupdate /risc_v_mike_tb_uni/dut/i_risc_v_mike_gpio_module/data_mmio_wr_addr_val
-add wave -noupdate /risc_v_mike_tb_uni/dut/i_risc_v_mike_gpio_module/data_mmio_wr_data
 add wave -noupdate /risc_v_mike_tb_uni/dut/i_risc_v_mike_gpio_module/gpio_in1
-add wave -noupdate /risc_v_mike_tb_uni/dut/i_risc_v_mike_gpio_module/gpio_out1
+add wave -noupdate -radix hexadecimal /risc_v_mike_tb_uni/dut/i_risc_v_mike_gpio_module/data_mmio_wr_data
+add wave -noupdate -radix hexadecimal /risc_v_mike_tb_uni/dut/i_risc_v_mike_gpio_module/gpio_out1
 add wave -noupdate /risc_v_mike_tb_uni/dut/i_risc_v_mike_gpio_module/gpio_out1_ff
 add wave -noupdate /risc_v_mike_tb_uni/dut/i_risc_v_mike_gpio_module/gpio_port_in
-add wave -noupdate /risc_v_mike_tb_uni/dut/i_risc_v_mike_gpio_module/gpio_port_out
+add wave -noupdate -radix hexadecimal /risc_v_mike_tb_uni/dut/i_risc_v_mike_gpio_module/gpio_port_out
 add wave -noupdate /risc_v_mike_tb_uni/dut/i_risc_v_mike_gpio_module/rst
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {17439 ps} 0}
+WaveRestoreCursors {{Cursor 1} {55015 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 413
 configure wave -valuecolwidth 100
@@ -171,4 +171,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {0 ps} {52500 ps}
+WaveRestoreZoom {53018 ps} {56721 ps}
