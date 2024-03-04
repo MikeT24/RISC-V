@@ -31,8 +31,8 @@ assign reg_file_rd_data_2 = reg_file_ff[reg_file_rd_addr_2];
 
 
 
-assign reg_file[0] = 32'h0;
-
+assign reg_file[0]      = 32'h0;
+assign reg_file_ff[0]   = 32'h0;
 genvar depth;
 generate
     for ( depth = 1; depth < REG_FILE_DEPTH; depth++) begin: gen_reg_file

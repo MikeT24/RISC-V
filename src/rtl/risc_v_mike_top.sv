@@ -5,17 +5,7 @@ import risc_v_mike_pkg::*;
 
 module risc_v_mike_top (
     input logic clk,
-    input logic rst,
-    input logic  rx,
-    output logic  tx,
-    output logic seg_a,
-    output logic seg_b,
-    output logic seg_c,
-    output logic seg_d,
-    output logic seg_e,
-    output logic seg_f,
-    output logic seg_g,
-    output logic rst_test
+    input logic rst
 );
 
     logic [INSTR_32_W - 1:0] instruction;
@@ -28,7 +18,8 @@ module risc_v_mike_top (
     logic result_src;
     logic mem_write;
     logic reg_write;
-    logic alu_src;
+    logic alu_src_sel_b;
+    logic alu_src_sel_a;
     logic [2:0] imm_src;
     logic [DATA_32_W - 1:0] alu_src_a;
     logic [DATA_32_W - 1:0] alu_src_b;
@@ -38,6 +29,7 @@ module risc_v_mike_top (
     logic  alu_zero;
     logic  alu_slt;
 
+    logic [DATA_32_W - 1:0] reg_file_rd_data_1;
     logic [DATA_32_W - 1:0] reg_file_rd_data_2;
     logic [DATA_32_W - 1:0] data_mem_rd_data;
     logic [DATA_32_W - 1:0] reg_file_wr_data;
@@ -51,6 +43,7 @@ module risc_v_mike_top (
     t_instr_nmemonic intr_nmen;
 
     assign rst_test = ~rst;
+
 risc_v_mike_ctrl i_risc_v_mike_ctrl(
     .alu_zero(alu_zero),
     .alu_slt(alu_slt),
@@ -64,7 +57,8 @@ risc_v_mike_ctrl i_risc_v_mike_ctrl(
     .result_src(result_src),
     .mem_write(mem_write),
     .reg_write(reg_write),
-    .alu_src(alu_src),
+    .alu_src_sel_a(alu_src_sel_a),
+    .alu_src_sel_b(alu_src_sel_b),
     .alu_ctrl(alu_ctrl),
     .alu_signed(alu_signed),
     .imm_src(imm_src),
@@ -84,7 +78,8 @@ risc_v_mike_alu i_risc_v_mike_alu(
 
 //ALU SRC MUX: CHOOSE BETWEEN SIGN EXTEND AND REG_FILE READ PORT 2
 //TODO: imm_ext module and connection
-assign alu_src_b = (alu_src) ? imm_ext : reg_file_rd_data_2;
+assign alu_src_a = (alu_src_sel_a) ? pc_addr : reg_file_rd_data_1;
+assign alu_src_b = (alu_src_sel_b) ? imm_ext : reg_file_rd_data_2;
 
 risc_v_mike_reg_file #(
     .REG_FILE_DEPTH(32)
@@ -96,7 +91,7 @@ risc_v_mike_reg_file #(
     .reg_file_wr_addr(rsd),      // rsd,
     .reg_file_write(reg_write),                  //reg_write,
     .reg_file_wr_data(reg_file_wr_data),
-    .reg_file_rd_data_1(alu_src_a),
+    .reg_file_rd_data_1(reg_file_rd_data_1),
     .reg_file_rd_data_2(reg_file_rd_data_2)
 );
 
@@ -111,20 +106,93 @@ logic [DATA_32_W-1:0] gpio_in1;
 //ENDIF
 
 
+`ifdef MEM_BUS_INSTRUCTIONS
+    logic data_text_wr_addr_val;
+    logic [ADDRESS_32_W-1:0] data_text_wr_addr;
+    logic [2:0] data_memory_addr_sel_vec;
+`endif
+
+`ifndef MEM_BUS_INSTRUCTIONS
+    logic [1:0] data_memory_addr_sel_vec;
+`endif
+
+
+logic data_stack_wr_addr_val;
+logic data_mem_wr_addr_val;
+logic data_mmio_wr_addr_val;
+logic [ADDRESS_32_W-1:0] data_stack_wr_addr;
+logic [ADDRESS_32_W-1:0] data_mem_wr_addr;
+logic [ADDRESS_32_W-1:0] data_mmio_wr_addr;
+logic [DATA_32_W - 1:0] data_mem_addr;
+logic data_mem_write;
+
+
+risc_v_mem_ctrl i_risc_v_mem_ctrl (
+    `ifdef MEM_BUS_INSTRUCTIONS
+        .data_text_wr_addr_val(data_text_wr_addr_val),
+        .data_text_wr_addr(data_text_wr_addr),
+        .data_text_rd_addr_val(),
+        .data_text_rd_addr(),
+    `endif
+    .sva_clk(clk),
+    .mem_bus_rd_addr(32'b0),
+    .mem_bus_wr_addr(alu_result),
+    .mem_bus_write(mem_write),
+    .mem_bus_read(1'b0),
+    .mem_bus_wr_addr_error(),
+    .mem_bus_rd_addr_error(),
+    .data_stack_wr_addr_val(data_stack_wr_addr_val),
+    .data_mem_wr_addr_val(data_mem_wr_addr_val),
+    .data_mmio_wr_addr_val(data_mmio_wr_addr_val),
+    .data_stack_wr_addr(data_stack_wr_addr),
+    .data_mem_wr_addr(data_mem_wr_addr),
+    .data_mmio_wr_addr(data_mmio_wr_addr),
+    // READ enables will not be used at the moment
+    .data_stack_rd_addr_val(),
+    .data_mem_rd_addr_val(),
+    .data_mmio_rd_addr_val(),
+    .data_stack_rd_addr(),
+    .data_mem_rd_addr(),
+    .data_mmio_rd_addr()
+);
+
+
+`ifdef MEM_BUS_INSTRUCTIONS
+    assign data_memory_addr_sel_vec = {data_text_wr_addr_val, data_stack_wr_addr_val, data_mem_wr_addr_val};
+`endif
+`ifndef MEM_BUS_INSTRUCTIONS 
+    assign data_memory_addr_sel_vec = {data_stack_wr_addr_val, data_mem_wr_addr_val};
+`endif
+
+assign data_mem_write = |data_memory_addr_sel_vec;
+
+
+// data_memory_addr_sel_vec[0] = MEMORY ACCESS
+// data_memory_addr_sel_vec[1] = STACK ACCESS
+// data_memory_addr_sel_vec[2] = TEXT ACCESS (INSTRUCTIONS)
+
+always_comb begin 
+    case (data_memory_addr_sel_vec)
+        1: data_mem_addr = data_mem_wr_addr;
+        2: data_mem_addr = data_stack_wr_addr;
+        `ifdef MEM_BUS_INSTRUCTIONS
+        3: data_mem_addr = data_text_wr_addr;
+        `endif
+        default : data_mem_addr = 32'b0;
+    endcase
+end
+
 
 risc_v_mike_data_memory #(
     .DATA_MEM_DEPTH(`DATA_MEM_DEPTH)
 ) i_risc_v_mike_data_memory (
     .clk(clk),
     .rst(~rst),
-    .data_mem_addr(alu_result),
-    .data_mem_write(mem_write),
+    .data_mem_addr(data_mem_addr),
+    .data_mem_write(data_mem_write),
     .data_mem_wr_data(reg_file_rd_data_2),
     .data_mem_rd_data(data_mem_rd_data)
 );
-
-
-
 
 risc_v_mike_sign_extend i_risc_v_mike_sign_extend (
     .imm_src(imm_src),
@@ -140,7 +208,7 @@ assign pc_branch = pc_addr + imm_ext;
 // Selection of the next count
 assign pc_addr_nxt = (pc_src)? pc_branch : pc_plus4;
 // PC Flip flop
- `MIKE_FF_RST(pc_addr, pc_addr_nxt, clk, ~rst)
+ `MIKE_FF_INIT_NRST(pc_addr, pc_addr_nxt, 32'h00400000, clk, rst) // PC COUNTER INIT it starts on 32'h00400000 - 4 for the initial propagation
 
 risc_v_mike_instruction_memory #(
     .DATA_MEM_DEPTH(PC_CNT_ADDR_WIDTH)
@@ -151,54 +219,6 @@ risc_v_mike_instruction_memory #(
     .data_mem_rd_data(instruction)
 );
 
-
-
-
-
-logic  [UART_DATA_WIDTH-1:0] tx_data;
-logic  tx_send;
-logic  rx_flag_clr;
-logic  parity_error;
-logic  rx_flag;
-logic  [UART_DATA_WIDTH-1:0] rx_data;
-logic   tx_flag;
-logic   tx_flag_clr;
-
-assign tx_data = gpio_out0[7:0];
-assign tx_send = gpio_out1[0];
-assign rx_flag_clr = gpio_out1[1];
-assign tx_flag_clr = gpio_out1[2]; //4
-
-//assign parity_error = gpio_out1[1];
-
-assign gpio_in0[7:0] = rx_data;
-assign gpio_in0[31:8] = 'b0;
-assign gpio_in1[0]  = rx_flag;
-assign gpio_in1[1]  = tx_flag;
-assign gpio_in1[31:2] = 'b0;
-
-
-UART_MIKE i_UART_MIKE (
-    .clk(clk),
-    .n_rst(rst),
-    .tx_data(tx_data),
-    .tx_send(tx_send),
-    .rx(rx),
-    .rx_flag_clr(rx_flag_clr),
-    .tx(tx),
-    .parity_error(parity_error),
-    .rx_flag(rx_flag),
-    .rx_data(rx_data),
-    .seg_a(seg_a),
-    .seg_b(seg_b),
-    .seg_c(seg_c),
-    .seg_d(seg_d),
-    .seg_e(seg_e),
-    .seg_f(seg_f),
-    .seg_g(seg_g),
-    .tx_flag(tx_flag),
-    .tx_flag_clr(tx_flag_clr)
-);
 
 
 endmodule

@@ -25,7 +25,7 @@ parameter MMIO_LOWER    = 32'hffff0000;
 
 typedef logic [REG_ADDR_W - 1:0] t_register_addr; 
 //typedef logic [INSTR_OPCODE_W - 1:0] t_instr_opcode;
-typedef logic [PC_CNT_ADDR_SIZE - 1:0] t_pc_addr;
+typedef logic [ADDRESS_32_W - 1:0] t_pc_addr;
 //typedef logic [] t_mnemonic;
 
 typedef struct packed {
@@ -201,6 +201,17 @@ typedef enum logic[INSTR_OPCODE_W-1:0] {
     T5      = 7'd30,
     T6      = 7'd31
 } t_instr_register;
+
+
+parameter DATA_MAPPING_STACK_DIV = `DATA_MEM_DEPTH / 2;
+parameter MEM_MAP_STACK_UPPER_LIMIT = STACK_UPPER;                                     // Stack upper limit definition
+parameter MEM_MAP_STACK_LOWER_LIMIT = MEM_MAP_STACK_UPPER_LIMIT - DATA_MAPPING_STACK_DIV;       // Stack lower limit = stack upper limit, and static division we are setting
+parameter MEM_MAP_DATA_LOWER_LIMIT = DATA_LOWER;
+parameter MEM_MAP_DATA_UPPER_LIMIT = MEM_MAP_DATA_LOWER_LIMIT + DATA_MAPPING_STACK_DIV - 1;     
+parameter MEM_MAP_TEXT_LOWER_LIMIT = TEXT_LOWER;
+parameter MEM_MAP_TEXT_UPPER_LIMIT = MEM_MAP_TEXT_LOWER_LIMIT + `INST_MEM_DEPTH;
+parameter MEM_MAP_MMIO_UPPER_LIMIT = MMIO_LOWER + `MMIO_MEM_SIZE;
+parameter MEM_MAP_MMIO_LOWER_LIMIT = MMIO_LOWER;
 
 
 endpackage

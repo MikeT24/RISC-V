@@ -11,10 +11,11 @@ module risc_v_mike_sign_extend (
 
 always_comb begin 
     case (imm_src)
-        0: imm_ext = {{20{instruction[31]}}, instruction[31:20]};
+        0: imm_ext = {{20{instruction[31]}}, instruction[31:20]}; 
         1: imm_ext = {{20{instruction[31]}}, instruction[31:25], instruction[11:7]};
         2: imm_ext = {{19{instruction[31]}}, instruction[31], instruction[7], instruction[30:25], instruction[11:8], 1'b0 }; 
         3: imm_ext = {{11{instruction[31]}}, instruction[31], instruction[19:12], instruction[20], instruction[30:21], 1'b0 };
+        4: imm_ext = {instruction[31:12],{12{1'b0}}}; // U-type instruction
         default: imm_ext = 'hDEADBEEF;
     endcase
 end

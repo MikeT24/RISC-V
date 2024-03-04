@@ -15,7 +15,8 @@ module risc_v_mike_ctrl (
     output logic result_src,
     output logic mem_write,
     output logic reg_write,
-    output logic alu_src,
+    output logic alu_src_sel_a,
+    output logic alu_src_sel_b,
     output t_alu_opcode alu_ctrl,
     output logic alu_signed,
     output logic [2:0] imm_src,
@@ -136,7 +137,8 @@ always_comb begin
             result_src  = 1'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
-            alu_src     = 1'b0;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b0;
             alu_ctrl    = ALU_ADD;
             imm_src     = 3'b0;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
@@ -147,7 +149,8 @@ always_comb begin
             result_src  = 1'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
-            alu_src     = 1'b0;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b0;
             alu_ctrl    = ALU_SUB;
             imm_src     = 3'b0;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
@@ -157,7 +160,8 @@ always_comb begin
             result_src  = 1'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
-            alu_src     = 1'b0;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b0;
             alu_ctrl    = ALU_SLL;
             imm_src     = 3'b0;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
@@ -167,7 +171,8 @@ always_comb begin
             result_src  = 1'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
-            alu_src     = 1'b0;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b0;
             alu_ctrl    = ALU_SLT;
             imm_src     = 3'b0;
             alu_signed  = 1'b1; // THIS IS A SIGNED UOP
@@ -177,7 +182,8 @@ always_comb begin
             result_src  = 1'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
-            alu_src     = 1'b0;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b0;
             alu_ctrl    = ALU_SLT;
             imm_src     = 3'b0;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
@@ -187,7 +193,8 @@ always_comb begin
             result_src  = 1'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
-            alu_src     = 1'b0;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b0;
             alu_ctrl    = ALU_XOR;
             imm_src     = 3'b0;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
@@ -197,7 +204,8 @@ always_comb begin
             result_src  = 1'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
-            alu_src     = 1'b0;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b0;
             alu_ctrl    = ALU_SRL;
             imm_src     = 3'b0;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
@@ -207,7 +215,8 @@ always_comb begin
             result_src  = 1'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
-            alu_src     = 1'b0;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b0;
             alu_ctrl    = ALU_SRA;
             imm_src     = 3'b0;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
@@ -217,7 +226,8 @@ always_comb begin
             result_src  = 1'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
-            alu_src     = 1'b0;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b0;
             alu_ctrl    = ALU_OR;
             imm_src     = 3'b0;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
@@ -227,7 +237,8 @@ always_comb begin
             result_src  = 1'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
-            alu_src     = 1'b0;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b0;
             alu_ctrl    = ALU_AND;
             imm_src     = 3'b0;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
@@ -237,7 +248,8 @@ always_comb begin
             result_src  = 1'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
-            alu_src     = 1'b1;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b1;
             alu_ctrl    = ALU_ADD;
             imm_src     = 3'b0;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
@@ -247,7 +259,8 @@ always_comb begin
             result_src  = 1'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
-            alu_src     = 1'b1;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b1;
             alu_ctrl    = ALU_SLL;
             imm_src     = 3'b0;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
@@ -257,7 +270,8 @@ always_comb begin
             result_src  = 1'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
-            alu_src     = 1'b1;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b1;
             alu_ctrl    = ALU_SLT;
             imm_src     = 3'b0;
             alu_signed  = 1'b1; // THIS IS A SIGNED UOP
@@ -267,7 +281,8 @@ always_comb begin
             result_src  = 1'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
-            alu_src     = 1'b1;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b1;
             alu_ctrl    = ALU_SLT;
             imm_src     = 3'b0;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
@@ -277,7 +292,8 @@ always_comb begin
             result_src  = 1'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
-            alu_src     = 1'b1;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b1;
             alu_ctrl    = ALU_XOR;
             imm_src     = 3'b0;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
@@ -287,7 +303,8 @@ always_comb begin
             result_src  = 1'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
-            alu_src     = 1'b1;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b1;
             alu_ctrl    = ALU_SRL;
             imm_src     = 3'b0;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
@@ -297,7 +314,8 @@ always_comb begin
             result_src  = 1'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
-            alu_src     = 1'b1;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b1;
             alu_ctrl    = ALU_SRA;
             imm_src     = 3'b0;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
@@ -307,7 +325,8 @@ always_comb begin
             result_src  = 1'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
-            alu_src     = 1'b1;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b1;
             alu_ctrl    = ALU_OR;
             imm_src     = 3'b0;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
@@ -317,7 +336,8 @@ always_comb begin
             result_src  = 1'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
-            alu_src     = 1'b1;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b1;
             alu_ctrl    = ALU_AND;
             imm_src     = 3'b0;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
@@ -327,7 +347,8 @@ always_comb begin
             result_src  = 1'b1;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
-            alu_src     = 1'b1;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b1;
             alu_ctrl    = ALU_ADD;
             imm_src     = 3'b0;
             alu_signed  = 1'b1; // THIS IS A SIGNED UOP
@@ -337,7 +358,8 @@ always_comb begin
             result_src  = 1'b1;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
-            alu_src     = 1'b1;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b1;
             alu_ctrl    = ALU_ADD;
             imm_src     = 3'b0;
             alu_signed  = 1'b0; // THIS IS A SIGNED UOP
@@ -347,7 +369,8 @@ always_comb begin
             result_src  = 1'b1;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
-            alu_src     = 1'b1;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b1;
             alu_ctrl    = ALU_ADD;
             imm_src     = 3'b0;
             alu_signed  = 1'b0; // THIS IS A SIGNED UOP
@@ -357,7 +380,8 @@ always_comb begin
             result_src  = 1'b1;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
-            alu_src     = 1'b1;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b1;
             alu_ctrl    = ALU_ADD;
             imm_src     = 3'b1;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
@@ -367,7 +391,8 @@ always_comb begin
             result_src  = 1'b1;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
-            alu_src     = 1'b1;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b1;
             alu_ctrl    = ALU_ADD;
             imm_src     = 3'b1;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
@@ -377,7 +402,8 @@ always_comb begin
             result_src  = 1'b0; //DONT CARE 
             mem_write   = 1'b1;
             reg_write   = 1'b0;
-            alu_src     = 1'b1;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b1;
             alu_ctrl    = ALU_ADD;
             imm_src     = 3'b1;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
@@ -387,7 +413,8 @@ always_comb begin
             result_src  = 1'b0; //DONT CARE 
             mem_write   = 1'b1;
             reg_write   = 1'b0;
-            alu_src     = 1'b1;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b1;
             alu_ctrl    = ALU_ADD;
             imm_src     = 3'b1;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
@@ -397,7 +424,8 @@ always_comb begin
             result_src  = 1'b0; //DONT CARE 
             mem_write   = 1'b1;
             reg_write   = 1'b0;
-            alu_src     = 1'b1;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b1;
             alu_ctrl    = ALU_ADD;
             imm_src     = 3'b1;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
@@ -407,7 +435,8 @@ always_comb begin
             result_src  = 1'b0;          // Don't care 
             mem_write   = 1'b0;          
             reg_write   = 1'b0;
-            alu_src     = 1'b0;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b0;
             alu_ctrl    = ALU_SUB;
             imm_src     = 3'h2;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
@@ -417,7 +446,8 @@ always_comb begin
             result_src  = 1'b0;          // Don't care 
             mem_write   = 1'b0;          
             reg_write   = 1'b0;
-            alu_src     = 1'b0;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b0;
             alu_ctrl    = ALU_SUB;
             imm_src     = 3'h2;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
@@ -427,7 +457,8 @@ always_comb begin
             result_src  = 1'b0;          // Don't care 
             mem_write   = 1'b0;          
             reg_write   = 1'b0;
-            alu_src     = 1'b0;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b0;
             alu_ctrl    = ALU_SLT;
             imm_src     = 3'h2;
             alu_signed  = 1'b1; // THIS IS A SIGNED UOP
@@ -437,7 +468,8 @@ always_comb begin
             result_src  = 1'b0;          // Don't care 
             mem_write   = 1'b0;          
             reg_write   = 1'b0;
-            alu_src     = 1'b0;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b0;
             alu_ctrl    = ALU_SLT;
             imm_src     = 3'h2;
             alu_signed  = 1'b1; // THIS IS A SIGNED UOP
@@ -447,7 +479,8 @@ always_comb begin
             result_src  = 1'b0;          // Don't care 
             mem_write   = 1'b0;          
             reg_write   = 1'b0;
-            alu_src     = 1'b0;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b0;
             alu_ctrl    = ALU_SLT;
             imm_src     = 3'h2;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
@@ -457,7 +490,8 @@ always_comb begin
             result_src  = 1'b0;          // Don't care 
             mem_write   = 1'b0;          
             reg_write   = 1'b0;
-            alu_src     = 1'b0;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b0;
             alu_ctrl    = ALU_SLT;
             imm_src     = 3'h2;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
@@ -468,7 +502,8 @@ always_comb begin
             result_src  = 1'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b0;
-            alu_src     = 1'b0;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b0;
             alu_ctrl    = ALU_ADD;
             imm_src     = 3'h3;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
@@ -478,17 +513,41 @@ always_comb begin
             result_src  = 1'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b0;
-            alu_src     = 1'b0;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b0;
             alu_ctrl    = ALU_ADD;
             imm_src     = 3'h3;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
         end            
+        OP_LUI : begin 
+            pc_src      = 1'b0;
+            result_src  = 1'b0;
+            mem_write   = 1'b0;
+            reg_write   = 1'b1;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b1;
+            alu_ctrl    = ALU_ADD;
+            imm_src     = 3'h4; // U-TYPE
+            alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
+        end
+        OP_AUIPC : begin     
+            pc_src      = 1'b0;
+            result_src  = 1'b0;
+            mem_write   = 1'b0;
+            reg_write   = 1'b1;
+            alu_src_sel_a = 1'b1;
+            alu_src_sel_b = 1'b1;
+            alu_ctrl    = ALU_ADD;
+            imm_src     = 3'h4; // U-TYPE
+            alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
+        end        
         default : begin
             pc_src      = 1'b0;
             result_src  = 1'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b0;
-            alu_src     = 1'b0;
+            alu_src_sel_a = 1'b0;
+            alu_src_sel_b = 1'b0;
             alu_ctrl    = ALU_ADD;
             imm_src     = 3'h0;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
