@@ -128,3 +128,6 @@ run
 run
 run
 # Paste insertion failed: CHECKER_ERROR: ** UI-Msg: (vish-4014) No objects found matching 'CHECKER_ERROR'.
+add wave -position 89  sim:/risc_v_mike_tb_uni/rst
+add wave -position 89  sim:/risc_v_mike_tb_uni/dut/clk
+add wave -position 90  sim:/risc_v_mike_tb_uni/dut/clk_in
