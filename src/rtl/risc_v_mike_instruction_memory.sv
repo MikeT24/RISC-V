@@ -17,11 +17,9 @@ logic error_addr;
 
 logic [DATA_MEM_DEPTH - 1:0][DATA_32_W - 1:0] data_mem;
 logic [DATA_MEM_DEPTH - 1:0][DATA_32_W - 1:0] data_mem_ff;
-logic [DATA_32_W - 1:0] data_text_wr_addr;
 
-assign data_text_wr_addr = data_mem_addr - MEM_MAP_TEXT_LOWER_LIMIT;
-assign direct_addressing = data_text_wr_addr >> 2;
-assign error_addr = |(data_text_wr_addr % 4);
+assign direct_addressing = data_mem_addr >> 2;
+assign error_addr = |(data_mem_addr % 4);
 
 // genvar depth;
 // generate
@@ -47,18 +45,19 @@ assign error_addr = |(data_text_wr_addr % 4);
 
 assign data_mem_rd_data = data_mem_ff[direct_addressing];
 
-assign data_mem_ff[0]   = 32'h0fc10417;
-assign data_mem_ff[1]   = 32'h02440493;
-assign data_mem_ff[2]   = 32'h02840913;
-assign data_mem_ff[3]   = 32'h00092a83;
-assign data_mem_ff[4]   = 32'h00100993;
-assign data_mem_ff[5]   = 32'h00800a13;
-assign data_mem_ff[6]   = 32'h0134a023;
-assign data_mem_ff[7]   = 32'h00199993;
-assign data_mem_ff[8]   = 32'hfffa0a13;
-assign data_mem_ff[9]   = 32'hfe0a1ae3;
-assign data_mem_ff[10]  = 32'hfffa8a93;
-assign data_mem_ff[11]  = 32'hfe0a92e3;
+
+assign data_mem_ff[0]   = 32'h00f00093;
+assign data_mem_ff[1]   = 32'h00800113;
+assign data_mem_ff[2]   = 32'h002081b3;
+assign data_mem_ff[3]   = 32'h0;
+assign data_mem_ff[4]   = 32'h0;
+assign data_mem_ff[5]   = 32'h0;
+assign data_mem_ff[6]   = 32'h0;
+assign data_mem_ff[7]   = 32'h0;
+assign data_mem_ff[8]   = 32'h0;
+assign data_mem_ff[9]   = 32'h0;
+assign data_mem_ff[10]  = 32'h0;
+assign data_mem_ff[11]  = 32'h0;
 assign data_mem_ff[12]  = 32'h0;
 assign data_mem_ff[13]  = 32'h0;
 assign data_mem_ff[14]  = 32'h0;

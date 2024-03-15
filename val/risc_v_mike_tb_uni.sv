@@ -23,7 +23,9 @@ risc_v_mike_top dut (
  integer depth;
 
   initial begin
+    `ifdef GPIO_ENABLED
     gpio_port_in = 0;
+    `endif
     clk = 0;
     rst = 0;
     #20

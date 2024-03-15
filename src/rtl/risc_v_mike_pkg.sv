@@ -170,6 +170,15 @@ typedef enum {
     OP_NA
 } t_instr_nmemonic;
 
+typedef enum {
+    IDLE,
+    FETCH,
+    DECODE,
+    EXECUTE,
+    MEM,
+    WB
+} t_decode_state;
+
 typedef enum logic[REG_ADDR_W-1:0] { 
     ZERO    = 5'd0,
     RA      = 5'd1,

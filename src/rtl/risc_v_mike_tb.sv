@@ -9,7 +9,7 @@ logic clk;
 logic rst;
 logic rx;
 
-risc_v_mike_top dut (.clk(clk), .rst(rst), .rx(rx));
+risc_v_mike_top dut (.clk(clk), .rst(rst));
  integer depth;
 
   initial begin

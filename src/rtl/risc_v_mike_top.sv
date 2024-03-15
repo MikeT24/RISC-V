@@ -12,13 +12,16 @@ module risc_v_mike_top (
     input logic rst
 );
 
-    logic [INSTR_32_W - 1:0] instruction;
+    logic [INSTR_32_W - 1:0] instruction_ff; // MULTICYCLE_ADDITION: Name change 
+    logic [INSTR_32_W - 1:0] data_text_rd_data; // MULTICYCLE_ADDITION
+    logic instruction_write;  // MULTICYCLE_ADDITION
+
     t_instr_register rs1;
     t_instr_register rs2;
     t_instr_register rsd;
     logic [FUNCT3_W - 1:0] funct3;
     logic [FUNCT7_W - 1:0] funct7;
-    logic pc_src;
+    logic pc_src; // MULTICYCLE_ADDITION: PC_SRC WILL BE IGNORED IN MULTICYCLE IMPLEMENTATION
     logic result_src;
     logic mem_write;
     logic reg_write;
@@ -55,27 +58,38 @@ module risc_v_mike_top (
     assign rst_test = ~rst;
     logic pc_update;
     logic pc_write;
+    logic pc_source;
+    logic I_or_D;
 
+    logic [ADDRESS_32_W-1:0] mem_bus_address_input;
+    logic [DATA_32_W - 1:0] alu_result_ff;
+    logic [DATA_32_W - 1:0] alu_result_select;
 
 risc_v_mike_ctrl i_risc_v_mike_ctrl(
+    .clk(clk),
+    .rst(rst),
     .alu_zero(alu_zero),
     .alu_slt(alu_slt),
-    .instruction(instruction),
+    .instruction(instruction_ff), // MULTICYCLE_ADDITION
     .rs1(rs1),
     .rs2(rs2),
     .rsd(rsd),
     .funct3(funct3),
     .funct7(funct7),
-    .pc_src(pc_src),
+    .pc_src(pc_src),    // MULTICYCLE_ADDITION: PC_SRC WILL BE IGNORED IN MULTICYCLE IMPLEMENTATION
     .result_src(result_src),
     .mem_write(mem_write),
-    .reg_write(reg_write),
-    .alu_src_sel_a(alu_src_sel_a),
-    .alu_src_sel_b(alu_src_sel_b),
+    .reg_write_output(reg_write),
+    .alu_src_sel_a_output(alu_src_sel_a), // MULTICYCLE_ADDITION
+    .alu_src_sel_b_output(alu_src_sel_b),  // MULTICYCLE_ADDITION
     .alu_ctrl(alu_ctrl),
     .alu_signed(alu_signed),
     .imm_src(imm_src),
-    .intr_nmen(intr_nmen)
+    .intr_nmen(intr_nmen),
+    .I_or_D(I_or_D), // MULTICYCLE_ADDITION
+    .instruction_write(instruction_write), // MULTICYCLE_ADDITION
+    .pc_source(pc_source), // MULTICYCLE_ADDITION
+    .pc_update(pc_update)  // MULTICYCLE_ADDITION
 );
 
 
@@ -92,7 +106,7 @@ risc_v_mike_alu i_risc_v_mike_alu(
 //ALU SRC MUX: CHOOSE BETWEEN SIGN EXTEND AND REG_FILE READ PORT 2
 //TODO: imm_ext module and connection
 // MUX Src_A
-assign alu_src_a = (alu_src_sel_a) ? pc_addr : reg_file_rd_data_1_ff;
+assign alu_src_a = (~alu_src_sel_a) ? pc_addr : reg_file_rd_data_1_ff; //MULTICYCLE_ADDITION
 
 // MUX Src_B
 always_comb begin 
@@ -104,10 +118,11 @@ always_comb begin
     endcase
 end
 
-assign alu_src_b = (alu_src_sel_b) ? imm_ext : reg_file_rd_data_2_ff;
 
-`MIKE_FF_NRST(reg_file_rd_data_1_ff, reg_file_rd_data_1, clk, rst)
-`MIKE_FF_NRST(reg_file_rd_data_2_ff, reg_file_rd_data_2, clk, rst)
+//assign alu_src_b = (alu_src_sel_b) ? imm_ext : reg_file_rd_data_2_ff;
+
+`MIKE_FF_NRST(reg_file_rd_data_1_ff, reg_file_rd_data_1, clk, rst)  //MULTICYCLE_ADDITION
+`MIKE_FF_NRST(reg_file_rd_data_2_ff, reg_file_rd_data_2, clk, rst)  //MULTICYCLE_ADDITION
 
 
 risc_v_mike_reg_file #(
@@ -126,19 +141,19 @@ risc_v_mike_reg_file #(
 
 risc_v_mike_sign_extend i_risc_v_mike_sign_extend (
     .imm_src(imm_src),
-    .instruction(instruction),
+    .instruction(instruction_ff),
     .imm_ext(imm_ext)
 );
 
 //RESULT SRC MUX: CHOOSE BETWEEN DATA MEMORY OUTPUT OR ALU RESULT
-assign reg_file_wr_data = (result_src)? data_mem_bus_rd_data_ff : alu_result_ff;
+assign reg_file_wr_data = (result_src)? data_mem_bus_rd_data_ff : alu_result_ff; 
 
 
 logic [ADDRESS_32_W-1:0] data_text_wr_addr;
+logic [ADDRESS_32_W-1:0] data_text_rd_addr;
 logic [3:0] data_memory_addr_sel_vec;
 logic data_text_wr_addr_val;
 logic data_text_rd_addr_val;
-
 
 
 logic data_stack_wr_addr_val;
@@ -158,14 +173,10 @@ logic data_mem_write;
 
 //hello world
 
-logic [ADDRESS_32_W-1:0] mem_bus_address_input;
-logic [DATA_32_W - 1:0] alu_result_ff;
-logic [DATA_32_W - 1:0] alu_result_select;
 
-
-`MIKE_FF_EN_NRST(alu_result_ff, alu_result, clk, rst)
-assign mem_bus_address_input = (I_or_D) ? pc_addr : alu_result_ff;
-assign alu_result_select = (pc_source) ? alu_result_ff : alu_result;
+`MIKE_FF_NRST(alu_result_ff, alu_result, clk, rst)
+assign mem_bus_address_input = (I_or_D) ? pc_addr : alu_result_ff; // MULTICYCLE_ADDITION
+assign alu_result_select = (pc_source) ? alu_result_ff : alu_result; // MULTICYCLE_ADDITION
 
 
 risc_v_mem_ctrl i_risc_v_mem_ctrl (
@@ -173,7 +184,7 @@ risc_v_mem_ctrl i_risc_v_mem_ctrl (
         .data_text_wr_addr_val(data_text_wr_addr_val),
         .data_text_wr_addr(data_text_wr_addr),
         .data_text_rd_addr_val(data_text_rd_addr_val),
-        .data_text_rd_addr(),
+        .data_text_rd_addr(data_text_rd_addr),
     `endif
     .sva_clk(clk),
     .mem_bus_rd_addr(mem_bus_address_input), // Address input
@@ -234,20 +245,25 @@ always_comb begin
 
     // ADDRESS INPUTS IN ALL MEMORIES.
     // DATA IS ASSIGNED JUST TO THE VALID ADDRESS.
-    if (data_mem_read) begin 
+    if (data_stack_wr_addr_val | data_mem_wr_addr_val) begin 
         data_mem_bus_rd_data = data_mem_rd_data;
     end
+    else if (data_text_rd_addr_val) begin //TODO: PORT ME TO SINGLE CYCLE
+        data_mem_bus_rd_data = data_text_rd_data;
+    end    
     else if (data_mmio_rd_addr_val) begin
         data_mem_bus_rd_data = data_mmio_rd_data;
     end
     else begin 
         data_mem_bus_rd_data = 32'b0;
     end
-
 end
 
-`MIKE_FF_NRST(data_mem_bus_rd_data_ff, data_mem_bus_rd_data, clk, rst)
+// Memory Data Register 
+`MIKE_FF_NRST(data_mem_bus_rd_data_ff, data_mem_bus_rd_data, clk, rst) // MULTICYCLE_ADDITION
 
+// Instruction Register
+`MIKE_FF_EN_NRST(instruction_ff, data_mem_bus_rd_data, instruction_write, clk, rst) // MULTICYCLE_ADDITION
 
 
 risc_v_mike_data_memory #(
@@ -261,6 +277,14 @@ risc_v_mike_data_memory #(
     .data_mem_rd_data(data_mem_rd_data)
 );
 
+risc_v_mike_instruction_memory #(
+    .DATA_MEM_DEPTH(PC_CNT_ADDR_WIDTH)
+) i_risc_v_mike_instruction_memory (
+    .clk(clk),
+    .rst(~rst),
+    .data_mem_addr(data_mem_addr),
+    .data_mem_rd_data(data_text_rd_data)
+);
 
 
 `ifdef GPIO_ENABLED
@@ -279,26 +303,21 @@ risc_v_mike_data_memory #(
 
  
     
-// Program counter additions
-// First is normal addition
-assign pc_plus4 = pc_addr + 32'h4;
-// Second is branch selection
-assign pc_branch = pc_addr + imm_ext;
-// Selection of the next count
-assign pc_addr_nxt = (pc_src)? pc_branch : pc_plus4;
+// // Program counter additions
+// // First is normal addition
+// assign pc_plus4 = pc_addr + 32'h4;
+// // Second is branch selection
+// assign pc_branch = pc_addr + imm_ext;
+// // Selection of the next count
+// assign pc_addr_nxt = (pc_src)? pc_branch : pc_plus4;
+
+
+assign pc_addr_nxt = alu_result_select;    
 // PC Flip flop
  `MIKE_FF_INIT_EN_NRST(pc_addr, pc_addr_nxt, 32'h00400000, pc_update, clk, rst) // PC COUNTER INIT it starts on 32'h00400000 - 4 for the initial propagation
 
 
 
-risc_v_mike_instruction_memory #(
-    .DATA_MEM_DEPTH(PC_CNT_ADDR_WIDTH)
-) i_risc_v_mike_instruction_memory (
-    .clk(clk),
-    .rst(~rst),
-    .data_mem_addr(pc_addr),
-    .data_mem_rd_data(instruction)
-);
 
 
 
