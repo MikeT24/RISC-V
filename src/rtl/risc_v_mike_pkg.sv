@@ -21,9 +21,7 @@ parameter GPIO_BYTE = 8;
 parameter STACK_UPPER   = 32'h7fffeffc;
 parameter TEXT_LOWER    = 32'h00400000;
 parameter DATA_LOWER    = 32'h10010000;
-// THIS PRACTICE DOES NOT COMPLY WITH OFFICIAL MMIO MAPPING
-// THIS IS OVERLAPPED
-parameter MMIO_LOWER    = 32'h10010024;
+parameter MMIO_LOWER    = 32'hffff0000;
 
 
 typedef logic [REG_ADDR_W - 1:0] t_register_addr; 

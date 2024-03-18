@@ -22,7 +22,7 @@ module risc_v_mike_top (
     logic [FUNCT3_W - 1:0] funct3;
     logic [FUNCT7_W - 1:0] funct7;
     logic pc_src; // MULTICYCLE_ADDITION: PC_SRC WILL BE IGNORED IN MULTICYCLE IMPLEMENTATION
-    logic result_src;
+    logic [1:0] result_src;
     logic mem_write;
     logic reg_write;
     logic [1:0] alu_src_sel_b;
@@ -80,11 +80,11 @@ risc_v_mike_ctrl i_risc_v_mike_ctrl(
     .funct7(funct7),
     .pc_src(pc_src),    // MULTICYCLE_ADDITION: PC_SRC WILL BE IGNORED IN MULTICYCLE IMPLEMENTATION
     .result_src(result_src),
-    .mem_write(mem_write),
+    .mem_write_output(mem_write),
     .reg_write_output(reg_write),
     .alu_src_sel_a_output(alu_src_sel_a), // MULTICYCLE_ADDITION
     .alu_src_sel_b_output(alu_src_sel_b),  // MULTICYCLE_ADDITION
-    .alu_ctrl(alu_ctrl),
+    .alu_ctrl_output(alu_ctrl),
     .alu_signed(alu_signed),
     .imm_src(imm_src),
     .intr_nmen(intr_nmen),
@@ -154,8 +154,16 @@ risc_v_mike_sign_extend i_risc_v_mike_sign_extend (
     .imm_ext(imm_ext)
 );
 
-//RESULT SRC MUX: CHOOSE BETWEEN DATA MEMORY OUTPUT OR ALU RESULT
-assign reg_file_wr_data = (result_src)? data_mem_bus_rd_data_ff : alu_result_ff; 
+//RESULT SRC MUX: CHOOSE BETWEEN DATA MEMORY OUTPUT, ALU RESULT OR OLD PC COUNTER VALUE
+// MUX reg_file_wr_data
+always_comb begin 
+    case (result_src)
+        0 : reg_file_wr_data = alu_result_ff;
+        1 : reg_file_wr_data = data_mem_bus_rd_data_ff;
+        2 : reg_file_wr_data = pc_addr_ff;
+        default : reg_file_wr_data = 32'hFFFFFFFF;
+    endcase
+end
 
 
 logic [ADDRESS_32_W-1:0] data_text_wr_addr;
@@ -185,7 +193,7 @@ logic data_mem_write;
 
 `MIKE_FF_NRST(alu_result_ff, alu_result, clk, rst)
 assign mem_bus_address_input = (I_or_D) ? pc_addr : alu_result_ff; // MULTICYCLE_ADDITION
-assign alu_result_select = (pc_source) ? alu_result_ff : alu_result; // MULTICYCLE_ADDITION
+assign alu_result_select = (pc_source) ? alu_result_ff : alu_result; // MULTICYCLE_ADDITION //PC ADDR NEXT
 
 
 risc_v_mem_ctrl i_risc_v_mem_ctrl (
@@ -254,7 +262,7 @@ always_comb begin
 
     // ADDRESS INPUTS IN ALL MEMORIES.
     // DATA IS ASSIGNED JUST TO THE VALID ADDRESS.
-    if (data_stack_wr_addr_val | data_mem_wr_addr_val) begin 
+    if (data_stack_rd_addr_val | data_mem_rd_addr_val) begin 
         data_mem_bus_rd_data = data_mem_rd_data;
     end
     else if (data_text_rd_addr_val) begin //TODO: PORT ME TO SINGLE CYCLE

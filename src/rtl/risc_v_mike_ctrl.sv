@@ -14,12 +14,12 @@ module risc_v_mike_ctrl (
     output logic [FUNCT3_W - 1:0] funct3,
     output logic [FUNCT7_W - 1:0] funct7,
     output logic pc_src,
-    output logic result_src,
-    output logic mem_write,
+    output logic [1:0] result_src,
+    output logic mem_write_output,
     output logic reg_write_output,
     output logic [1:0] alu_src_sel_a_output,
     output logic [1:0] alu_src_sel_b_output,
-    output t_alu_opcode alu_ctrl,
+    output t_alu_opcode alu_ctrl_output,
     output logic alu_signed,
     output logic [2:0] imm_src,
     output t_instr_nmemonic intr_nmen,
@@ -52,9 +52,10 @@ always_comb begin
         EXECUTE:    begin 
             case (opcode)
                 I_LOAD_TYPE:    nxt_state = MEM;
+                I_TYPE:         nxt_state = WB;
                 S_TYPE:         nxt_state = MEM;
                 B_TYPE:         nxt_state = FETCH;
-                J_TYPE:         nxt_state = FETCH;
+                J_TYPE:         nxt_state = WB;
                 U_AUI_TYPE:     nxt_state = WB;
                 default:        nxt_state = WB;
             endcase
@@ -70,15 +71,53 @@ end
 logic reg_write; // MULTICYCLE_ADDITION
 logic [1:0] alu_src_sel_a; // MULTICYCLE_ADDITION
 logic [1:0] alu_src_sel_b; // MULTICYCLE_ADDITION
+logic mem_write; // MULTICYCLE_ADDITION: THIS WILL NOT BE USED IN MULTICYCLE
+logic valid_branch_jump; 
+t_alu_opcode alu_ctrl;
 
 
 assign I_or_D = (curr_state == FETCH); // Select Instruction when Fetching // MULTICYCLE_ADDITION
 assign instruction_write = (curr_state == FETCH); // MULTICYCLE_ADDITION
 assign reg_write_output = reg_write & (curr_state == WB); // MULTICYCLE_ADDITION
-assign pc_source = (curr_state == DECODE); // MULTICYCLE_ADDITION  
-assign pc_update = (curr_state == DECODE); // MULTICYCLE_ADDITION  
-assign alu_src_sel_a_output = ((curr_state == FETCH)? 2'h0 : alu_src_sel_a);
-assign alu_src_sel_b_output = ((curr_state == FETCH)? 2'h1 : alu_src_sel_b);
+assign mem_write_output = ((curr_state == MEM) & (opcode == S_TYPE));
+
+assign pc_source = (curr_state == DECODE) | pc_update & (~(opcode == I_JALR_TYPE)); // MULTICYCLE_ADDITION  
+assign pc_update = (curr_state == DECODE) | ((curr_state == EXECUTE) & ((opcode == B_TYPE) & valid_branch_jump)) | ((curr_state == EXECUTE) & ((opcode == J_TYPE) | (opcode == I_JALR_TYPE))) ; // MULTICYCLE_ADDITION  
+
+assign alu_ctrl_output = ((curr_state == FETCH) | ((curr_state == DECODE) & (opcode == B_TYPE)))? ALU_ADD : alu_ctrl; // MULTICYCLE_ADDITION  
+
+always_comb begin 
+    if (curr_state == FETCH) begin 
+        alu_src_sel_a_output = 2'h0;
+        alu_src_sel_b_output = 2'h1;
+    end
+    else if ((curr_state == DECODE) & (opcode == B_TYPE)) begin 
+        alu_src_sel_a_output = 2'h0;
+        alu_src_sel_b_output = 2'h2;
+    end 
+    else begin
+        alu_src_sel_a_output = alu_src_sel_a;
+        alu_src_sel_b_output = alu_src_sel_b;
+    end
+end
+
+
+
+always_comb begin 
+    if (opcode == B_TYPE) begin 
+        case(intr_nmen)
+            OP_BEQ : valid_branch_jump =    (alu_zero);
+            OP_BNE : valid_branch_jump =   ~(alu_zero);
+            OP_BLT : valid_branch_jump =    (alu_slt);
+            OP_BGE : valid_branch_jump =   ~(alu_slt);
+            OP_BLTU: valid_branch_jump =    (alu_slt);
+            OP_BGEU: valid_branch_jump =   ~(alu_slt);
+            default: valid_branch_jump = 1'b0;
+        endcase
+    end
+    else valid_branch_jump = 1'b0;
+end
+
 
 
 // TODO: Still need to add signed bit going to the ALU
@@ -176,7 +215,7 @@ always_comb begin
     case (intr_nmen) 
         OP_ADD  : begin
             pc_src      = 1'b0;
-            result_src  = 1'b0;
+            result_src  = 2'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
             alu_src_sel_a = 2'b1;
@@ -188,7 +227,7 @@ always_comb begin
         end            
         OP_SUB  : begin
             pc_src      = 1'b0;
-            result_src  = 1'b0;
+            result_src  = 2'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
             alu_src_sel_a = 2'b1;
@@ -199,7 +238,7 @@ always_comb begin
         end            
         OP_SLL  : begin
             pc_src      = 1'b0;
-            result_src  = 1'b0;
+            result_src  = 2'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
             alu_src_sel_a = 2'b1;
@@ -210,7 +249,7 @@ always_comb begin
         end            
         OP_SLT  : begin
             pc_src      = 1'b0;
-            result_src  = 1'b0;
+            result_src  = 2'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
             alu_src_sel_a = 2'b1;
@@ -221,7 +260,7 @@ always_comb begin
         end            
         OP_SLTU : begin
             pc_src      = 1'b0;
-            result_src  = 1'b0;
+            result_src  = 2'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
             alu_src_sel_a = 2'b1;
@@ -232,7 +271,7 @@ always_comb begin
         end            
         OP_XOR  : begin
             pc_src      = 1'b0;
-            result_src  = 1'b0;
+            result_src  = 2'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
             alu_src_sel_a = 2'b1;
@@ -243,7 +282,7 @@ always_comb begin
         end            
         OP_SRL  : begin
             pc_src      = 1'b0;
-            result_src  = 1'b0;
+            result_src  = 2'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
             alu_src_sel_a = 2'b1;
@@ -254,7 +293,7 @@ always_comb begin
         end            
         OP_SRA  : begin
             pc_src      = 1'b0;
-            result_src  = 1'b0;
+            result_src  = 2'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
             alu_src_sel_a = 2'b1;
@@ -265,7 +304,7 @@ always_comb begin
         end            
         OP_OR   : begin
             pc_src      = 1'b0;
-            result_src  = 1'b0;
+            result_src  = 2'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
             alu_src_sel_a = 2'b1;
@@ -276,7 +315,7 @@ always_comb begin
         end            
         OP_AND  : begin
             pc_src      = 1'b0;
-            result_src  = 1'b0;
+            result_src  = 2'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
             alu_src_sel_a = 2'b1;
@@ -287,7 +326,7 @@ always_comb begin
         end            
         OP_ADDI : begin
             pc_src      = 1'b0;
-            result_src  = 1'b0;
+            result_src  = 2'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
             alu_src_sel_a = 2'b1;
@@ -298,7 +337,7 @@ always_comb begin
         end            
         OP_SLLI : begin
             pc_src      = 1'b0;
-            result_src  = 1'b0;
+            result_src  = 2'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
             alu_src_sel_a = 2'b1;
@@ -309,7 +348,7 @@ always_comb begin
         end            
         OP_SLTI : begin
             pc_src      = 1'b0;
-            result_src  = 1'b0;
+            result_src  = 2'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
             alu_src_sel_a = 2'b1;
@@ -320,7 +359,7 @@ always_comb begin
         end            
         OP_SLTI : begin
             pc_src      = 1'b0;
-            result_src  = 1'b0;
+            result_src  = 2'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
             alu_src_sel_a = 2'b1;
@@ -331,7 +370,7 @@ always_comb begin
         end            
         OP_XORI : begin
             pc_src      = 1'b0;
-            result_src  = 1'b0;
+            result_src  = 2'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
             alu_src_sel_a = 2'b1;
@@ -342,7 +381,7 @@ always_comb begin
         end            
         OP_SRLI : begin
             pc_src      = 1'b0;
-            result_src  = 1'b0;
+            result_src  = 2'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
             alu_src_sel_a = 2'b1;
@@ -353,7 +392,7 @@ always_comb begin
         end            
         OP_SRAI : begin
             pc_src      = 1'b0;
-            result_src  = 1'b0;
+            result_src  = 2'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
             alu_src_sel_a = 2'b1;
@@ -364,7 +403,7 @@ always_comb begin
         end            
         OP_ORI  : begin
             pc_src      = 1'b0;
-            result_src  = 1'b0;
+            result_src  = 2'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
             alu_src_sel_a = 2'b1;
@@ -375,7 +414,7 @@ always_comb begin
         end            
         OP_ANDI : begin
             pc_src      = 1'b0;
-            result_src  = 1'b0;
+            result_src  = 2'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
             alu_src_sel_a = 2'b1;
@@ -386,7 +425,7 @@ always_comb begin
         end            
         OP_LB   : begin
             pc_src      = 1'b0;
-            result_src  = 1'b1;
+            result_src  = 2'b1;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
             alu_src_sel_a = 2'b1;
@@ -397,7 +436,7 @@ always_comb begin
         end            
         OP_LH   : begin
             pc_src      = 1'b0;
-            result_src  = 1'b1;
+            result_src  = 2'b1;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
             alu_src_sel_a = 2'b1;
@@ -408,7 +447,7 @@ always_comb begin
         end            
         OP_LW   : begin
             pc_src      = 1'b0;
-            result_src  = 1'b1;
+            result_src  = 2'b1;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
             alu_src_sel_a = 2'b1;
@@ -419,7 +458,7 @@ always_comb begin
         end            
         OP_LBU  : begin
             pc_src      = 1'b0;
-            result_src  = 1'b1;
+            result_src  = 2'b1;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
             alu_src_sel_a = 2'b1;
@@ -430,7 +469,7 @@ always_comb begin
         end            
         OP_LHU  : begin
             pc_src      = 1'b0;
-            result_src  = 1'b1;
+            result_src  = 2'b1;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
             alu_src_sel_a = 2'b1;
@@ -441,7 +480,7 @@ always_comb begin
         end            
         OP_SB   : begin
             pc_src      = 1'b0;
-            result_src  = 1'b0; //DONT CARE 
+            result_src  = 2'b0; //DONT CARE 
             mem_write   = 1'b1;
             reg_write   = 1'b0;
             alu_src_sel_a = 2'b1;
@@ -452,7 +491,7 @@ always_comb begin
         end            
         OP_SH   : begin
             pc_src      = 1'b0;
-            result_src  = 1'b0; //DONT CARE 
+            result_src  = 2'b0; //DONT CARE 
             mem_write   = 1'b1;
             reg_write   = 1'b0;
             alu_src_sel_a = 2'b1;
@@ -463,7 +502,7 @@ always_comb begin
         end            
         OP_SW   : begin
             pc_src      = 1'b0;
-            result_src  = 1'b0; //DONT CARE 
+            result_src  = 2'b0; //DONT CARE 
             mem_write   = 1'b1;
             reg_write   = 1'b0;
             alu_src_sel_a = 2'b1;
@@ -474,7 +513,7 @@ always_comb begin
         end            
         OP_BEQ  : begin
             pc_src      = (alu_zero);   // External signal comming from ALU 
-            result_src  = 1'b0;          // Don't care 
+            result_src  = 2'b0;          // Don't care 
             mem_write   = 1'b0;          
             reg_write   = 1'b0;
             alu_src_sel_a = 2'b1;
@@ -485,7 +524,7 @@ always_comb begin
         end            
         OP_BNE  : begin
             pc_src      = !(alu_zero);   // External signal comming from ALU 
-            result_src  = 1'b0;          // Don't care 
+            result_src  = 2'b0;          // Don't care 
             mem_write   = 1'b0;          
             reg_write   = 1'b0;
             alu_src_sel_a = 2'b1;
@@ -496,7 +535,7 @@ always_comb begin
         end            
         OP_BLT  : begin
             pc_src      = (alu_zero);   // External signal comming from ALU 
-            result_src  = 1'b0;          // Don't care 
+            result_src  = 2'b0;          // Don't care 
             mem_write   = 1'b0;          
             reg_write   = 1'b0;
             alu_src_sel_a = 2'b1;
@@ -507,7 +546,7 @@ always_comb begin
         end            
         OP_BGE  : begin
             pc_src      = (!alu_zero);   // External signal comming from ALU 
-            result_src  = 1'b0;          // Don't care 
+            result_src  = 2'b0;          // Don't care 
             mem_write   = 1'b0;          
             reg_write   = 1'b0;
             alu_src_sel_a = 2'b1;
@@ -518,7 +557,7 @@ always_comb begin
         end            
         OP_BLTU : begin
             pc_src      = (alu_slt);   // External signal comming from ALU 
-            result_src  = 1'b0;          // Don't care 
+            result_src  = 2'b0;          // Don't care 
             mem_write   = 1'b0;          
             reg_write   = 1'b0;
             alu_src_sel_a = 2'b1;
@@ -529,7 +568,7 @@ always_comb begin
         end            
         OP_BGEU : begin
             pc_src      = (!alu_slt);   // External signal comming from ALU 
-            result_src  = 1'b0;          // Don't care 
+            result_src  = 2'b0;          // Don't care 
             mem_write   = 1'b0;          
             reg_write   = 1'b0;
             alu_src_sel_a = 2'b1;
@@ -538,23 +577,22 @@ always_comb begin
             imm_src     = 3'h2;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
         end            
-        //TODO: ENABLE JUMPS
         OP_JAL  : begin
             pc_src      = 1'b1;
-            result_src  = 1'b0;
+            result_src  = 2'h2;
             mem_write   = 1'b0;
-            reg_write   = 1'b0;
-            alu_src_sel_a = 2'b1;
-            alu_src_sel_b = 2'h0;
+            reg_write   = 1'b1;
+            alu_src_sel_a = 2'b0;
+            alu_src_sel_b = 2'h2;
             alu_ctrl    = ALU_ADD;
             imm_src     = 3'h3;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
         end            
         OP_JALR : begin
             pc_src      = 1'b0;
-            result_src  = 1'b0;
+            result_src  = 2'h2;
             mem_write   = 1'b0;
-            reg_write   = 1'b0;
+            reg_write   = 1'b1;
             alu_src_sel_a = 2'b1;
             alu_src_sel_b = 2'h0;
             alu_ctrl    = ALU_ADD;
@@ -563,7 +601,7 @@ always_comb begin
         end            
         OP_LUI : begin 
             pc_src      = 1'b0;
-            result_src  = 1'b0;
+            result_src  = 2'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
             alu_src_sel_a = 2'b1;
@@ -574,7 +612,7 @@ always_comb begin
         end
         OP_AUIPC : begin     
             pc_src      = 1'b0;
-            result_src  = 1'b0;
+            result_src  = 2'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
             alu_src_sel_a = 2'h2;
@@ -585,7 +623,7 @@ always_comb begin
         end        
         default : begin
             pc_src      = 1'b0;
-            result_src  = 1'b0;
+            result_src  = 2'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b0;
             alu_src_sel_a = 2'b1;

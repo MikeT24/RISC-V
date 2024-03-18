@@ -46,15 +46,29 @@ assign error_addr = |(data_mem_addr % 4);
 assign data_mem_rd_data = data_mem_ff[direct_addressing];
 
 
+
+// 0fc10417
+// 00440493
+// 00f00093
+// 00800113
+// 002081b3
+// 0014a023
+// 0004ae83
+// 001e8663
+// 00000013
+// 00000013
+// 0ff08f93
+
+
 assign data_mem_ff[0]   = 32'h0fc10417;
-assign data_mem_ff[1]   = 32'h02440493;
-assign data_mem_ff[2]   = 32'h00f00093;
-assign data_mem_ff[3]   = 32'h00800113;
-assign data_mem_ff[4]   = 32'h002081b3;
-assign data_mem_ff[5]   = 32'h0;
-assign data_mem_ff[6]   = 32'h0;
-assign data_mem_ff[7]   = 32'h0;
-assign data_mem_ff[8]   = 32'h0;
+assign data_mem_ff[1]   = 32'h00440493;
+assign data_mem_ff[2]   = 32'h00500293;
+assign data_mem_ff[3]   = 32'h008000ef;
+assign data_mem_ff[4]   = 32'h0140006f;
+assign data_mem_ff[5]   = 32'h00130313;
+assign data_mem_ff[6]   = 32'hfe531ee3;
+assign data_mem_ff[7]   = 32'h0ff00f93;
+assign data_mem_ff[8]   = 32'h000080e7;
 assign data_mem_ff[9]   = 32'h0;
 assign data_mem_ff[10]  = 32'h0;
 assign data_mem_ff[11]  = 32'h0;
