@@ -26,7 +26,7 @@ module risc_v_mike_top (
     logic mem_write;
     logic reg_write;
     logic [1:0] alu_src_sel_b;
-    logic alu_src_sel_a;
+    logic [1:0] alu_src_sel_a;
     logic [2:0] imm_src;
     logic [DATA_32_W - 1:0] alu_src_a;
     logic [DATA_32_W - 1:0] alu_src_b;
@@ -52,6 +52,8 @@ module risc_v_mike_top (
     t_pc_addr pc_branch; 
     t_pc_addr pc_addr;
     t_pc_addr pc_addr_nxt;
+    t_pc_addr pc_addr_ff;
+
 
     t_instr_nmemonic intr_nmen;
 
@@ -106,7 +108,14 @@ risc_v_mike_alu i_risc_v_mike_alu(
 //ALU SRC MUX: CHOOSE BETWEEN SIGN EXTEND AND REG_FILE READ PORT 2
 //TODO: imm_ext module and connection
 // MUX Src_A
-assign alu_src_a = (~alu_src_sel_a) ? pc_addr : reg_file_rd_data_1_ff; //MULTICYCLE_ADDITION
+always_comb begin 
+    case (alu_src_sel_a)
+        0 : alu_src_a = pc_addr;
+        1 : alu_src_a = reg_file_rd_data_1_ff;
+        2 : alu_src_a = pc_addr_ff;
+        default : alu_src_a = 32'hFFFFFFFF;
+    endcase
+end
 
 // MUX Src_B
 always_comb begin 
@@ -314,8 +323,9 @@ risc_v_mike_instruction_memory #(
 
 assign pc_addr_nxt = alu_result_select;    
 // PC Flip flop
- `MIKE_FF_INIT_EN_NRST(pc_addr, pc_addr_nxt, 32'h00400000, pc_update, clk, rst) // PC COUNTER INIT it starts on 32'h00400000 - 4 for the initial propagation
-
+`MIKE_FF_INIT_EN_NRST(pc_addr, pc_addr_nxt, 32'h00400000, pc_update, clk, rst) // PC COUNTER INIT it starts on 32'h00400000 - 4 for the initial propagation
+// PC Flip flop for AUIPC
+`MIKE_FF_NRST(pc_addr_ff, pc_addr, clk, rst) 
 
 
 

@@ -46,11 +46,11 @@ assign error_addr = |(data_mem_addr % 4);
 assign data_mem_rd_data = data_mem_ff[direct_addressing];
 
 
-assign data_mem_ff[0]   = 32'h00f00093;
-assign data_mem_ff[1]   = 32'h00800113;
-assign data_mem_ff[2]   = 32'h002081b3;
-assign data_mem_ff[3]   = 32'h0;
-assign data_mem_ff[4]   = 32'h0;
+assign data_mem_ff[0]   = 32'h0fc10417;
+assign data_mem_ff[1]   = 32'h02440493;
+assign data_mem_ff[2]   = 32'h00f00093;
+assign data_mem_ff[3]   = 32'h00800113;
+assign data_mem_ff[4]   = 32'h002081b3;
 assign data_mem_ff[5]   = 32'h0;
 assign data_mem_ff[6]   = 32'h0;
 assign data_mem_ff[7]   = 32'h0;

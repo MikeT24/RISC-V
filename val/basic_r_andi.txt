@@ -1,3 +1,11 @@
 00400093
 00800113
 002081b3
+
+
+make DUT=<DUT> RUN_NB_COMPILE_ON_LOCAL_MACHINE=true JG_RUN_MODE=batch FL_MEM_SLICE_REDUCTION=0 FV_TASK_LIST=rs_mem_fl_internal_asserts_clean PASS=<NAME> JG_RUN_PROVE=true MEM_FPV_REGRESSION_RUN=1 MEM_FPV_INTF_CROSS=1 NUKE_CLEAR=1 VEC_EN=1 JG_RUN_EMAIL=1 -C $ENV{GK_MODELROOT}/static/jasper/<DUT>/fpv_mem_fl/tests/mem_fl_internal_asserts jg_fpv
+
+
+
+
+make DUT=mem_nano RUN_NB_COMPILE_ON_LOCAL_MACHINE=true JG_RUN_MODE=gui FL_MEM_SLICE_REDUCTION=0 FV_TASK_LIST=mem_fl_internal_asserts_clean PASS=test JG_RUN_PROVE=true MEM_FPV_REGRESSION_RUN=1 MEM_FPV_INTF_CROSS=1 NUKE_CLEAR=1 VEC_EN=1 JG_RUN_EMAIL=1 -C $WORKAREA/static/jasper/mem_nano/fpv_mem_fl/tests/mem_fl_internal_asserts jg_fpv
