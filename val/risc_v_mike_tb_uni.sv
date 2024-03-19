@@ -14,10 +14,10 @@ logic rst;
 
 
 risc_v_mike_top dut (
-    `ifdef GPIO_ENABLED
-        .gpio_port_in(gpio_port_in),
-        .gpio_port_out(gpio_port_out),
-    `endif  
+    // `ifdef GPIO_ENABLED
+    //     .gpio_port_in(gpio_port_in),
+    //     .gpio_port_out(gpio_port_out),
+    // `endif  
     .clk(clk), 
     .rst(rst));
  integer depth;

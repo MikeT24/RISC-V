@@ -1,6 +1,8 @@
 
 import risc_v_mike_pkg::*;
+import UART_MIKE_pkg::*;
 
+`include "uart/UART_MIKE_header.svh"				
 `include "risc_v_mike_header.svh"
 
 
@@ -9,40 +11,68 @@ module risc_v_mike_gpio_module (
     input rst,
     input logic [ADDRESS_32_W-1:0] data_mmio_addr,
     input logic data_mmio_wr_addr_val,
-    input logic [GPIO_BYTE-1:0] gpio_port_in,
-    output logic [GPIO_BYTE-1:0] gpio_port_out,
     input logic [DATA_32_W-1:0] data_mmio_wr_data,
-    output logic [DATA_32_W-1:0] data_mmio_rd_data
+    output logic [DATA_32_W-1:0] data_mmio_rd_data,
+    output logic [UART_DATA_WIDTH-1:0] tx_data_ff,
+    output logic tx_send_ff,
+    output logic rx_flag_clr_ff,	
+    output logic tx_flag_clr_ff,
+    input logic tx_flag,
+    input logic parity_error,
+    input logic rx_flag,
+    input logic [UART_DATA_WIDTH-1:0] rx_data  
 );
 
 
-// TWO ACCESES FOR THE HW5
-logic [DATA_32_W-1:0] gpio_in1;
-logic [DATA_32_W-1:0] gpio_out1;
-logic [DATA_32_W-1:0] gpio_out1_ff;
+
+logic  [UART_DATA_WIDTH-1:0] tx_data;
+logic tx_send;
+logic rx_flag_clr;
+logic tx_flag_clr;
+
+`MIKE_FF_RST(tx_data_ff, tx_data, clk, rst);
+`MIKE_FF_RST(tx_send_ff, tx_send, clk, rst);
+`MIKE_FF_RST(rx_flag_clr_ff, rx_flag_clr, clk, rst);
+`MIKE_FF_RST(tx_flag_clr_ff, tx_flag_clr, clk, rst);
 
 
-//This module is done exclusively for HW5
+
+assign tx_data = (data_mmio_wr_addr_val & (32'h0 == data_mmio_addr))? data_mmio_wr_data[7:0] : tx_data_ff;
+
+assign tx_send       = (data_mmio_wr_addr_val & (32'h4 == data_mmio_addr))? data_mmio_wr_data[0] : tx_send_ff;
+assign rx_flag_clr   = (data_mmio_wr_addr_val & (32'h4 == data_mmio_addr))? data_mmio_wr_data[1] : rx_flag_clr_ff;
+assign tx_flag_clr   = (data_mmio_wr_addr_val & (32'h4 == data_mmio_addr))? data_mmio_wr_data[2] : tx_flag_clr_ff;
 
 
-assign gpio_out1 = (data_mmio_wr_addr_val & (32'h0 == data_mmio_addr))? data_mmio_wr_data : gpio_out1_ff;
-assign gpio_port_out = gpio_out1;
+logic [UART_DATA_WIDTH-1:0] rx_data_ff;
+logic tx_flag_ff;
+logic parity_error_ff;
+logic rx_flag_ff;
+
+`MIKE_FF_RST(rx_data_ff, rx_data, clk, rst);    // 20
+`MIKE_FF_RST(tx_flag_ff, tx_flag, clk, rst);    // 24
+`MIKE_FF_RST(parity_error_ff, parity_error, clk, rst);
+`MIKE_FF_RST(rx_flag_ff, rx_flag, clk, rst);
 
 
-`MIKE_FF_RST(gpio_out1_ff, gpio_out1, clk, rst);
-`MIKE_FF_RST(gpio_in1, gpio_port_in, clk, rst);
+// NOT IDEAL WAY OF DOING IF MMIO/GPIO WILL HAVE MORE PORTS
+// FINE FOR THIS APPLICATION
 
 always_comb begin
-    if (~data_mmio_wr_addr_val) begin 
-        assign data_mmio_rd_data = 32'h0;
-    end
-    else if (0 == data_mmio_addr) begin 
-        assign data_mmio_rd_data = gpio_out1_ff;
-    end
-    else if (4 == data_mmio_addr) begin 
-        assign data_mmio_rd_data = gpio_in1;
-    end
+    case (data_mmio_addr)
+        0: data_mmio_rd_data = {24'h0,tx_data_ff};
+        4: data_mmio_rd_data = {29'h0,tx_send_ff, rx_flag_clr_ff, tx_flag_clr_ff};
+        8: data_mmio_rd_data = 32'hDEADBEEF;    // RESERVED
+        12: data_mmio_rd_data = 32'hDEADBEEF;   // RESERVED
+        16: data_mmio_rd_data = {24'h0,rx_data_ff};
+        20: data_mmio_rd_data = {29'h0, rx_flag_ff, tx_flag_ff, parity_error_ff};
+        default: data_mmio_rd_data = 32'hDEADBEEF; 
+    endcase
 end
+
+
+
+
 
 
 endmodule

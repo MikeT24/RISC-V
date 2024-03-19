@@ -5,8 +5,8 @@ import risc_v_mike_pkg::*;
 
 module risc_v_mike_top (
 `ifdef GPIO_ENABLED
-    input logic [GPIO_BYTE - 1:0] gpio_port_in,
-    output logic [GPIO_BYTE - 1:0] gpio_port_out,
+    output logic tx,
+    input logic rx,
 `endif    
     input logic clk,
     input logic rst
@@ -113,6 +113,7 @@ always_comb begin
         0 : alu_src_a = pc_addr;
         1 : alu_src_a = reg_file_rd_data_1_ff;
         2 : alu_src_a = pc_addr_ff;
+        3 : alu_src_a = 32'h0;
         default : alu_src_a = 32'hFFFFFFFF;
     endcase
 end
@@ -305,15 +306,15 @@ risc_v_mike_instruction_memory #(
 
 
 `ifdef GPIO_ENABLED
-    risc_v_mike_gpio_module i_risc_v_mike_gpio_module(
+    UART_UNCORE i_UART_UNCORE(
         .clk(clk),
         .rst(rst),
         .data_mmio_addr(data_mem_addr),
         .data_mmio_wr_addr_val(data_mmio_wr_addr_val),
-        .gpio_port_in(gpio_port_in),
-        .gpio_port_out(gpio_port_out),
         .data_mmio_wr_data(reg_file_rd_data_2),
-        .data_mmio_rd_data(data_mmio_rd_data)
+        .data_mmio_rd_data(data_mmio_rd_data),
+        .rx(rx),
+        .tx(tx)
     );
 `endif  
 

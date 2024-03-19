@@ -604,7 +604,7 @@ always_comb begin
             result_src  = 2'b0;
             mem_write   = 1'b0;
             reg_write   = 1'b1;
-            alu_src_sel_a = 2'b1;
+            alu_src_sel_a = 2'h3;
             alu_src_sel_b = 2'h2;
             alu_ctrl    = ALU_ADD;
             imm_src     = 3'h4; // U-TYPE

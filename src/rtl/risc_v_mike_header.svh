@@ -2,7 +2,7 @@
 `define INST_MEM_DEPTH 1024 // TEXT: INSTRUCTION MEMORY
 `define MMIO_MEM_SIZE 8
 `define BYTE_T 8
-//`define GPIO_ENABLED
+`define GPIO_ENABLED
 `define MEM_BUS_INSTRUCTIONS
 `define MIKE_FF(q, i, clk)			\
 	always_ff @(posedge clk) q <= i  \
