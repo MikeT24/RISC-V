@@ -1,0 +1,17 @@
+Analysis & Synthesis Status : Successful - Tue Mar 19 23:25:50 2024
+Quartus Prime Version : 22.1std.2 Build 922 07/20/2023 SC Lite Edition
+Revision Name : RISC_V_multi_UART
+Top-level Entity Name : risc_v_mike_top
+Family : Cyclone V
+Logic utilization (in ALMs) : N/A
+Total registers : 18761
+Total pins : 20
+Total virtual pins : 0
+Total block memory bits : 54,272
+Total DSP Blocks : 0
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 0
+Total DLLs : 0

@@ -1,0 +1,645 @@
+# Compile of risc_v_mike_header.svh was successful.
+# Compile of risc_v_mike_pkg.sv was successful.
+# Compile of reg_file_tb.sv was successful.
+# Compile of risc_v_mem_ctrl.sv was successful.
+# Compile of risc_v_mike_alu.sv was successful.
+# Compile of risc_v_mike_ctrl.sv was successful.
+# Compile of risc_v_mike_data_memory.sv was successful.
+# Compile of risc_v_mike_gpio_module.sv was successful.
+# Compile of risc_v_mike_instruction_memory.sv was successful.
+# Compile of risc_v_mike_reg_file.sv was successful.
+# Compile of risc_v_mike_sign_extend.sv was successful.
+# Compile of risc_v_mike_top.sv was successful.
+# Compile of risc_v_mike_tb_uni.sv was successful.
+# Compile of ascii_dec_to_7_seg.v was successful.
+# Compile of counter.sv was successful.
+# Compile of rx_shifter.sv was successful.
+# Compile of top_UART_MIKE.sv was successful.
+# Compile of tx_shifter.sv was successful with warnings.
+# Compile of UART_MIKE.sv was successful.
+# Compile of UART_MIKE_ctrl.sv was successful.
+# Compile of UART_MIKE_header.svh was successful.
+# Compile of UART_MIKE_pkg.sv was successful.
+# Compile of UART_UNCORE.sv was successful.
+# 23 compiles, 0 failed with no errors.
+vsim work.risc_v_mike_tb_uni
+# vsim work.risc_v_mike_tb_uni 
+# Start time: 00:19:45 on Mar 19,2024
+# Loading sv_std.std
+# Loading work.risc_v_mike_pkg
+# Loading work.risc_v_mike_tb_uni_sv_unit
+# Loading work.risc_v_mike_tb_uni
+# Loading work.risc_v_mike_top_sv_unit
+# Loading work.risc_v_mike_top
+# Loading work.risc_v_mike_ctrl_sv_unit
+# Loading work.risc_v_mike_ctrl
+# Loading work.risc_v_mike_alu_sv_unit
+# Loading work.risc_v_mike_alu
+# Loading work.risc_v_mike_reg_file_sv_unit
+# Loading work.risc_v_mike_reg_file
+# Loading work.risc_v_mike_sign_extend_sv_unit
+# Loading work.risc_v_mike_sign_extend
+# Loading work.risc_v_mem_ctrl_sv_unit
+# Loading work.risc_v_mem_ctrl
+# Loading work.risc_v_mike_data_memory_sv_unit
+# Loading work.risc_v_mike_data_memory
+# Loading work.risc_v_mike_instruction_memory_sv_unit
+# Loading work.risc_v_mike_instruction_memory
+# Loading work.UART_MIKE_pkg
+# Loading work.UART_UNCORE_sv_unit
+# Loading work.UART_UNCORE
+# Loading work.risc_v_mike_gpio_module_sv_unit
+# Loading work.risc_v_mike_gpio_module
+# Loading work.UART_MIKE_sv_unit
+# Loading work.UART_MIKE
+# Loading work.counter_sv_unit
+# Loading work.counter
+# Loading work.rx_shifter_sv_unit
+# Loading work.rx_shifter
+# Loading work.tx_shifter_sv_unit
+# Loading work.tx_shifter
+# Loading work.ascii_dec_to_7_seg
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'dut'.  Expected 4, found 3.
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv Line: 17
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx'.
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'i_risc_v_mike_ctrl'.  Expected 25, found 24.
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_risc_v_mike_ctrl File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_top.sv Line: 70
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_top.sv(70): [TFMPC] - Missing connection for port 'pc_write'.
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'i_top_UART_MIKE'.  Expected 19, found 12.
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_UNCORE.sv Line: 47
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_UNCORE.sv(47): [TFMPC] - Missing connection for port 'seg_a'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_UNCORE.sv(47): [TFMPC] - Missing connection for port 'seg_b'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_UNCORE.sv(47): [TFMPC] - Missing connection for port 'seg_c'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_UNCORE.sv(47): [TFMPC] - Missing connection for port 'seg_d'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_UNCORE.sv(47): [TFMPC] - Missing connection for port 'seg_e'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_UNCORE.sv(47): [TFMPC] - Missing connection for port 'seg_f'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_UNCORE.sv(47): [TFMPC] - Missing connection for port 'seg_g'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/rx_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 141
+# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/rx_clk_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 156
+# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/rx_counter_shift_en File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 171
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/tx_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 196
+# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/tx_clk_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 210
+do wave.do
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: matriana  Hostname: MATRIANA-MOBL  ProcessID: 1852
+#           Attempting to use alternate WLF file "./wlftatm885".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftatm885
+# Compile of UART_MIKE_pkg.sv failed with 1 errors.
+# Compile of UART_MIKE_pkg.sv was successful.
+# Compile of risc_v_mike_header.svh was successful.
+# Compile of risc_v_mike_pkg.sv was successful.
+# Compile of reg_file_tb.sv was successful.
+# Compile of risc_v_mem_ctrl.sv was successful.
+# Compile of risc_v_mike_alu.sv was successful.
+# Compile of risc_v_mike_ctrl.sv was successful.
+# Compile of risc_v_mike_data_memory.sv was successful.
+# Compile of risc_v_mike_gpio_module.sv was successful.
+# Compile of risc_v_mike_instruction_memory.sv was successful.
+# Compile of risc_v_mike_reg_file.sv was successful.
+# Compile of risc_v_mike_sign_extend.sv was successful.
+# Compile of risc_v_mike_top.sv was successful.
+# Compile of risc_v_mike_tb_uni.sv was successful.
+# Compile of ascii_dec_to_7_seg.v was successful.
+# Compile of counter.sv was successful.
+# Compile of rx_shifter.sv was successful.
+# Compile of top_UART_MIKE.sv was successful.
+# Compile of tx_shifter.sv was successful with warnings.
+# Compile of UART_MIKE.sv was successful.
+# Compile of UART_MIKE_ctrl.sv was successful.
+# Compile of UART_MIKE_header.svh was successful.
+# Compile of UART_MIKE_pkg.sv was successful.
+# Compile of UART_UNCORE.sv was successful.
+# 23 compiles, 0 failed with no errors.
+vsim work.risc_v_mike_tb_uni
+# End time: 00:24:22 on Mar 19,2024, Elapsed time: 0:04:37
+# Errors: 0, Warnings: 24
+# vsim work.risc_v_mike_tb_uni 
+# Start time: 00:24:22 on Mar 19,2024
+# Loading sv_std.std
+# Loading work.risc_v_mike_pkg
+# Loading work.risc_v_mike_tb_uni_sv_unit
+# Loading work.risc_v_mike_tb_uni
+# Loading work.risc_v_mike_top_sv_unit
+# Loading work.risc_v_mike_top
+# Loading work.risc_v_mike_ctrl_sv_unit
+# Loading work.risc_v_mike_ctrl
+# Loading work.risc_v_mike_alu_sv_unit
+# Loading work.risc_v_mike_alu
+# Loading work.risc_v_mike_reg_file_sv_unit
+# Loading work.risc_v_mike_reg_file
+# Loading work.risc_v_mike_sign_extend_sv_unit
+# Loading work.risc_v_mike_sign_extend
+# Loading work.risc_v_mem_ctrl_sv_unit
+# Loading work.risc_v_mem_ctrl
+# Loading work.risc_v_mike_data_memory_sv_unit
+# Loading work.risc_v_mike_data_memory
+# Loading work.risc_v_mike_instruction_memory_sv_unit
+# Loading work.risc_v_mike_instruction_memory
+# Loading work.UART_MIKE_pkg
+# Loading work.UART_UNCORE_sv_unit
+# Loading work.UART_UNCORE
+# Loading work.risc_v_mike_gpio_module_sv_unit
+# Loading work.risc_v_mike_gpio_module
+# Loading work.UART_MIKE_sv_unit
+# Loading work.UART_MIKE
+# Loading work.counter_sv_unit
+# Loading work.counter
+# Loading work.rx_shifter_sv_unit
+# Loading work.rx_shifter
+# Loading work.tx_shifter_sv_unit
+# Loading work.tx_shifter
+# Loading work.ascii_dec_to_7_seg
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'dut'.  Expected 11, found 3.
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv Line: 17
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_a'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_b'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_c'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_d'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_e'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_f'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_g'.
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'i_risc_v_mike_ctrl'.  Expected 25, found 24.
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_risc_v_mike_ctrl File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_top.sv Line: 77
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_top.sv(77): [TFMPC] - Missing connection for port 'pc_write'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/rx_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 141
+# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/rx_clk_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 156
+# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/rx_counter_shift_en File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 171
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/tx_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 196
+# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/tx_clk_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 210
+do wave.do
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: matriana  Hostname: MATRIANA-MOBL  ProcessID: 1852
+#           Attempting to use alternate WLF file "./wlftvsmfic".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftvsmfic
+run
+add wave -position end  sim:/risc_v_mike_tb_uni/dut/seg_a
+add wave -position end  sim:/risc_v_mike_tb_uni/dut/seg_b
+add wave -position end  sim:/risc_v_mike_tb_uni/dut/seg_c
+add wave -position end  sim:/risc_v_mike_tb_uni/dut/seg_d
+add wave -position end  sim:/risc_v_mike_tb_uni/dut/seg_e
+add wave -position end  sim:/risc_v_mike_tb_uni/dut/seg_f
+add wave -position end  sim:/risc_v_mike_tb_uni/dut/seg_g
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'dut'.  Expected 11, found 3.
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv Line: 17
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_a'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_b'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_c'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_d'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_e'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_f'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_g'.
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'i_risc_v_mike_ctrl'.  Expected 25, found 24.
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_risc_v_mike_ctrl File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_top.sv Line: 77
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_top.sv(77): [TFMPC] - Missing connection for port 'pc_write'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/rx_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 141
+# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/rx_clk_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 156
+# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/rx_counter_shift_en File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 171
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/tx_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 196
+# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/tx_clk_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 210
+run
+run
+add wave -position 242  sim:/risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/ascii_dec_to_7_seg/ascii
+add wave -position 260  sim:/risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/ascii_dec_to_7_seg/ascii
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'dut'.  Expected 11, found 3.
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv Line: 17
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_a'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_b'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_c'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_d'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_e'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_f'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_g'.
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'i_risc_v_mike_ctrl'.  Expected 25, found 24.
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_risc_v_mike_ctrl File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_top.sv Line: 77
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_top.sv(77): [TFMPC] - Missing connection for port 'pc_write'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/rx_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 141
+# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/rx_clk_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 156
+# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/rx_counter_shift_en File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 171
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/tx_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 196
+# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/tx_clk_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 210
+run
+# Compile of risc_v_mike_header.svh was successful.
+# Compile of risc_v_mike_pkg.sv was successful.
+# Compile of reg_file_tb.sv was successful.
+# Compile of risc_v_mem_ctrl.sv was successful.
+# Compile of risc_v_mike_alu.sv was successful.
+# Compile of risc_v_mike_ctrl.sv was successful.
+# Compile of risc_v_mike_data_memory.sv was successful.
+# Compile of risc_v_mike_gpio_module.sv was successful.
+# Compile of risc_v_mike_instruction_memory.sv was successful.
+# Compile of risc_v_mike_reg_file.sv was successful.
+# Compile of risc_v_mike_sign_extend.sv was successful.
+# Compile of risc_v_mike_top.sv was successful.
+# Compile of risc_v_mike_tb_uni.sv was successful.
+# Compile of ascii_dec_to_7_seg.v was successful.
+# Compile of counter.sv was successful.
+# Compile of rx_shifter.sv was successful.
+# Compile of top_UART_MIKE.sv was successful.
+# Compile of tx_shifter.sv was successful with warnings.
+# Compile of UART_MIKE.sv was successful.
+# Compile of UART_MIKE_ctrl.sv was successful.
+# Compile of UART_MIKE_header.svh was successful.
+# Compile of UART_MIKE_pkg.sv was successful.
+# Compile of UART_UNCORE.sv was successful.
+# 23 compiles, 0 failed with no errors.
+vsim work.risc_v_mike_tb_uni
+# End time: 20:53:21 on Mar 19,2024, Elapsed time: 20:28:59
+# Errors: 0, Warnings: 18
+# vsim work.risc_v_mike_tb_uni 
+# Start time: 20:53:21 on Mar 19,2024
+# Loading sv_std.std
+# Loading work.risc_v_mike_pkg
+# Loading work.risc_v_mike_tb_uni_sv_unit
+# Loading work.risc_v_mike_tb_uni
+# Loading work.risc_v_mike_top_sv_unit
+# Loading work.risc_v_mike_top
+# Loading work.risc_v_mike_ctrl_sv_unit
+# Loading work.risc_v_mike_ctrl
+# Loading work.risc_v_mike_alu_sv_unit
+# Loading work.risc_v_mike_alu
+# Loading work.risc_v_mike_reg_file_sv_unit
+# Loading work.risc_v_mike_reg_file
+# Loading work.risc_v_mike_sign_extend_sv_unit
+# Loading work.risc_v_mike_sign_extend
+# Loading work.risc_v_mem_ctrl_sv_unit
+# Loading work.risc_v_mem_ctrl
+# Loading work.risc_v_mike_data_memory_sv_unit
+# Loading work.risc_v_mike_data_memory
+# Loading work.risc_v_mike_instruction_memory_sv_unit
+# Loading work.risc_v_mike_instruction_memory
+# Loading work.UART_MIKE_pkg
+# Loading work.UART_UNCORE_sv_unit
+# Loading work.UART_UNCORE
+# ** Error: (vsim-13) Recompile work.risc_v_mike_gpio_module_sv_unit because work.UART_MIKE_pkg has changed.
+# ** Error (suppressible): (vsim-12) Recompile work.risc_v_mike_gpio_module after work.risc_v_mike_gpio_module_sv_unit is recompiled.
+# ** Error: (vsim-13) Recompile work.risc_v_mike_gpio_module because work.UART_MIKE_pkg has changed.
+# Error loading design
+# End time: 20:53:23 on Mar 19,2024, Elapsed time: 0:00:02
+# Errors: 3, Warnings: 1
+# Compile of risc_v_mike_header.svh was successful.
+# Compile of risc_v_mike_pkg.sv was successful.
+# Compile of reg_file_tb.sv was successful.
+# Compile of risc_v_mem_ctrl.sv was successful.
+# Compile of risc_v_mike_alu.sv was successful.
+# Compile of risc_v_mike_ctrl.sv was successful.
+# Compile of risc_v_mike_data_memory.sv was successful.
+# Compile of risc_v_mike_gpio_module.sv was successful.
+# Compile of risc_v_mike_instruction_memory.sv was successful.
+# Compile of risc_v_mike_reg_file.sv was successful.
+# Compile of risc_v_mike_sign_extend.sv was successful.
+# Compile of risc_v_mike_top.sv was successful.
+# Compile of risc_v_mike_tb_uni.sv was successful.
+# Compile of ascii_dec_to_7_seg.v was successful.
+# Compile of counter.sv was successful.
+# Compile of rx_shifter.sv was successful.
+# Compile of top_UART_MIKE.sv was successful.
+# Compile of tx_shifter.sv was successful with warnings.
+# Compile of UART_MIKE.sv was successful.
+# Compile of UART_MIKE_ctrl.sv was successful.
+# Compile of UART_MIKE_header.svh was successful.
+# Compile of UART_MIKE_pkg.sv was successful.
+# Compile of UART_UNCORE.sv was successful.
+# 23 compiles, 0 failed with no errors.
+vsim work.risc_v_mike_tb_uni
+# vsim work.risc_v_mike_tb_uni 
+# Start time: 20:53:50 on Mar 19,2024
+# Loading sv_std.std
+# Loading work.risc_v_mike_pkg
+# Loading work.risc_v_mike_tb_uni_sv_unit
+# Loading work.risc_v_mike_tb_uni
+# Loading work.risc_v_mike_top_sv_unit
+# Loading work.risc_v_mike_top
+# Loading work.risc_v_mike_ctrl_sv_unit
+# Loading work.risc_v_mike_ctrl
+# Loading work.risc_v_mike_alu_sv_unit
+# Loading work.risc_v_mike_alu
+# Loading work.risc_v_mike_reg_file_sv_unit
+# Loading work.risc_v_mike_reg_file
+# Loading work.risc_v_mike_sign_extend_sv_unit
+# Loading work.risc_v_mike_sign_extend
+# Loading work.risc_v_mem_ctrl_sv_unit
+# Loading work.risc_v_mem_ctrl
+# Loading work.risc_v_mike_data_memory_sv_unit
+# Loading work.risc_v_mike_data_memory
+# Loading work.risc_v_mike_instruction_memory_sv_unit
+# Loading work.risc_v_mike_instruction_memory
+# Loading work.UART_MIKE_pkg
+# Loading work.UART_UNCORE_sv_unit
+# Loading work.UART_UNCORE
+# Loading work.risc_v_mike_gpio_module_sv_unit
+# Loading work.risc_v_mike_gpio_module
+# Loading work.UART_MIKE_sv_unit
+# Loading work.UART_MIKE
+# Loading work.counter_sv_unit
+# Loading work.counter
+# Loading work.rx_shifter_sv_unit
+# Loading work.rx_shifter
+# Loading work.tx_shifter_sv_unit
+# Loading work.tx_shifter
+# Loading work.ascii_dec_to_7_seg
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'dut'.  Expected 20, found 3.
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv Line: 17
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_a'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_b'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_c'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_d'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_e'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_f'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_g'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx_seg_a'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx_seg_b'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx_seg_c'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx_seg_d'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx_seg_e'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx_seg_f'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx_seg_g'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'asci_or_hexa_tx'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'asci_or_hexa_rx'.
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'i_risc_v_mike_ctrl'.  Expected 25, found 24.
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_risc_v_mike_ctrl File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_top.sv Line: 86
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_top.sv(86): [TFMPC] - Missing connection for port 'pc_write'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/rx_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 150
+# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/rx_clk_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 165
+# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/rx_counter_shift_en File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 180
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/tx_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 205
+# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/tx_clk_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 219
+do wave.do
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: matriana  Hostname: MATRIANA-MOBL  ProcessID: 1852
+#           Attempting to use alternate WLF file "./wlft2trjf0".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlft2trjf0
+run
+add wave -position 206  sim:/risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/tx_inprg
+# Compile of risc_v_mike_gpio_module.sv was successful.
+vsim work.risc_v_mike_tb_uni
+# End time: 20:59:23 on Mar 19,2024, Elapsed time: 0:05:33
+# Errors: 0, Warnings: 30
+# vsim work.risc_v_mike_tb_uni 
+# Start time: 20:59:23 on Mar 19,2024
+# Loading sv_std.std
+# Loading work.risc_v_mike_pkg
+# Loading work.risc_v_mike_tb_uni_sv_unit
+# Loading work.risc_v_mike_tb_uni
+# Loading work.risc_v_mike_top_sv_unit
+# Loading work.risc_v_mike_top
+# Loading work.risc_v_mike_ctrl_sv_unit
+# Loading work.risc_v_mike_ctrl
+# Loading work.risc_v_mike_alu_sv_unit
+# Loading work.risc_v_mike_alu
+# Loading work.risc_v_mike_reg_file_sv_unit
+# Loading work.risc_v_mike_reg_file
+# Loading work.risc_v_mike_sign_extend_sv_unit
+# Loading work.risc_v_mike_sign_extend
+# Loading work.risc_v_mem_ctrl_sv_unit
+# Loading work.risc_v_mem_ctrl
+# Loading work.risc_v_mike_data_memory_sv_unit
+# Loading work.risc_v_mike_data_memory
+# Loading work.risc_v_mike_instruction_memory_sv_unit
+# Loading work.risc_v_mike_instruction_memory
+# Loading work.UART_MIKE_pkg
+# Loading work.UART_UNCORE_sv_unit
+# Loading work.UART_UNCORE
+# Loading work.risc_v_mike_gpio_module_sv_unit
+# Loading work.risc_v_mike_gpio_module
+# Loading work.UART_MIKE_sv_unit
+# Loading work.UART_MIKE
+# Loading work.counter_sv_unit
+# Loading work.counter
+# Loading work.rx_shifter_sv_unit
+# Loading work.rx_shifter
+# Loading work.tx_shifter_sv_unit
+# Loading work.tx_shifter
+# Loading work.ascii_dec_to_7_seg
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'dut'.  Expected 20, found 3.
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv Line: 17
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_a'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_b'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_c'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_d'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_e'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_f'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_g'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx_seg_a'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx_seg_b'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx_seg_c'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx_seg_d'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx_seg_e'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx_seg_f'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx_seg_g'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'asci_or_hexa_tx'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'asci_or_hexa_rx'.
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'i_risc_v_mike_ctrl'.  Expected 25, found 24.
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_risc_v_mike_ctrl File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_top.sv Line: 86
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_top.sv(86): [TFMPC] - Missing connection for port 'pc_write'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/rx_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 150
+# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/rx_clk_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 165
+# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/rx_counter_shift_en File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 180
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/tx_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 205
+# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/tx_clk_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 219
+do wave.do
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: matriana  Hostname: MATRIANA-MOBL  ProcessID: 1852
+#           Attempting to use alternate WLF file "./wlftv0v4af".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftv0v4af
+run
+run
+run
+run
+run
+run
+run
+run
+# Compile of risc_v_mike_header.svh was successful.
+# Compile of risc_v_mike_pkg.sv was successful.
+# Compile of risc_v_mike_tb_uni.sv was successful.
+# Compile of risc_v_mike_header.svh was successful.
+# Compile of risc_v_mike_pkg.sv was successful.
+# Compile of reg_file_tb.sv was successful.
+# Compile of risc_v_mem_ctrl.sv was successful.
+# Compile of risc_v_mike_alu.sv was successful.
+# Compile of risc_v_mike_ctrl.sv was successful.
+# Compile of risc_v_mike_data_memory.sv was successful.
+# Compile of risc_v_mike_gpio_module.sv was successful.
+# Compile of risc_v_mike_instruction_memory.sv was successful.
+# Compile of risc_v_mike_reg_file.sv was successful.
+# Compile of risc_v_mike_sign_extend.sv was successful.
+# Compile of risc_v_mike_top.sv was successful.
+# Compile of risc_v_mike_tb_uni.sv was successful.
+# Compile of ascii_dec_to_7_seg.v was successful.
+# Compile of counter.sv was successful.
+# Compile of rx_shifter.sv was successful.
+# Compile of top_UART_MIKE.sv was successful.
+# Compile of tx_shifter.sv was successful with warnings.
+# Compile of UART_MIKE.sv was successful.
+# Compile of UART_MIKE_ctrl.sv was successful.
+# Compile of UART_MIKE_header.svh was successful.
+# Compile of UART_MIKE_pkg.sv was successful.
+# Compile of UART_UNCORE.sv was successful.
+# 23 compiles, 0 failed with no errors.
+vsim work.risc_v_mike_tb_uni
+# End time: 21:07:45 on Mar 19,2024, Elapsed time: 0:08:22
+# Errors: 0, Warnings: 32
+# vsim work.risc_v_mike_tb_uni 
+# Start time: 21:07:45 on Mar 19,2024
+# Loading sv_std.std
+# Loading work.risc_v_mike_pkg
+# Loading work.risc_v_mike_tb_uni_sv_unit
+# Loading work.risc_v_mike_tb_uni
+# Loading work.risc_v_mike_top_sv_unit
+# Loading work.risc_v_mike_top
+# Loading work.risc_v_mike_ctrl_sv_unit
+# Loading work.risc_v_mike_ctrl
+# Loading work.risc_v_mike_alu_sv_unit
+# Loading work.risc_v_mike_alu
+# Loading work.risc_v_mike_reg_file_sv_unit
+# Loading work.risc_v_mike_reg_file
+# Loading work.risc_v_mike_sign_extend_sv_unit
+# Loading work.risc_v_mike_sign_extend
+# Loading work.risc_v_mem_ctrl_sv_unit
+# Loading work.risc_v_mem_ctrl
+# Loading work.risc_v_mike_data_memory_sv_unit
+# Loading work.risc_v_mike_data_memory
+# Loading work.risc_v_mike_instruction_memory_sv_unit
+# Loading work.risc_v_mike_instruction_memory
+# Loading work.UART_MIKE_pkg
+# Loading work.UART_UNCORE_sv_unit
+# Loading work.UART_UNCORE
+# Loading work.risc_v_mike_gpio_module_sv_unit
+# Loading work.risc_v_mike_gpio_module
+# Loading work.UART_MIKE_sv_unit
+# Loading work.UART_MIKE
+# Loading work.counter_sv_unit
+# Loading work.counter
+# Loading work.rx_shifter_sv_unit
+# Loading work.rx_shifter
+# Loading work.tx_shifter_sv_unit
+# Loading work.tx_shifter
+# Loading work.ascii_dec_to_7_seg
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'dut'.  Expected 20, found 3.
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv Line: 17
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_a'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_b'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_c'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_d'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_e'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_f'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_g'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx_seg_a'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx_seg_b'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx_seg_c'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx_seg_d'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx_seg_e'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx_seg_f'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx_seg_g'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'asci_or_hexa_tx'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'asci_or_hexa_rx'.
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'i_risc_v_mike_ctrl'.  Expected 25, found 24.
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_risc_v_mike_ctrl File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_top.sv Line: 86
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_top.sv(86): [TFMPC] - Missing connection for port 'pc_write'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/rx_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 150
+# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/rx_clk_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 165
+# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/rx_counter_shift_en File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 180
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/tx_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 205
+# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/tx_clk_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 219
+do wave.do
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: matriana  Hostname: MATRIANA-MOBL  ProcessID: 1852
+#           Attempting to use alternate WLF file "./wlft0e8d44".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlft0e8d44
+run
+run
+run
+run
+add wave -position end  sim:/risc_v_mike_pkg::MEM_MAP_DATA_LOWER_LIMIT
+add wave -position end  sim:/risc_v_mike_pkg::MEM_MAP_DATA_UPPER_LIMIT
+add wave -position end  sim:/risc_v_mike_pkg::MEM_MAP_MMIO_LOWER_LIMIT
+add wave -position end  sim:/risc_v_mike_pkg::MEM_MAP_MMIO_UPPER_LIMIT
+add wave -position end  sim:/risc_v_mike_pkg::MEM_MAP_STACK_LOWER_LIMIT
+add wave -position end  sim:/risc_v_mike_pkg::MEM_MAP_STACK_UPPER_LIMIT
+add wave -position end  sim:/risc_v_mike_pkg::MEM_MAP_TEXT_LOWER_LIMIT
+add wave -position end  sim:/risc_v_mike_pkg::MEM_MAP_TEXT_UPPER_LIMIT
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'dut'.  Expected 20, found 3.
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv Line: 17
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_a'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_b'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_c'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_d'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_e'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_f'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'seg_g'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx_seg_a'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx_seg_b'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx_seg_c'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx_seg_d'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx_seg_e'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx_seg_f'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'tx_seg_g'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'asci_or_hexa_tx'.
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/val/risc_v_mike_tb_uni.sv(17): [TFMPC] - Missing connection for port 'asci_or_hexa_rx'.
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'i_risc_v_mike_ctrl'.  Expected 25, found 24.
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_risc_v_mike_ctrl File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_top.sv Line: 86
+# ** Warning: (vsim-3722) C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_top.sv(86): [TFMPC] - Missing connection for port 'pc_write'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/rx_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 150
+# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/rx_clk_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 165
+# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/rx_counter_shift_en File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 180
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/tx_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 205
+# ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
+#    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/tx_clk_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 219
+run

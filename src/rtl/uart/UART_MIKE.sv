@@ -23,7 +23,16 @@ module UART_MIKE
 	output logic seg_d,
 	output logic seg_e,
 	output logic seg_f,
-	output logic seg_g
+	output logic seg_g,
+	output logic tx_seg_a,
+	output logic tx_seg_b,
+	output logic tx_seg_c,
+	output logic tx_seg_d,
+	output logic tx_seg_e,
+	output logic tx_seg_f,
+	output logic tx_seg_g,
+	input logic  asci_or_hexa_tx,
+	input logic  asci_or_hexa_rx
 );
 
 
@@ -230,8 +239,10 @@ tx_shifter tx_shifter (
 );
 
 
-ascii_dec_to_7_seg ascii_dec_to_7_seg(
+//RX Contexts
+ascii_dec_to_7_seg RX_ascii_dec_to_7_seg(
 	.ascii(rx_data),
+	.asci_or_hexa(asci_or_hexa_rx),
 	.seg_a(seg_a),
 	.seg_b(seg_b),
 	.seg_c(seg_c),
@@ -240,5 +251,19 @@ ascii_dec_to_7_seg ascii_dec_to_7_seg(
 	.seg_f(seg_f),
 	.seg_g(seg_g)
 );
+
+//TX Contents
+ascii_dec_to_7_seg TX_ascii_dec_to_7_seg(
+	.ascii(tx_data),
+	.asci_or_hexa(asci_or_hexa_tx),
+	.seg_a(tx_seg_a),
+	.seg_b(tx_seg_b),
+	.seg_c(tx_seg_c),
+	.seg_d(tx_seg_d),
+	.seg_e(tx_seg_e),
+	.seg_f(tx_seg_f),
+	.seg_g(tx_seg_g)
+);
+
 
 endmodule

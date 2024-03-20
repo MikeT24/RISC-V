@@ -7,6 +7,22 @@ module risc_v_mike_top (
 `ifdef GPIO_ENABLED
     output logic tx,
     input logic rx,
+    output logic seg_a,
+	output logic seg_b,
+	output logic seg_c,
+	output logic seg_d,
+	output logic seg_e,
+	output logic seg_f,
+	output logic seg_g,    
+	output logic tx_seg_a,
+	output logic tx_seg_b,
+	output logic tx_seg_c,
+	output logic tx_seg_d,
+	output logic tx_seg_e,
+	output logic tx_seg_f,
+	output logic tx_seg_g,
+	input logic  asci_or_hexa_tx,
+	input logic  asci_or_hexa_rx, 
 `endif    
     input logic clk,
     input logic rst
@@ -314,7 +330,23 @@ risc_v_mike_instruction_memory #(
         .data_mmio_wr_data(reg_file_rd_data_2),
         .data_mmio_rd_data(data_mmio_rd_data),
         .rx(rx),
-        .tx(tx)
+        .tx(tx),
+        .seg_a(seg_a),
+        .seg_b(seg_b),
+        .seg_c(seg_c),
+        .seg_d(seg_d),
+        .seg_e(seg_e),
+        .seg_f(seg_f),
+        .seg_g(seg_g),
+        .tx_seg_a(tx_seg_a),
+        .tx_seg_b(tx_seg_b),
+        .tx_seg_c(tx_seg_c),
+        .tx_seg_d(tx_seg_d),
+        .tx_seg_e(tx_seg_e),
+        .tx_seg_f(tx_seg_f),
+        .tx_seg_g(tx_seg_g),
+        .asci_or_hexa_tx(asci_or_hexa_tx),
+        .asci_or_hexa_rx(asci_or_hexa_rx)
     );
 `endif  
 
