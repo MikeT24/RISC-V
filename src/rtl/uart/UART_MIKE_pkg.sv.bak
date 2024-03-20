@@ -13,7 +13,7 @@ parameter RX_CLOCK_SIZE = $clog2(RX_CLOCK_WIDTH);
  
 
 
-typedef enum {IDLE0, RX_DATA, WAIT_FLG_CLR, TX_DATA} UART_FSM;
+typedef enum {IDLE, RX_DATA, WAIT_FLG_CLR, TX_DATA} UART_FSM;
 
 typedef struct packed {
     logic stop;
