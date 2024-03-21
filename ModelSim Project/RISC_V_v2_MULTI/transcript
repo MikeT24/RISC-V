@@ -312,3 +312,5 @@ restart
 # ** Warning: (vsim-3015) [PCDPC] - Port size (6) does not match connection size (32) for port 'cnt_goal'. The port definition is at: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv(14).
 #    Time: 0 ps  Iteration: 0  Instance: /risc_v_mike_tb_uni/dut/i_UART_UNCORE/i_top_UART_MIKE/tx_clk_counter File: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv Line: 219
 run
+# End time: 23:09:04 on Mar 20,2024, Elapsed time: 2:03:00
+# Errors: 0, Warnings: 26

@@ -1,4 +1,3 @@
-
 .data 
 
 .text
@@ -7,7 +6,7 @@ main:
 ## LOAD BASE ADDRESSES
 lui s0, 0xfffffff0 ## UART BASE ADDRESS, 
 li sp, 0x7fffeffc #SP POINTER IS NOT STORED IN HW
-li t1, 0xffffffff
+li s9, 0xffffffff
 #li t0, 0x48  # H
 li t0, 0xDE  # H
 jal t6, uart_tx_send
@@ -20,7 +19,7 @@ addi zero, zero, 0 #debug
 
 # start polling
 START_POLL:
-andi t2, t1, 0x1 # MASK
+andi t2, s9, 0x1 # MASK
 jal uart_rx_poll
 lw a5, 16(s0) # a5 = rx_value 
 jal factorial 
@@ -44,7 +43,7 @@ jal exit
 
 uart_tx_send: # send value in t0
 sw t0, 0(s0) # LOAD VALUE IN UART
-andi t2, t1, 0x1 # MASK
+andi t2, s9, 0x1 # MASK
 sw t2, 4(s0) # SEND 
 sw zero, 4(s0)
 jalr t6
