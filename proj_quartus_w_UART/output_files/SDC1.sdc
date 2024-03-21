@@ -2,6 +2,8 @@
 #
 # By default, the most challenging timing spec is applied to work in 
 # many JTAG chain setup situations
+create_clock -name CLK -period 20 [get_ports CLOCK_50]
+
 
 set_time_format -unit ns -decimal_places 3
 

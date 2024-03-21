@@ -1,12 +1,12 @@
-Fitter Status : Successful - Tue Mar 19 23:33:44 2024
+Fitter Status : Successful - Wed Mar 20 22:56:40 2024
 Quartus Prime Version : 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 Revision Name : RISC_V_multi_UART
 Top-level Entity Name : risc_v_mike_top
 Family : Cyclone V
 Device : 5CSXFC6D6F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 10,093 / 41,910 ( 24 % )
-Total registers : 18776
+Logic utilization (in ALMs) : 10,103 / 41,910 ( 24 % )
+Total registers : 18790
 Total pins : 20 / 499 ( 4 % )
 Total virtual pins : 0
 Total block memory bits : 54,272 / 5,662,720 ( < 1 % )

@@ -75,11 +75,11 @@ set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_symbol
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_signal_integrity
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_boundary_scan
-set_global_assignment -name PARTITION_NETLIST_TYPE POST_FIT -section_id Top
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_location_assignment PIN_AF14 -to clk
-set_location_assignment PIN_AK4 -to rst
+set_location_assignment PIN_AA30 -to rst
 set_location_assignment PIN_W17 -to seg_a
 set_location_assignment PIN_V18 -to seg_b
 set_location_assignment PIN_AG17 -to seg_c
@@ -87,8 +87,8 @@ set_location_assignment PIN_AG16 -to seg_d
 set_location_assignment PIN_AH17 -to seg_e
 set_location_assignment PIN_AG18 -to seg_f
 set_location_assignment PIN_AH18 -to seg_g
-set_location_assignment PIN_W15 -to rx
-set_location_assignment PIN_AK2 -to tx
+set_location_assignment PIN_AH5 -to rx
+set_location_assignment PIN_AH3 -to tx
 set_location_assignment PIN_AB30 -to asci_or_hexa_rx
 set_location_assignment PIN_Y27 -to asci_or_hexa_tx
 set_location_assignment PIN_AF16 -to tx_seg_a
@@ -270,5 +270,5 @@ set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_COUNTER_PIPELINE=
 set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ADVANCED_TRIGGER_ENTITY=basic,1," -section_id auto_signaltap_0
 set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_LEVEL_PIPELINE=1" -section_id auto_signaltap_0
 set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ENABLE_ADVANCED_TRIGGER=0" -section_id auto_signaltap_0
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name SLD_FILE db/stp1_auto_stripped.stp
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

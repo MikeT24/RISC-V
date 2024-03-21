@@ -24,15 +24,6 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 Top level modules:
 	reg_file_tb
 
-} {} {}} {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_instruction_memory.sv} {1 {vlog -work work -sv -stats=none {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_instruction_memory.sv}
-Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling package risc_v_mike_instruction_memory_sv_unit
--- Importing package risc_v_mike_pkg
--- Compiling module risc_v_mike_instruction_memory
-
-Top level modules:
-	risc_v_mike_instruction_memory
-
 } {} {}} {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE_header.svh} {1 {vlog -work work -sv -stats=none {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE_header.svh}
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
 
@@ -99,18 +90,6 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 Top level modules:
 	risc_v_mike_sign_extend
 
-} {} {}} {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_header.svh} {1 {vlog -work work -sv -stats=none {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_header.svh}
-Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-
-} {} {}} {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv} {1 {vlog -work work -sv -stats=none {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv}
-Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling package counter_sv_unit
--- Importing package UART_MIKE_pkg
--- Compiling module counter
-
-Top level modules:
-	counter
-
 } {} {}} {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/tx_shifter.sv} {2 {vlog -work work -sv -stats=none {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/tx_shifter.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
 ** Warning: C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/tx_shifter.sv(9): (vlog-13314) Defaulting port 'tx_byte' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
@@ -122,6 +101,25 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 Top level modules:
 	tx_shifter
 
+} {} {}} {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv} {1 {vlog -work work -sv -stats=none {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/counter.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package counter_sv_unit
+-- Importing package UART_MIKE_pkg
+-- Compiling module counter
+
+Top level modules:
+	counter
+
+} {} {}} {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_header.svh} {1 {vlog -work work -sv -stats=none {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_header.svh}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+
+} {} {}} {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_pkg.sv} {1 {vlog -work work -sv -stats=none {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_pkg.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package risc_v_mike_pkg
+
+Top level modules:
+	--none--
+
 } {} {}} {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv} {1 {vlog -work work -sv -stats=none {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
 -- Compiling package UART_MIKE_sv_unit
@@ -130,13 +128,6 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 
 Top level modules:
 	UART_MIKE
-
-} {} {}} {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_pkg.sv} {1 {vlog -work work -sv -stats=none {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mike_pkg.sv}
-Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling package risc_v_mike_pkg
-
-Top level modules:
-	--none--
 
 } {} {}} {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/top_UART_MIKE.sv} {1 {vlog -work work -sv -stats=none {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/top_UART_MIKE.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
@@ -156,15 +147,6 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 Top level modules:
 	risc_v_mike_ctrl
 
-} {} {}} {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mem_ctrl.sv} {1 {vlog -work work -sv -stats=none {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mem_ctrl.sv}
-Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling package risc_v_mem_ctrl_sv_unit
--- Importing package risc_v_mike_pkg
--- Compiling module risc_v_mem_ctrl
-
-Top level modules:
-	risc_v_mem_ctrl
-
 } {} {}} {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE_ctrl.sv} {1 {vlog -work work -sv -stats=none {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/uart/UART_MIKE_ctrl.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
 -- Compiling package UART_MIKE_ctrl_sv_unit
@@ -173,5 +155,14 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 
 Top level modules:
 	UART_MIKE_ctrl
+
+} {} {}} {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mem_ctrl.sv} {1 {vlog -work work -sv -stats=none {C:/Users/matriana/Personal/Masters/Diseno de Micros/RISC-V/RISC-V/src/rtl/risc_v_mem_ctrl.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package risc_v_mem_ctrl_sv_unit
+-- Importing package risc_v_mike_pkg
+-- Compiling module risc_v_mem_ctrl
+
+Top level modules:
+	risc_v_mem_ctrl
 
 } {} {}}
