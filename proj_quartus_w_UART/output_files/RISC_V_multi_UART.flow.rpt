@@ -1,5 +1,5 @@
 Flow report for RISC_V_multi_UART
-Thu Apr 11 23:38:48 2024
+Thu Apr 11 23:59:44 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -41,25 +41,25 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +---------------------------------+------------------------------------------------+
-; Flow Status                     ; Successful - Thu Apr 11 23:38:48 2024          ;
+; Flow Status                     ; Successful - Thu Apr 11 23:59:44 2024          ;
 ; Quartus Prime Version           ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                   ; RISC_V_multi_UART                              ;
 ; Top-level Entity Name           ; risc_v_mike_top                                ;
 ; Family                          ; Cyclone V                                      ;
 ; Device                          ; 5CSXFC6D6F31C6                                 ;
 ; Timing Models                   ; Final                                          ;
-; Logic utilization (in ALMs)     ; N/A                                            ;
+; Logic utilization (in ALMs)     ; 10,323 / 41,910 ( 25 % )                       ;
 ; Total registers                 ; 17509                                          ;
-; Total pins                      ; 20                                             ;
+; Total pins                      ; 20 / 499 ( 4 % )                               ;
 ; Total virtual pins              ; 0                                              ;
-; Total block memory bits         ; 0                                              ;
-; Total DSP Blocks                ; 0                                              ;
-; Total HSSI RX PCSs              ; 0                                              ;
-; Total HSSI PMA RX Deserializers ; 0                                              ;
-; Total HSSI TX PCSs              ; 0                                              ;
-; Total HSSI PMA TX Serializers   ; 0                                              ;
-; Total PLLs                      ; 0                                              ;
-; Total DLLs                      ; 0                                              ;
+; Total block memory bits         ; 0 / 5,662,720 ( 0 % )                          ;
+; Total DSP Blocks                ; 0 / 112 ( 0 % )                                ;
+; Total HSSI RX PCSs              ; 0 / 9 ( 0 % )                                  ;
+; Total HSSI PMA RX Deserializers ; 0 / 9 ( 0 % )                                  ;
+; Total HSSI TX PCSs              ; 0 / 9 ( 0 % )                                  ;
+; Total HSSI PMA TX Serializers   ; 0 / 9 ( 0 % )                                  ;
+; Total PLLs                      ; 0 / 15 ( 0 % )                                 ;
+; Total DLLs                      ; 0 / 4 ( 0 % )                                  ;
 +---------------------------------+------------------------------------------------+
 
 
@@ -108,7 +108,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Analysis & Synthesis ; 00:01:34     ; 2.1                     ; 5071 MB             ; 00:01:00                           ;
 ; Partition Merge      ; 00:00:02     ; 1.0                     ; 4835 MB             ; 00:00:01                           ;
-; Total                ; 00:01:36     ; --                      ; --                  ; 00:01:01                           ;
+; Fitter               ; 00:19:11     ; 1.1                     ; 6874 MB             ; 00:15:39                           ;
+; Assembler            ; 00:00:15     ; 1.0                     ; 5045 MB             ; 00:00:08                           ;
+; Timing Analyzer      ; 00:01:12     ; 3.4                     ; 5996 MB             ; 00:01:36                           ;
+; EDA Netlist Writer   ; 00:00:06     ; 1.0                     ; 4905 MB             ; 00:00:03                           ;
+; Total                ; 00:22:20     ; --                      ; --                  ; 00:18:27                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -119,6 +123,10 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+------------------+------------+------------+----------------+
 ; Analysis & Synthesis ; matriana-mobl    ; Windows 10 ; 10.0       ; x86_64         ;
 ; Partition Merge      ; matriana-mobl    ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; matriana-mobl    ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; matriana-mobl    ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; matriana-mobl    ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer   ; matriana-mobl    ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 
@@ -127,6 +135,10 @@ https://fpgasoftware.intel.com/eula.
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off RISC_V_multi_UART -c RISC_V_multi_UART
 quartus_cdb --read_settings_files=off --write_settings_files=off RISC_V_multi_UART -c RISC_V_multi_UART --merge=on
+quartus_fit --read_settings_files=off --write_settings_files=off RISC_V_multi_UART -c RISC_V_multi_UART
+quartus_asm --read_settings_files=off --write_settings_files=off RISC_V_multi_UART -c RISC_V_multi_UART
+quartus_sta RISC_V_multi_UART -c RISC_V_multi_UART
+quartus_eda --read_settings_files=off --write_settings_files=off RISC_V_multi_UART -c RISC_V_multi_UART
 
 
 
