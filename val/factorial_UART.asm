@@ -8,14 +8,13 @@ lui s0, 0xfffffff0 ## UART BASE ADDRESS,
 li sp, 0x7fffeffc #SP POINTER IS NOT STORED IN HW
 li s9, 0xffffffff
 #li t0, 0x48  # H
-li t0, 0xDE  # H
-jal t6, uart_tx_send
-jal ra, uart_tx_poll
-li t0, 0xAD  # I
-jal t6, uart_tx_send
-jal ra, uart_tx_poll
+#li t0, 0xDE  # H
+#jal t6, uart_tx_send
+#jal ra, uart_tx_poll
+#li t0, 0xAD  # I
+##jal ra, uart_tx_poll
 
-addi zero, zero, 0 #debug
+#addi zero, zero, 0 #debug
 
 # start polling
 START_POLL:

@@ -65,12 +65,25 @@ always_comb begin
         8: data_mmio_rd_data = {31'h0,tx_flag_clr_ff};  
         12: data_mmio_rd_data = {31'h0,rx_flag_clr_ff};     //0xc
         16: data_mmio_rd_data = {24'h0,rx_data_ff};         //0x10
-        //16: data_mmio_rd_data = {24'h0,8'ha};         //0x10 DEBUGGING ONLY
+        //16: data_mmio_rd_data = {24'h0,8'hd};         //0x10 DEBUGGING ONLY
         20: data_mmio_rd_data = {31'h0, tx_flag_ff};        //0x14
         24: data_mmio_rd_data = {31'h0,rx_flag_ff};         //0x18
         default: data_mmio_rd_data = 32'hDEADBEEF; 
     endcase
 end
+
+
+// FOR CYCLE CALC PURPOSES ONLY
+logic [31:0] clk_cnt_ff;
+logic [31:0] clk_cnt;
+logic cnt_en;
+logic cnt_en_ff;
+
+assign cnt_en = (rx_flag_ff) ? 1'b1 : (tx_send_ff) ? 1'b0 : cnt_en_ff;
+`MIKE_FF_RST(cnt_en_ff, cnt_en,  clk, rst)
+
+assign clk_cnt = clk_cnt_ff + 1'b1;
+`MIKE_FF_EN_NRST(clk_cnt_ff, clk_cnt, cnt_en,  clk, (~rst))
 
 
 
