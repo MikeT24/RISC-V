@@ -13,6 +13,10 @@ parameter PC_CNT_ADDR_WIDTH = `INST_MEM_DEPTH ;
 parameter PC_CNT_ADDR_SIZE = $clog2(PC_CNT_ADDR_WIDTH);
 parameter GPIO_BYTE = 8;
 
+parameter CLK_DIV_NAT = 2; 
+parameter CLK_DIV = $clog2(CLK_DIV_NAT) ; // ONLY COMPATIBLE WITH BINARY VALUES! 
+//parameter CLK_DIV = 500;
+
 // .text    --> 0x00400000
 // .data    --> 0x10010000
 // .stack   --> 0x7fffeffc
@@ -21,9 +25,7 @@ parameter GPIO_BYTE = 8;
 parameter STACK_UPPER   = 32'h7fffeffc;
 parameter TEXT_LOWER    = 32'h00400000;
 parameter DATA_LOWER    = 32'h10010000;
-// THIS PRACTICE DOES NOT COMPLY WITH OFFICIAL MMIO MAPPING
-// THIS IS OVERLAPPED
-parameter MMIO_LOWER    = 32'h10010024;
+parameter MMIO_LOWER    = 32'hffff0000;
 
 
 typedef logic [REG_ADDR_W - 1:0] t_register_addr; 

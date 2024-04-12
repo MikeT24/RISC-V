@@ -5,14 +5,14 @@ import risc_v_mike_pkg::*;
 
 
 module risc_v_mem_ctrl (
-
-    `ifdef MEM_BUS_INSTRUCTIONS
-        output logic data_text_wr_addr_val,
-        output logic [ADDRESS_32_W-1:0] data_text_wr_addr,
-        output logic data_text_rd_addr_val,
-        output logic [ADDRESS_32_W-1:0] data_text_rd_addr,
+    `ifndef MEM_BUS_INSTRUCTIONS
+        input logic [ADDRESS_32_W-1:0] pc_addr,
     `endif
-
+    output logic data_text_wr_addr_val,
+    output logic [ADDRESS_32_W-1:0] data_text_wr_addr,
+    output logic data_text_rd_addr_val,
+    output logic [ADDRESS_32_W-1:0] data_text_rd_addr,
+    // TODO: Add ifdef for MEM_BUS_INSTRUCTIONS    
     input sva_clk,
     input [DATA_32_W - 1:0] mem_bus_rd_addr,
     input [DATA_32_W - 1:0] mem_bus_wr_addr,
@@ -55,10 +55,13 @@ assign data_mem_wr_addr     = mem_bus_wr_addr - MEM_MAP_DATA_LOWER_LIMIT;
 assign data_mmio_wr_addr    = mem_bus_wr_addr - MEM_MAP_MMIO_LOWER_LIMIT;
 
 `ifdef MEM_BUS_INSTRUCTIONS
-    assign data_text_wr_addr_val    = (mem_bus_write) & (mem_bus_wr_addr <= MEM_MAP_TEXT_UPPER_LIMIT) & (mem_bus_wr_addr >= MEM_MAP_TEXT_LOWER_LIMIT); // address in stack)
+    assign data_text_wr_addr_val    = (mem_bus_write) & (mem_bus_wr_addr <= MEM_MAP_TEXT_UPPER_LIMIT) & (mem_bus_wr_addr >= MEM_MAP_TEXT_LOWER_LIMIT);
     assign data_text_wr_addr    = mem_bus_wr_addr - MEM_MAP_TEXT_LOWER_LIMIT;
 `endif
-
+`ifndef MEM_BUS_INSTRUCTIONS
+    assign data_text_wr_addr_val    = 'b0;
+    assign data_text_wr_addr        = 'b0;
+`endif    
 
 // Fire error if an address does not map to any function
 `ifdef MEM_BUS_INSTRUCTIONS
@@ -84,6 +87,11 @@ assign data_mmio_rd_addr    = mem_bus_rd_addr - MEM_MAP_MMIO_LOWER_LIMIT;
     assign data_text_rd_addr_val    = (mem_bus_read) & (mem_bus_rd_addr <= MEM_MAP_TEXT_UPPER_LIMIT) & (mem_bus_rd_addr >= MEM_MAP_TEXT_LOWER_LIMIT); // address in stack)
     assign data_text_rd_addr    = mem_bus_rd_addr - MEM_MAP_TEXT_LOWER_LIMIT;
 `endif 
+
+`ifndef MEM_BUS_INSTRUCTIONS
+    assign data_text_rd_addr_val    = 1'b0;
+    assign data_text_rd_addr        = pc_addr - MEM_MAP_TEXT_LOWER_LIMIT;
+`endif
 
 // Fire error if an address does not map to any function
 `ifdef MEM_BUS_INSTRUCTIONS

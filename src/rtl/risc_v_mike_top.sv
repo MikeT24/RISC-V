@@ -5,28 +5,45 @@ import risc_v_mike_pkg::*;
 
 module risc_v_mike_top (
 `ifdef GPIO_ENABLED
-    input logic [GPIO_BYTE - 1:0] gpio_port_in,
-    output logic [GPIO_BYTE - 1:0] gpio_port_out,
+    output logic tx,
+    input logic rx,
+    output logic seg_a,
+	output logic seg_b,
+	output logic seg_c,
+	output logic seg_d,
+	output logic seg_e,
+	output logic seg_f,
+	output logic seg_g,    
+	output logic tx_seg_a,
+	output logic tx_seg_b,
+	output logic tx_seg_c,
+	output logic tx_seg_d,
+	output logic tx_seg_e,
+	output logic tx_seg_f,
+	output logic tx_seg_g,
+	input logic  asci_or_hexa_tx,
+	input logic  asci_or_hexa_rx, 
 `endif    
     input logic clk_in,
     input logic rst
 );
     
     logic clk;
-    logic [31:0] pre_clk_cnt;
+    logic rst_internal;
 
     logic [INSTR_32_W - 1:0] instruction;
+    logic [INSTR_32_W - 1:0] data_text_rd_data;
     t_instr_register rs1;
     t_instr_register rs2;
     t_instr_register rsd;
     logic [FUNCT3_W - 1:0] funct3;
     logic [FUNCT7_W - 1:0] funct7;
-    logic pc_src;
-    logic result_src;
+    logic [1:0] pc_src;
+    logic [1:0] result_src;
     logic mem_write;
     logic reg_write;
-    logic alu_src_sel_b;
-    logic alu_src_sel_a;
+    logic [1:0] alu_src_sel_b;
+    logic [1:0] alu_src_sel_a;
     logic [2:0] imm_src;
     logic [DATA_32_W - 1:0] alu_src_a;
     logic [DATA_32_W - 1:0] alu_src_b;
@@ -52,17 +69,16 @@ module risc_v_mike_top (
 
     t_instr_nmemonic intr_nmen;
 
-    assign rst_test = ~rst;
 
-    parameter CLK_DIV = 50000000;
-    //parameter CLK_DIV = 500;
+    logic [ADDRESS_32_W-1:0] mem_bus_address_input;
 
-    always @(posedge clk_in) begin
-        if (~rst) pre_clk_cnt <= 'h0;
-        else if(pre_clk_cnt >= (CLK_DIV-1)) pre_clk_cnt <= 'h0;
-        else pre_clk_cnt <= pre_clk_cnt + 'h1;
-        clk <= (pre_clk_cnt < CLK_DIV/2) ? 1'b1 : 1'b0;
-    end
+risc_v_mike_clk_divider i_risc_v_mike_clk_divider(
+    .rst_in(rst),
+    .clk_in(clk_in),
+    .clk(clk),
+    .rst_out(rst_internal)
+);
+    
 
 risc_v_mike_ctrl i_risc_v_mike_ctrl(
     .alu_zero(alu_zero),
@@ -98,14 +114,34 @@ risc_v_mike_alu i_risc_v_mike_alu(
 
 //ALU SRC MUX: CHOOSE BETWEEN SIGN EXTEND AND REG_FILE READ PORT 2
 //TODO: imm_ext module and connection
-assign alu_src_a = (alu_src_sel_a) ? pc_addr : reg_file_rd_data_1;
-assign alu_src_b = (alu_src_sel_b) ? imm_ext : reg_file_rd_data_2;
+// MUX Src_A
+always_comb begin 
+    case (alu_src_sel_a)
+        0 : alu_src_a = pc_addr;
+        1 : alu_src_a = reg_file_rd_data_1;
+        2 : alu_src_a = pc_addr;
+        3 : alu_src_a = 32'h0;
+        default : alu_src_a = 32'hFFFFFFFF;
+    endcase
+end
+
+// MUX Src_B
+always_comb begin 
+    case (alu_src_sel_b)
+        0 : alu_src_b = reg_file_rd_data_2;
+        1 : alu_src_b = 32'h4;
+        2 : alu_src_b = imm_ext;
+        default : alu_src_b = 32'hFFFFFFFF;
+    endcase
+end
+
+
 
 risc_v_mike_reg_file #(
     .REG_FILE_DEPTH(32)
 ) i_risc_v_mike_reg_file(
     .clk(clk),
-    .rst(~rst),
+    .rst(~rst_internal),
     .reg_file_rd_addr_1(rs1),    // rs1,
     .reg_file_rd_addr_2(rs2),    // rs2,
     .reg_file_wr_addr(rsd),      // rsd,
@@ -121,15 +157,23 @@ risc_v_mike_sign_extend i_risc_v_mike_sign_extend (
     .imm_ext(imm_ext)
 );
 
-//RESULT SRC MUX: CHOOSE BETWEEN DATA MEMORY OUTPUT OR ALU RESULT
-assign reg_file_wr_data = (result_src)? data_mem_bus_rd_data : alu_result;
+//RESULT SRC MUX: CHOOSE BETWEEN DATA MEMORY OUTPUT, ALU RESULT OR OLD PC COUNTER VALUE
+// MUX reg_file_wr_data
+always_comb begin 
+    case (result_src)
+        0 : reg_file_wr_data = alu_result;
+        1 : reg_file_wr_data = data_mem_bus_rd_data;
+        2 : reg_file_wr_data = pc_plus4; //Add 4 to the PC for Jumps
+        default : reg_file_wr_data = 32'hFFFFFFFF;
+    endcase
+end
 
 
 logic [ADDRESS_32_W-1:0] data_text_wr_addr;
+logic [ADDRESS_32_W-1:0] data_text_rd_addr;
 logic [3:0] data_memory_addr_sel_vec;
 logic data_text_wr_addr_val;
 logic data_text_rd_addr_val;
-
 
 
 logic data_stack_wr_addr_val;
@@ -146,17 +190,19 @@ logic [ADDRESS_32_W-1:0] data_mmio_wr_addr;
 logic [ADDRESS_32_W-1:0] data_mem_addr;
 logic data_mem_write;
 
+assign mem_bus_address_input = alu_result;
 
 risc_v_mem_ctrl i_risc_v_mem_ctrl (
-    `ifdef MEM_BUS_INSTRUCTIONS
-        .data_text_wr_addr_val(data_text_wr_addr_val),
-        .data_text_wr_addr(data_text_wr_addr),
-        .data_text_rd_addr_val(data_text_rd_addr_val),
-        .data_text_rd_addr(),
+    `ifndef MEM_BUS_INSTRUCTIONS
+        .pc_addr(pc_addr),
     `endif
+    .data_text_wr_addr_val(data_text_wr_addr_val),
+    .data_text_wr_addr(data_text_wr_addr),
+    .data_text_rd_addr_val(data_text_rd_addr_val),
+    .data_text_rd_addr(data_text_rd_addr),
     .sva_clk(clk),
-    .mem_bus_rd_addr(alu_result),
-    .mem_bus_wr_addr(alu_result),
+    .mem_bus_rd_addr(mem_bus_address_input), // Address input
+    .mem_bus_wr_addr(mem_bus_address_input), // Address input
     .mem_bus_write(mem_write),
     .mem_bus_read(1'b1), // Always read enabled
     .mem_bus_wr_addr_error(),
@@ -175,11 +221,6 @@ risc_v_mem_ctrl i_risc_v_mem_ctrl (
     .data_mem_rd_addr(),
     .data_mmio_rd_addr()
 );
-
-`ifndef MEM_BUS_INSTRUCTIONS 
-    assign data_text_wr_addr_val = 1'b0;
-    assign data_text_rd_addr_val = 1'b0;
-`endif
 
     // DATA READ ENABLED IS TIED TO 1'B1
     // data_***_rd_addr_val is the same as  data_***_wr_addr_val without the wr enable bit
@@ -213,16 +254,18 @@ always_comb begin
 
     // ADDRESS INPUTS IN ALL MEMORIES.
     // DATA IS ASSIGNED JUST TO THE VALID ADDRESS.
-    if (data_mem_read) begin 
+    if (data_stack_rd_addr_val | data_mem_rd_addr_val) begin 
         data_mem_bus_rd_data = data_mem_rd_data;
     end
+    else if (data_text_rd_addr_val) begin //TODO: PORT ME TO SINGLE CYCLE
+        data_mem_bus_rd_data = data_text_rd_data; //Used in single memory access. 
+    end    
     else if (data_mmio_rd_addr_val) begin
         data_mem_bus_rd_data = data_mmio_rd_data;
     end
     else begin 
         data_mem_bus_rd_data = 32'b0;
     end
-
 end
 
 
@@ -231,23 +274,50 @@ risc_v_mike_data_memory #(
     .DATA_MEM_DEPTH(`DATA_MEM_DEPTH)
 ) i_risc_v_mike_data_memory (
     .clk(clk),
-    .rst(~rst),
+    .rst(~rst_internal),
     .data_mem_addr(data_mem_addr),
     .data_mem_write(data_mem_write),
     .data_mem_wr_data(reg_file_rd_data_2),
     .data_mem_rd_data(data_mem_rd_data)
 );
 
+risc_v_mike_instruction_memory #(
+    .DATA_MEM_DEPTH(PC_CNT_ADDR_WIDTH)
+) i_risc_v_mike_instruction_memory (
+    .clk(clk),
+    .rst(~rst_internal),
+    .data_mem_addr(data_text_rd_addr),
+    .data_mem_rd_data(instruction)
+);
+
+assign data_text_rd_data = 'b0;
+
 `ifdef GPIO_ENABLED
-    risc_v_mike_gpio_module i_risc_v_mike_gpio_module(
+    UART_UNCORE i_UART_UNCORE(
         .clk(clk),
-        .rst(rst),
+        .rst(rst_internal),
         .data_mmio_addr(data_mem_addr),
         .data_mmio_wr_addr_val(data_mmio_wr_addr_val),
-        .gpio_port_in(gpio_port_in),
-        .gpio_port_out(gpio_port_out),
         .data_mmio_wr_data(reg_file_rd_data_2),
-        .data_mmio_rd_data(data_mmio_rd_data)
+        .data_mmio_rd_data(data_mmio_rd_data),
+        .rx(rx),
+        .tx(tx),
+        .seg_a(seg_a),
+        .seg_b(seg_b),
+        .seg_c(seg_c),
+        .seg_d(seg_d),
+        .seg_e(seg_e),
+        .seg_f(seg_f),
+        .seg_g(seg_g),
+        .tx_seg_a(tx_seg_a),
+        .tx_seg_b(tx_seg_b),
+        .tx_seg_c(tx_seg_c),
+        .tx_seg_d(tx_seg_d),
+        .tx_seg_e(tx_seg_e),
+        .tx_seg_f(tx_seg_f),
+        .tx_seg_g(tx_seg_g),
+        .asci_or_hexa_tx(asci_or_hexa_tx),
+        .asci_or_hexa_rx(asci_or_hexa_rx)
     );
 `endif  
 
@@ -258,18 +328,20 @@ assign pc_plus4 = pc_addr + 32'h4;
 // Second is branch selection
 assign pc_branch = pc_addr + imm_ext;
 // Selection of the next count
-assign pc_addr_nxt = (pc_src)? pc_branch : pc_plus4;
-// PC Flip flop
- `MIKE_FF_INIT_NRST(pc_addr, pc_addr_nxt, 32'h00400000, clk, rst) // PC COUNTER INIT it starts on 32'h00400000 - 4 for the initial propagation
 
-risc_v_mike_instruction_memory #(
-    .DATA_MEM_DEPTH(PC_CNT_ADDR_WIDTH)
-) i_risc_v_mike_instruction_memory (
-    .clk(clk),
-    .rst(~rst),
-    .data_mem_addr(pc_addr),
-    .data_mem_rd_data(instruction)
-);
+always_comb begin 
+    case (pc_src)
+        0: pc_addr_nxt = pc_plus4;
+        1: pc_addr_nxt = pc_branch;
+        2: pc_addr_nxt = alu_result;
+        default: pc_addr_nxt = 32'hffffffff;
+    endcase
+end
+
+// PC Flip flop
+ `MIKE_FF_INIT_NRST(pc_addr, pc_addr_nxt, 32'h00400000, clk, rst_internal) // PC COUNTER INIT it starts on 32'h00400000 - 4 for the initial propagation
+
+
 
 
 
