@@ -215,8 +215,11 @@ risc_v_mike_ctrl i_risc_v_mike_ctrl(
 
 logic [DATA_32_W - 1:0] reg_file_2_alu_1_e;
 logic [DATA_32_W - 1:0] reg_file_2_alu_2_e;
+logic [DATA_32_W - 1:0] reg_file_2_alu_2_m;
 
 risc_v_data_fwd i_risc_v_data_fwd(
+    .clk(clk),
+    .rst(rst_internal),
     .rs1_e(rs1_e),
     .rs2_e(rs2_e),
     .rsd_e(rsd_e),
@@ -226,6 +229,7 @@ risc_v_data_fwd i_risc_v_data_fwd(
     .reg_file_rd_data_2_e(reg_file_rd_data_2_e),
     .reg_file_2_alu_1_e(reg_file_2_alu_1_e),
     .reg_file_2_alu_2_e(reg_file_2_alu_2_e),
+    .reg_file_2_alu_2_m(reg_file_2_alu_2_m),
     .alu_result_m(alu_result_m),
     .alu_result_w(alu_result_w)    
 );
@@ -423,7 +427,7 @@ risc_v_mike_data_memory #(
     .rst(~rst_internal),
     .data_mem_addr(data_mem_addr_m),
     .data_mem_write(data_mem_write_m),
-    .data_mem_wr_data(reg_file_rd_data_2_m),
+    .data_mem_wr_data(reg_file_2_alu_2_m),  // FWD Data
     .data_mem_rd_data(data_mem_rd_data_m)
 );
 
