@@ -22,7 +22,8 @@ module risc_v_mike_ctrl (
     output t_alu_opcode alu_ctrl,
     output logic alu_signed,
     output logic [2:0] imm_src,
-    output t_instr_nmemonic intr_nmen
+    output t_instr_nmemonic intr_nmen,
+    output t_instr_opcode intr_opcode
 );
 
 t_instr_opcode opcode;
@@ -34,6 +35,7 @@ assign rs2      = t_instr_register'(instruction[INST_RS2_MSB:INST_RS2_LSB]);
 assign funct3   = instruction[INST_FUNCT3_MSB:INST_FUNCT3_LSB];
 assign funct7   = instruction[INST_FUNCT7_MSB:INST_FUNCT7_LSB];
 
+assign intr_opcode = opcode;
 
 
 

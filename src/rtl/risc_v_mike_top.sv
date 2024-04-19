@@ -161,13 +161,24 @@ module risc_v_mike_top (
     `MIKE_FF_NRST(rst_internal_m, rst_internal_e, clk, rst_internal) 
     `MIKE_FF_NRST(rst_internal_w, rst_internal_m, clk, rst_internal) 
 
+
+    t_instr_opcode intr_opcode_d;
+    t_instr_opcode intr_opcode_e;
+    t_instr_opcode intr_opcode_m;
+    t_instr_opcode intr_opcode_w;
+
+    `MIKE_FF(intr_opcode_e, intr_opcode_d, clk);
+    `MIKE_FF(intr_opcode_m, intr_opcode_e, clk);
+    `MIKE_FF(intr_opcode_w, intr_opcode_m, clk);
+
+
+
 risc_v_mike_clk_divider i_risc_v_mike_clk_divider(
     .rst_in(rst),
     .clk_in(clk_in),
     .clk(clk),
     .rst_out(rst_internal)
 );
-    
 
 risc_v_mike_ctrl i_risc_v_mike_ctrl(
     .alu_zero(alu_zero),
@@ -187,7 +198,8 @@ risc_v_mike_ctrl i_risc_v_mike_ctrl(
     .alu_ctrl(alu_ctrl_d),
     .alu_signed(alu_signed_d),
     .imm_src(imm_src_d),
-    .intr_nmen(intr_nmen_d)
+    .intr_nmen(intr_nmen_d),
+    .intr_opcode(intr_opcode_d)
 );
 
 `MIKE_FF_NRST(alu_src_sel_a_e, alu_src_sel_a_d, clk, rst_internal) 
@@ -231,7 +243,16 @@ risc_v_data_fwd i_risc_v_data_fwd(
     .reg_file_2_alu_2_e(reg_file_2_alu_2_e),
     .reg_file_2_alu_2_m(reg_file_2_alu_2_m),
     .alu_result_m(alu_result_m),
-    .alu_result_w(alu_result_w)    
+    .alu_result_w(alu_result_w),
+    .data_mem_rd_data_m(data_mem_rd_data_m),
+    .data_mem_rd_data_w(data_mem_rd_data_w),
+    .intr_opcode_d(intr_opcode_d),
+    .intr_opcode_e(intr_opcode_e),
+    .intr_opcode_m(intr_opcode_m),
+    .intr_opcode_w(intr_opcode_w),
+    .reg_write_e(reg_write_e),
+    .reg_write_m(reg_write_m),
+    .reg_write_w(reg_write_w)
 );
 
 

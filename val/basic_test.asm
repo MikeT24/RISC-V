@@ -14,16 +14,14 @@ main:
 	sw t2, 0(s0)
 	sw t2, 4(s0)
 	
-	lw t5, 0(s0)
+	lw t5, 4(s0)
+	and ra, t5, t1
+	and ra, t5, t1
+	and ra, t5, t1
+	and ra, t5, t1
+	and ra, t5, t1
+	sw s0, 8(s0)
+	lw s1, 8(s0)
+	sw s1, 12(s0)
+		
 	
-	sw t2, 4(t0) 
-	sw t3, 8(t0) 
-	sw t4, 12(t0) 		
-	sw t5, 16(t0) 	
-	sw t6, 20(t0) 
-	
-	lw s1, 0(s0)	
-	lw s2, 4(s0)	
-	lw s3, 8(s0)	
-	lw s4, 12(s0)	
-	lw s5, 16(s0)	
