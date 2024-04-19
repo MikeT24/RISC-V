@@ -1,4 +1,6 @@
 package UART_MIKE_pkg;
+import risc_v_mike_pkg::*;
+
 
 parameter UART_FRAME_WIDHT = 11;
 parameter UART_FRAME_SIZE = $clog2(UART_FRAME_WIDHT); //INCLUDING START, PARITY AND STOP BIT 

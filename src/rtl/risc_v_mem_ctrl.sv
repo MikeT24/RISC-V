@@ -5,6 +5,7 @@ import risc_v_mike_pkg::*;
 
 
 module risc_v_mem_ctrl (
+    input logic rst,
     `ifndef MEM_BUS_INSTRUCTIONS
         input logic [ADDRESS_32_W-1:0] pc_addr,
     `endif
@@ -90,7 +91,7 @@ assign data_mmio_rd_addr    = mem_bus_rd_addr - MEM_MAP_MMIO_LOWER_LIMIT;
 
 `ifndef MEM_BUS_INSTRUCTIONS
     assign data_text_rd_addr_val    = 1'b0;
-    assign data_text_rd_addr        = pc_addr - MEM_MAP_TEXT_LOWER_LIMIT;
+    assign data_text_rd_addr        = (~rst) ? 'h0 : pc_addr - MEM_MAP_TEXT_LOWER_LIMIT;
 `endif
 
 // Fire error if an address does not map to any function
