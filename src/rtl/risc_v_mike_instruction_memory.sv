@@ -73,17 +73,27 @@ assign data_mem_ff[12]  = 32'h006f70b3;
 assign data_mem_ff[13]  = 32'h00842423;
 assign data_mem_ff[14]  = 32'h00842483;
 assign data_mem_ff[15]  = 32'h00942623;
-assign data_mem_ff[16]  = 32'h01e2a823;
-assign data_mem_ff[17]  = 32'h01f2aa23;
-assign data_mem_ff[18]  = 32'h00042483;
-assign data_mem_ff[19]  = 32'h00442903;
-assign data_mem_ff[20]  = 32'h00842983;
-assign data_mem_ff[21]  = 32'h00c42a03;
-assign data_mem_ff[22]  = 32'h01042a83;
-assign data_mem_ff[23]  = 32'h0;
+assign data_mem_ff[16]  = 32'h00848a63;
+assign data_mem_ff[17]  = 32'h01ce8f33;
+assign data_mem_ff[18]  = 32'h01e42423;
+assign data_mem_ff[19]  = 32'h01ef6cb3;
+assign data_mem_ff[20]  = 32'h01ef6cb3;
+assign data_mem_ff[21]  = 32'h0ffd8d93;
+assign data_mem_ff[22]  = 32'h028000ef;
+assign data_mem_ff[23]  = 32'h00100293;
+assign data_mem_ff[24]  = 32'h00542623;
+assign data_mem_ff[25]  = 32'h00100293;
+assign data_mem_ff[26]  = 32'h00100293;
+assign data_mem_ff[27]  = 32'h00100293;
+assign data_mem_ff[28]  = 32'h00100293;
+assign data_mem_ff[29]  = 32'h00100293;
+assign data_mem_ff[30]  = 32'h00128293;
+assign data_mem_ff[31]  = 32'hffdff0ef;
+assign data_mem_ff[32]  = 32'h00100313;
+assign data_mem_ff[33]  = 32'h000080e7;
 
 
-// assign data_mem_ff[0]   = 32'hffff0437;
+
 // assign data_mem_ff[1]   = 32'h7ffff137;
 // assign data_mem_ff[2]   = 32'hffc10113;
 // assign data_mem_ff[3]   = 32'hfff00c93;

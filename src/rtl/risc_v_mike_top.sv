@@ -141,10 +141,11 @@ module risc_v_mike_top (
     t_instr_nmemonic intr_nmen_m;
     t_instr_nmemonic intr_nmen_w;
 
-    `MIKE_FF(intr_nmen_e, intr_nmen_d, clk); 
-    `MIKE_FF(intr_nmen_m, intr_nmen_e, clk);
-    `MIKE_FF(intr_nmen_w, intr_nmen_m, clk);
-
+    logic data_hzd_nuke_e;
+    logic data_hzd_nuke_m;
+    logic data_hzd_nuke_w;
+    logic data_hzd_nuke_w_plus1;
+    logic data_hzd_nuke_w_plus2;
 
     logic [ADDRESS_32_W-1:0] mem_bus_address_input;
 
@@ -167,9 +168,7 @@ module risc_v_mike_top (
     t_instr_opcode intr_opcode_m;
     t_instr_opcode intr_opcode_w;
 
-    `MIKE_FF(intr_opcode_e, intr_opcode_d, clk);
-    `MIKE_FF(intr_opcode_m, intr_opcode_e, clk);
-    `MIKE_FF(intr_opcode_w, intr_opcode_m, clk);
+
 
 
 
@@ -181,15 +180,16 @@ risc_v_mike_clk_divider i_risc_v_mike_clk_divider(
 );
 
 risc_v_mike_ctrl i_risc_v_mike_ctrl(
-    .alu_zero(alu_zero),
-    .alu_slt(alu_slt),
+    .clk(clk),
+    .alu_zero(alu_zero_e),
+    .alu_slt(alu_slt_e),
     .instruction(instruction_d),
     .rs1(rs1_d),
     .rs2(rs2_d),
     .rsd(rsd_d),
     .funct3(funct3_d),
     .funct7(funct7_d),
-    .pc_src(pc_src_d),
+    .pc_src_out(pc_src_e),
     .result_src(result_src_d),
     .mem_write(mem_write_d),
     .reg_write(reg_write_d),
@@ -198,8 +198,20 @@ risc_v_mike_ctrl i_risc_v_mike_ctrl(
     .alu_ctrl(alu_ctrl_d),
     .alu_signed(alu_signed_d),
     .imm_src(imm_src_d),
-    .intr_nmen(intr_nmen_d),
-    .intr_opcode(intr_opcode_d)
+    .intr_nmen_d(intr_nmen_d),
+    .intr_nmen_e(intr_nmen_e),
+    .intr_nmen_m(intr_nmen_m),
+    .intr_nmen_w(intr_nmen_w),
+    .intr_opcode_d(intr_opcode_d),
+    .intr_opcode_e(intr_opcode_e),
+    .intr_opcode_m(intr_opcode_m),
+    .intr_opcode_w(intr_opcode_w),
+    .data_hzd_nuke_e(data_hzd_nuke_e),
+    .data_hzd_nuke_m(data_hzd_nuke_m),
+    .data_hzd_nuke_w(data_hzd_nuke_w),
+    .data_hzd_nuke_w_plus1(data_hzd_nuke_w_plus1),
+    .data_hzd_nuke_w_plus2(data_hzd_nuke_w_plus2)
+
 );
 
 `MIKE_FF_NRST(alu_src_sel_a_e, alu_src_sel_a_d, clk, rst_internal) 
@@ -213,7 +225,7 @@ risc_v_mike_ctrl i_risc_v_mike_ctrl(
 `MIKE_FF_NRST(result_src_m, result_src_e, clk, rst_internal) 
 `MIKE_FF_NRST(result_src_w, result_src_m, clk, rst_internal) 
 
-`MIKE_FF_NRST(pc_src_e, pc_src_d, clk, rst_internal) 
+//`MIKE_FF_NRST(pc_src_e, pc_src_d, clk, rst_internal) 
 
 `MIKE_FF_NRST(reg_write_e, reg_write_d, clk, rst_internal) 
 `MIKE_FF_NRST(reg_write_m, reg_write_e, clk, rst_internal) 
@@ -290,6 +302,9 @@ risc_v_mike_alu i_risc_v_mike_alu(
 );
 
 
+logic reg_write_hzd_free_w;
+// If there is a data hazard detected, reg write will be aborted. 
+assign reg_write_hzd_free_w = ~data_hzd_nuke_w_plus1 & ~data_hzd_nuke_w_plus2 & reg_write_w;
 
 risc_v_mike_reg_file #(
     .REG_FILE_DEPTH(32)
@@ -299,7 +314,7 @@ risc_v_mike_reg_file #(
     .reg_file_rd_addr_1(rs1_d),    // rs1,
     .reg_file_rd_addr_2(rs2_d),    // rs2,
     .reg_file_wr_addr(rsd_w),      // rsd,
-    .reg_file_write(reg_write_w),                  //reg_write,
+    .reg_file_write(reg_write_hzd_free_w),  //reg_write,
     .reg_file_wr_data(reg_file_wr_data_w),
     .reg_file_rd_data_1(reg_file_rd_data_1_d),
     .reg_file_rd_data_2(reg_file_rd_data_2_d)
@@ -364,7 +379,11 @@ logic [ADDRESS_32_W-1:0] data_mem_wr_addr_m;
 logic [ADDRESS_32_W-1:0] data_mmio_wr_addr_m;
 logic [ADDRESS_32_W-1:0] data_mem_addr_m;
 logic data_mem_write_m;
+logic mem_write_hzd_free_m;
 
+
+//Abort mem writes when a HZD is detected
+assign mem_write_hzd_free_m = mem_write_m & ~data_hzd_nuke_w & ~data_hzd_nuke_w_plus1;
 assign mem_bus_address_input_m = alu_result_m;
 
 risc_v_mem_ctrl i_risc_v_mem_ctrl (
@@ -379,7 +398,7 @@ risc_v_mem_ctrl i_risc_v_mem_ctrl (
     .sva_clk(clk),
     .mem_bus_rd_addr(mem_bus_address_input_m), // Address input
     .mem_bus_wr_addr(mem_bus_address_input_m), // Address input
-    .mem_bus_write(mem_write_m),
+    .mem_bus_write(mem_write_hzd_free_m),
     .mem_bus_read(1'b1), // Always read enabled
     .mem_bus_wr_addr_error(),
     .mem_bus_rd_addr_error(),
@@ -517,7 +536,22 @@ assign pc_branch_e = pc_addr_e + imm_ext_e;
 // end
 
 // check branch
-assign pc_addr_nxt_f = (pc_src_e) ? pc_branch_e : pc_plus4_f;
+//assign pc_addr_nxt_f = (pc_src_e) ? pc_branch_e : pc_plus4_f;
+
+
+logic [1:0] pc_src_hzd_free_e;
+logic pc_src_hzd_free_det;
+assign pc_src_hzd_free_det = ~data_hzd_nuke_m & ~data_hzd_nuke_w;
+assign pc_src_hzd_free_e = {pc_src_hzd_free_det,pc_src_hzd_free_det} & pc_src_e;
+
+ always_comb begin 
+        case (pc_src_hzd_free_e)
+             0: pc_addr_nxt_f = pc_plus4_f;
+             1: pc_addr_nxt_f = pc_branch_e;
+             2: pc_addr_nxt_f = alu_result_e;
+             default: pc_addr_nxt_f = 32'hffffffff;
+        endcase
+ end
 
 `MIKE_FF_NRST(pc_plus4_d, pc_plus4_f, clk, rst_internal) 
 `MIKE_FF_NRST(pc_plus4_e, pc_plus4_d, clk, rst_internal) 
