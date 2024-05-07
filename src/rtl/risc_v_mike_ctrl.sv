@@ -87,17 +87,17 @@ always_comb begin
 end
 
 // Check if branch was taken
-assign branch_taken = pc_src_out[0]; 
+assign branch_taken = pc_src_out[0] & ~data_hzd_nuke_w & ~data_hzd_nuke_m; 
 // Check if a jump is comming 
-assign uncond_branch_taken = (intr_nmen_e == OP_JAL) | (intr_nmen_e == OP_JALR);
+assign uncond_branch_taken = ((intr_nmen_e == OP_JAL) | (intr_nmen_e == OP_JALR));
 
 // If branch op detected, and branch taken, need to clear pipeline
 // or if there is a detected jump
-assign data_hzd_nuke_e = (((intr_opcode_e == B_TYPE) & branch_taken) | uncond_branch_taken) & ~data_hzd_nuke_w;
+assign data_hzd_nuke_e = (((intr_opcode_e == B_TYPE) & branch_taken) | uncond_branch_taken) & ~data_hzd_nuke_w & ~data_hzd_nuke_m;
 `MIKE_FF_NRST(data_hzd_nuke_m, data_hzd_nuke_e, clk, rst) 
 `MIKE_FF_NRST(data_hzd_nuke_w, data_hzd_nuke_m, clk, rst) 
 `MIKE_FF_NRST(data_hzd_nuke_w_plus1, data_hzd_nuke_w, clk, rst) 
-`MIKE_FF_NRST(data_hzd_nuke_w_plus2, data_hzd_nuke_w, clk, rst) 
+`MIKE_FF_NRST(data_hzd_nuke_w_plus2, data_hzd_nuke_w_plus1, clk, rst) 
 
 // TODO: Still need to add signed bit going to the ALU
 // TODO: Need also to add the word/half/byte restrictions for load and store 

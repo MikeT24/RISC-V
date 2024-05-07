@@ -26,7 +26,10 @@ module risc_v_data_fwd (
     input t_instr_opcode intr_opcode_w,
     input logic reg_write_e,
     input logic reg_write_m,
-    input logic reg_write_w
+    input logic reg_write_w,
+    input logic reg_write_hzd_free_m,
+    input logic reg_write_hzd_free_w,
+    input logic reg_write_hzd_free_w_plus1
 );
 
 
@@ -57,7 +60,7 @@ logic reg_write_w_plus1;
 
 
 always_comb begin 
-    if ((rs1_e == rsd_m) & (reg_write_m)) begin 
+    if ((rs1_e == rsd_m) & (reg_write_hzd_free_m) & (rs1_e != ZERO)) begin 
         alu_src_a_fwd = 3'h4; 
         if ((intr_opcode_m != I_LOAD_TYPE)) begin 
             reg_file_2_alu_1_e = alu_result_m; // fwd from WB
@@ -66,7 +69,7 @@ always_comb begin
             reg_file_2_alu_1_e = data_mem_rd_data_m; // fwd from WB
         end
     end
-    else if ((rs1_e == rsd_w) & (reg_write_w)) begin 
+    else if ((rs1_e == rsd_w) & (reg_write_hzd_free_w) & (rs1_e != ZERO)) begin 
         alu_src_a_fwd = 3'h2; 
         if ((intr_opcode_w != I_LOAD_TYPE)) begin 
             reg_file_2_alu_1_e = alu_result_w; // fwd from WB
@@ -75,7 +78,7 @@ always_comb begin
             reg_file_2_alu_1_e = data_mem_rd_data_w; // fwd from WB
         end
     end
-    else if ((rs1_e == rsd_w_plus1) & (reg_write_w_plus1)) begin 
+    else if ((rs1_e == rsd_w_plus1) & (reg_write_hzd_free_w_plus1) & (rs1_e != ZERO)) begin 
         alu_src_a_fwd = 3'h1; 
         if ((intr_opcode_w_plus1 != I_LOAD_TYPE)) begin 
             reg_file_2_alu_1_e = alu_result_w_plus1; // fwd from WB
@@ -91,7 +94,7 @@ always_comb begin
 end
 
 always_comb begin 
-    if ((rs2_e == rsd_m) & (reg_write_m)) begin 
+    if ((rs2_e == rsd_m) & (reg_write_hzd_free_m) & (rs2_e != ZERO)) begin 
         alu_src_b_fwd = 3'h4; 
         if ((intr_opcode_m != I_LOAD_TYPE)) begin 
             reg_file_2_alu_2_e = alu_result_m; // fwd from WB
@@ -100,7 +103,7 @@ always_comb begin
             reg_file_2_alu_2_e = data_mem_rd_data_m; // fwd from WB
         end
     end
-    else if ((rs2_e == rsd_w) & (reg_write_w)) begin 
+    else if ((rs2_e == rsd_w) & (reg_write_hzd_free_w) & (rs2_e != ZERO)) begin 
         alu_src_b_fwd = 3'h2; 
         if ((intr_opcode_w != I_LOAD_TYPE)) begin 
             reg_file_2_alu_2_e = alu_result_w; // fwd from WB
@@ -109,7 +112,7 @@ always_comb begin
             reg_file_2_alu_2_e = data_mem_rd_data_w; // fwd from WB
         end
     end 
-    else if ((rs2_e == rsd_w_plus1) & (reg_write_w_plus1)) begin 
+    else if ((rs2_e == rsd_w_plus1) & (reg_write_hzd_free_w_plus1) & (rs2_e != ZERO)) begin 
         alu_src_b_fwd = 3'h1; 
         if ((intr_opcode_w_plus1 != I_LOAD_TYPE)) begin 
             reg_file_2_alu_2_e = alu_result_w_plus1; // fwd from WB

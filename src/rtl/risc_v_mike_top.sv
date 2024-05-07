@@ -241,6 +241,10 @@ logic [DATA_32_W - 1:0] reg_file_2_alu_1_e;
 logic [DATA_32_W - 1:0] reg_file_2_alu_2_e;
 logic [DATA_32_W - 1:0] reg_file_2_alu_2_m;
 
+logic reg_write_hzd_free_m;
+logic reg_write_hzd_free_w;
+logic reg_write_hzd_free_w_plus1;
+
 risc_v_data_fwd i_risc_v_data_fwd(
     .clk(clk),
     .rst(rst_internal),
@@ -264,7 +268,10 @@ risc_v_data_fwd i_risc_v_data_fwd(
     .intr_opcode_w(intr_opcode_w),
     .reg_write_e(reg_write_e),
     .reg_write_m(reg_write_m),
-    .reg_write_w(reg_write_w)
+    .reg_write_w(reg_write_w),
+    .reg_write_hzd_free_m(reg_write_hzd_free_m),
+    .reg_write_hzd_free_w(reg_write_hzd_free_w),
+    .reg_write_hzd_free_w_plus1(reg_write_hzd_free_w_plus1)
 );
 
 
@@ -302,9 +309,11 @@ risc_v_mike_alu i_risc_v_mike_alu(
 );
 
 
-logic reg_write_hzd_free_w;
+
 // If there is a data hazard detected, reg write will be aborted. 
-assign reg_write_hzd_free_w = ~data_hzd_nuke_w_plus1 & ~data_hzd_nuke_w_plus2 & reg_write_w;
+assign reg_write_hzd_free_m =  ~data_hzd_nuke_w & ~data_hzd_nuke_w_plus1 & reg_write_m;
+assign reg_write_hzd_free_w =  ~data_hzd_nuke_w_plus1 & ~data_hzd_nuke_w_plus2 & reg_write_w;
+`MIKE_FF_NRST(reg_write_hzd_free_w_plus1, reg_write_hzd_free_w, clk, rst_internal) 
 
 risc_v_mike_reg_file #(
     .REG_FILE_DEPTH(32)
