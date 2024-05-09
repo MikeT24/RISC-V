@@ -19,7 +19,7 @@ main:
 	#addi s1, s1, 8
 	add s1, s0, zero
 	auipc s3, 0x0000fc10
-	addi s3, s3, 0x40
+	addi s3, s3, 0x4c
 	li sp, 0x7fffeffc
 	
 	addi t0, zero, 0 ## i

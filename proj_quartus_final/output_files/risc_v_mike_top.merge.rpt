@@ -1,0 +1,540 @@
+Partition Merge report for risc_v_mike_top
+Wed May  8 09:13:21 2024
+Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Partition Merge Summary
+  3. Partition Merge Netlist Types Used
+  4. Connections to In-System Debugging Instance "auto_signaltap_0"
+  5. Partition Merge Partition Statistics
+  6. Partition Merge Partition Pin Processing
+  7. Partition Merge Resource Usage Summary
+  8. Partition Merge RAM Summary
+  9. Partition Merge Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2023  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Partition Merge Summary                                                          ;
++---------------------------------+------------------------------------------------+
+; Partition Merge Status          ; Successful - Wed May  8 09:13:21 2024          ;
+; Quartus Prime Version           ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
+; Revision Name                   ; risc_v_mike_top                                ;
+; Top-level Entity Name           ; risc_v_mike_top                                ;
+; Family                          ; Cyclone V                                      ;
+; Logic utilization (in ALMs)     ; N/A                                            ;
+; Total registers                 ; 19718                                          ;
+; Total pins                      ; 20                                             ;
+; Total virtual pins              ; 0                                              ;
+; Total block memory bits         ; 3,110,912                                      ;
+; Total DSP Blocks                ; 0                                              ;
+; Total HSSI RX PCSs              ; 0                                              ;
+; Total HSSI PMA RX Deserializers ; 0                                              ;
+; Total HSSI TX PCSs              ; 0                                              ;
+; Total HSSI PMA TX Serializers   ; 0                                              ;
+; Total PLLs                      ; 0                                              ;
+; Total DLLs                      ; 0                                              ;
++---------------------------------+------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Partition Merge Netlist Types Used                                                                                            ;
++--------------------------------+----------------+-------------------+------------------------+--------------------------------+
+; Partition Name                 ; Partition Type ; Netlist Type Used ; Netlist Type Requested ; Partition Contents             ;
++--------------------------------+----------------+-------------------+------------------------+--------------------------------+
+; Top                            ; User-created   ; Source File       ; Source File            ;                                ;
+; sld_hub:auto_hub               ; Auto-generated ; Post-Synthesis    ; Post-Synthesis         ; sld_hub:auto_hub               ;
+; sld_signaltap:auto_signaltap_0 ; Auto-generated ; Post-Synthesis    ; Post-Synthesis         ; sld_signaltap:auto_signaltap_0 ;
+; hard_block:auto_generated_inst ; Auto-generated ; Source File       ; Source File            ; hard_block:auto_generated_inst ;
++--------------------------------+----------------+-------------------+------------------------+--------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Connections to In-System Debugging Instance "auto_signaltap_0"                                                                                                                                                                                                                  ;
++-------------------------------------------------------------------------------------------+--------------+-----------+--------------------------------+-------------------+-------------------------------------------------------------------------------------------+---------+
+; Name                                                                                      ; Type         ; Status    ; Partition Name                 ; Netlist Type Used ; Actual Connection                                                                         ; Details ;
++-------------------------------------------------------------------------------------------+--------------+-----------+--------------------------------+-------------------+-------------------------------------------------------------------------------------------+---------+
+; UART_UNCORE:i_UART_UNCORE|UART_MIKE:i_top_UART_MIKE|rx_done                               ; post-fitting ; connected ; Top                            ; post-synthesis    ; UART_UNCORE:i_UART_UNCORE|UART_MIKE:i_top_UART_MIKE|rx_done                               ; N/A     ;
+; UART_UNCORE:i_UART_UNCORE|UART_MIKE:i_top_UART_MIKE|rx_done                               ; post-fitting ; connected ; Top                            ; post-synthesis    ; UART_UNCORE:i_UART_UNCORE|UART_MIKE:i_top_UART_MIKE|rx_done                               ; N/A     ;
+; UART_UNCORE:i_UART_UNCORE|UART_MIKE:i_top_UART_MIKE|rx_ff                                 ; post-fitting ; connected ; Top                            ; post-synthesis    ; UART_UNCORE:i_UART_UNCORE|UART_MIKE:i_top_UART_MIKE|rx_ff                                 ; N/A     ;
+; UART_UNCORE:i_UART_UNCORE|UART_MIKE:i_top_UART_MIKE|rx_ff                                 ; post-fitting ; connected ; Top                            ; post-synthesis    ; UART_UNCORE:i_UART_UNCORE|UART_MIKE:i_top_UART_MIKE|rx_ff                                 ; N/A     ;
+; UART_UNCORE:i_UART_UNCORE|UART_MIKE:i_top_UART_MIKE|rx_flag                               ; post-fitting ; connected ; Top                            ; post-synthesis    ; UART_UNCORE:i_UART_UNCORE|UART_MIKE:i_top_UART_MIKE|rx_flag                               ; N/A     ;
+; UART_UNCORE:i_UART_UNCORE|UART_MIKE:i_top_UART_MIKE|rx_flag                               ; post-fitting ; connected ; Top                            ; post-synthesis    ; UART_UNCORE:i_UART_UNCORE|UART_MIKE:i_top_UART_MIKE|rx_flag                               ; N/A     ;
+; UART_UNCORE:i_UART_UNCORE|UART_MIKE:i_top_UART_MIKE|rx_inprg_ff                           ; post-fitting ; connected ; Top                            ; post-synthesis    ; UART_UNCORE:i_UART_UNCORE|UART_MIKE:i_top_UART_MIKE|rx_inprg_ff                           ; N/A     ;
+; UART_UNCORE:i_UART_UNCORE|UART_MIKE:i_top_UART_MIKE|rx_inprg_ff                           ; post-fitting ; connected ; Top                            ; post-synthesis    ; UART_UNCORE:i_UART_UNCORE|UART_MIKE:i_top_UART_MIKE|rx_inprg_ff                           ; N/A     ;
+; UART_UNCORE:i_UART_UNCORE|UART_MIKE:i_top_UART_MIKE|tx_inprg_ff                           ; post-fitting ; connected ; Top                            ; post-synthesis    ; UART_UNCORE:i_UART_UNCORE|UART_MIKE:i_top_UART_MIKE|tx_inprg_ff                           ; N/A     ;
+; UART_UNCORE:i_UART_UNCORE|UART_MIKE:i_top_UART_MIKE|tx_inprg_ff                           ; post-fitting ; connected ; Top                            ; post-synthesis    ; UART_UNCORE:i_UART_UNCORE|UART_MIKE:i_top_UART_MIKE|tx_inprg_ff                           ; N/A     ;
+; UART_UNCORE:i_UART_UNCORE|UART_MIKE:i_top_UART_MIKE|tx_send_ff                            ; post-fitting ; connected ; Top                            ; post-synthesis    ; UART_UNCORE:i_UART_UNCORE|UART_MIKE:i_top_UART_MIKE|tx_send_ff                            ; N/A     ;
+; UART_UNCORE:i_UART_UNCORE|UART_MIKE:i_top_UART_MIKE|tx_send_ff                            ; post-fitting ; connected ; Top                            ; post-synthesis    ; UART_UNCORE:i_UART_UNCORE|UART_MIKE:i_top_UART_MIKE|tx_send_ff                            ; N/A     ;
+; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[0] ; post-fitting ; connected ; Top                            ; post-synthesis    ; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[0] ; N/A     ;
+; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[0] ; post-fitting ; connected ; Top                            ; post-synthesis    ; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[0] ; N/A     ;
+; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[1] ; post-fitting ; connected ; Top                            ; post-synthesis    ; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[1] ; N/A     ;
+; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[1] ; post-fitting ; connected ; Top                            ; post-synthesis    ; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[1] ; N/A     ;
+; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[2] ; post-fitting ; connected ; Top                            ; post-synthesis    ; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[2] ; N/A     ;
+; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[2] ; post-fitting ; connected ; Top                            ; post-synthesis    ; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[2] ; N/A     ;
+; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[3] ; post-fitting ; connected ; Top                            ; post-synthesis    ; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[3] ; N/A     ;
+; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[3] ; post-fitting ; connected ; Top                            ; post-synthesis    ; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[3] ; N/A     ;
+; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[4] ; post-fitting ; connected ; Top                            ; post-synthesis    ; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[4] ; N/A     ;
+; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[4] ; post-fitting ; connected ; Top                            ; post-synthesis    ; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[4] ; N/A     ;
+; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[5] ; post-fitting ; connected ; Top                            ; post-synthesis    ; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[5] ; N/A     ;
+; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[5] ; post-fitting ; connected ; Top                            ; post-synthesis    ; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[5] ; N/A     ;
+; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[6] ; post-fitting ; connected ; Top                            ; post-synthesis    ; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[6] ; N/A     ;
+; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[6] ; post-fitting ; connected ; Top                            ; post-synthesis    ; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[6] ; N/A     ;
+; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[7] ; post-fitting ; connected ; Top                            ; post-synthesis    ; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[7] ; N/A     ;
+; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[7] ; post-fitting ; connected ; Top                            ; post-synthesis    ; UART_UNCORE:i_UART_UNCORE|risc_v_mike_gpio_module:i_risc_v_mike_gpio_module|tx_data_ff[7] ; N/A     ;
+; alu_ctrl_e[0]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; alu_ctrl_e[0]                                                                             ; N/A     ;
+; alu_ctrl_e[0]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; alu_ctrl_e[0]                                                                             ; N/A     ;
+; alu_ctrl_e[1]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; alu_ctrl_e[1]                                                                             ; N/A     ;
+; alu_ctrl_e[1]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; alu_ctrl_e[1]                                                                             ; N/A     ;
+; alu_ctrl_e[2]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; alu_ctrl_e[2]                                                                             ; N/A     ;
+; alu_ctrl_e[2]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; alu_ctrl_e[2]                                                                             ; N/A     ;
+; alu_ctrl_e[3]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; alu_ctrl_e[3]                                                                             ; N/A     ;
+; alu_ctrl_e[3]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; alu_ctrl_e[3]                                                                             ; N/A     ;
+; auto_signaltap_0|gnd                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~GND                                                       ; N/A     ;
+; auto_signaltap_0|gnd                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~GND                                                       ; N/A     ;
+; auto_signaltap_0|gnd                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~GND                                                       ; N/A     ;
+; auto_signaltap_0|gnd                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~GND                                                       ; N/A     ;
+; auto_signaltap_0|gnd                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~GND                                                       ; N/A     ;
+; auto_signaltap_0|gnd                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~GND                                                       ; N/A     ;
+; auto_signaltap_0|gnd                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~GND                                                       ; N/A     ;
+; auto_signaltap_0|gnd                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~GND                                                       ; N/A     ;
+; auto_signaltap_0|gnd                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~GND                                                       ; N/A     ;
+; auto_signaltap_0|gnd                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~GND                                                       ; N/A     ;
+; auto_signaltap_0|vcc                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC                                                       ; N/A     ;
+; auto_signaltap_0|vcc                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC                                                       ; N/A     ;
+; auto_signaltap_0|vcc                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC                                                       ; N/A     ;
+; auto_signaltap_0|vcc                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC                                                       ; N/A     ;
+; auto_signaltap_0|vcc                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC                                                       ; N/A     ;
+; auto_signaltap_0|vcc                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC                                                       ; N/A     ;
+; auto_signaltap_0|vcc                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC                                                       ; N/A     ;
+; auto_signaltap_0|vcc                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC                                                       ; N/A     ;
+; auto_signaltap_0|vcc                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC                                                       ; N/A     ;
+; auto_signaltap_0|vcc                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC                                                       ; N/A     ;
+; auto_signaltap_0|vcc                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC                                                       ; N/A     ;
+; auto_signaltap_0|vcc                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC                                                       ; N/A     ;
+; auto_signaltap_0|vcc                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC                                                       ; N/A     ;
+; auto_signaltap_0|vcc                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC                                                       ; N/A     ;
+; auto_signaltap_0|vcc                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC                                                       ; N/A     ;
+; auto_signaltap_0|vcc                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC                                                       ; N/A     ;
+; auto_signaltap_0|vcc                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC                                                       ; N/A     ;
+; auto_signaltap_0|vcc                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC                                                       ; N/A     ;
+; auto_signaltap_0|vcc                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC                                                       ; N/A     ;
+; auto_signaltap_0|vcc                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC                                                       ; N/A     ;
+; auto_signaltap_0|vcc                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC                                                       ; N/A     ;
+; auto_signaltap_0|vcc                                                                      ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC                                                       ; N/A     ;
+; clk_in                                                                                    ; post-fitting ; connected ; Top                            ; post-synthesis    ; clk_in                                                                                    ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[0]                                                           ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[0]                                                           ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[0]                                                           ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[0]                                                           ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[10]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[10]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[10]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[10]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[11]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[11]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[11]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[11]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[12]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[12]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[12]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[12]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[13]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[13]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[13]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[13]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[14]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[14]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[14]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[14]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[15]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[15]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[15]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[15]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[16]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[16]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[16]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[16]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[17]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[17]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[17]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[17]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[18]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[18]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[18]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[18]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[19]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[19]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[19]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[19]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[1]                                                           ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[1]                                                           ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[1]                                                           ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[1]                                                           ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[20]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[20]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[20]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[20]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[21]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[21]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[21]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[21]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[22]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[22]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[22]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[22]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[23]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[23]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[23]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[23]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[24]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[24]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[24]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[24]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[25]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[25]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[25]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[25]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[26]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[26]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[26]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[26]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[27]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[27]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[27]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[27]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[28]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[28]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[28]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[28]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[29]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[29]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[29]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[29]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[2]                                                           ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[2]                                                           ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[2]                                                           ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[2]                                                           ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[30]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[30]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[30]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[30]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[31]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[31]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[31]                                                          ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[31]                                                          ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[3]                                                           ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[3]                                                           ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[3]                                                           ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[3]                                                           ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[4]                                                           ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[4]                                                           ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[4]                                                           ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[4]                                                           ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[5]                                                           ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[5]                                                           ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[5]                                                           ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[5]                                                           ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[6]                                                           ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[6]                                                           ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[6]                                                           ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[6]                                                           ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[7]                                                           ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[7]                                                           ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[7]                                                           ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[7]                                                           ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[8]                                                           ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[8]                                                           ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[8]                                                           ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[8]                                                           ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[9]                                                           ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[9]                                                           ; N/A     ;
+; data_mem_bus_rd_data_w_plus1[9]                                                           ; post-fitting ; connected ; Top                            ; post-synthesis    ; data_mem_bus_rd_data_w_plus1[9]                                                           ; N/A     ;
+; mem_write_e                                                                               ; post-fitting ; connected ; Top                            ; post-synthesis    ; mem_write_e                                                                               ; N/A     ;
+; mem_write_e                                                                               ; post-fitting ; connected ; Top                            ; post-synthesis    ; mem_write_e                                                                               ; N/A     ;
+; pc_addr_e[0]                                                                              ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[0]                                                                              ; N/A     ;
+; pc_addr_e[0]                                                                              ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[0]                                                                              ; N/A     ;
+; pc_addr_e[10]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[10]                                                                             ; N/A     ;
+; pc_addr_e[10]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[10]                                                                             ; N/A     ;
+; pc_addr_e[11]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[11]                                                                             ; N/A     ;
+; pc_addr_e[11]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[11]                                                                             ; N/A     ;
+; pc_addr_e[12]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[12]                                                                             ; N/A     ;
+; pc_addr_e[12]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[12]                                                                             ; N/A     ;
+; pc_addr_e[13]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[13]                                                                             ; N/A     ;
+; pc_addr_e[13]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[13]                                                                             ; N/A     ;
+; pc_addr_e[14]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[14]                                                                             ; N/A     ;
+; pc_addr_e[14]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[14]                                                                             ; N/A     ;
+; pc_addr_e[15]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[15]                                                                             ; N/A     ;
+; pc_addr_e[15]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[15]                                                                             ; N/A     ;
+; pc_addr_e[16]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[16]                                                                             ; N/A     ;
+; pc_addr_e[16]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[16]                                                                             ; N/A     ;
+; pc_addr_e[17]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[17]                                                                             ; N/A     ;
+; pc_addr_e[17]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[17]                                                                             ; N/A     ;
+; pc_addr_e[18]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[18]                                                                             ; N/A     ;
+; pc_addr_e[18]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[18]                                                                             ; N/A     ;
+; pc_addr_e[19]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[19]                                                                             ; N/A     ;
+; pc_addr_e[19]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[19]                                                                             ; N/A     ;
+; pc_addr_e[1]                                                                              ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[1]                                                                              ; N/A     ;
+; pc_addr_e[1]                                                                              ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[1]                                                                              ; N/A     ;
+; pc_addr_e[20]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[20]                                                                             ; N/A     ;
+; pc_addr_e[20]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[20]                                                                             ; N/A     ;
+; pc_addr_e[21]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[21]                                                                             ; N/A     ;
+; pc_addr_e[21]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[21]                                                                             ; N/A     ;
+; pc_addr_e[22]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[22]                                                                             ; N/A     ;
+; pc_addr_e[22]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[22]                                                                             ; N/A     ;
+; pc_addr_e[23]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[23]                                                                             ; N/A     ;
+; pc_addr_e[23]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[23]                                                                             ; N/A     ;
+; pc_addr_e[24]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[24]                                                                             ; N/A     ;
+; pc_addr_e[24]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[24]                                                                             ; N/A     ;
+; pc_addr_e[25]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[25]                                                                             ; N/A     ;
+; pc_addr_e[25]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[25]                                                                             ; N/A     ;
+; pc_addr_e[26]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[26]                                                                             ; N/A     ;
+; pc_addr_e[26]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[26]                                                                             ; N/A     ;
+; pc_addr_e[27]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[27]                                                                             ; N/A     ;
+; pc_addr_e[27]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[27]                                                                             ; N/A     ;
+; pc_addr_e[28]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[28]                                                                             ; N/A     ;
+; pc_addr_e[28]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[28]                                                                             ; N/A     ;
+; pc_addr_e[29]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[29]                                                                             ; N/A     ;
+; pc_addr_e[29]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[29]                                                                             ; N/A     ;
+; pc_addr_e[2]                                                                              ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[2]                                                                              ; N/A     ;
+; pc_addr_e[2]                                                                              ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[2]                                                                              ; N/A     ;
+; pc_addr_e[30]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[30]                                                                             ; N/A     ;
+; pc_addr_e[30]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[30]                                                                             ; N/A     ;
+; pc_addr_e[31]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[31]                                                                             ; N/A     ;
+; pc_addr_e[31]                                                                             ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[31]                                                                             ; N/A     ;
+; pc_addr_e[3]                                                                              ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[3]                                                                              ; N/A     ;
+; pc_addr_e[3]                                                                              ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[3]                                                                              ; N/A     ;
+; pc_addr_e[4]                                                                              ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[4]                                                                              ; N/A     ;
+; pc_addr_e[4]                                                                              ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[4]                                                                              ; N/A     ;
+; pc_addr_e[5]                                                                              ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[5]                                                                              ; N/A     ;
+; pc_addr_e[5]                                                                              ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[5]                                                                              ; N/A     ;
+; pc_addr_e[6]                                                                              ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[6]                                                                              ; N/A     ;
+; pc_addr_e[6]                                                                              ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[6]                                                                              ; N/A     ;
+; pc_addr_e[7]                                                                              ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[7]                                                                              ; N/A     ;
+; pc_addr_e[7]                                                                              ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[7]                                                                              ; N/A     ;
+; pc_addr_e[8]                                                                              ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[8]                                                                              ; N/A     ;
+; pc_addr_e[8]                                                                              ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[8]                                                                              ; N/A     ;
+; pc_addr_e[9]                                                                              ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[9]                                                                              ; N/A     ;
+; pc_addr_e[9]                                                                              ; post-fitting ; connected ; Top                            ; post-synthesis    ; pc_addr_e[9]                                                                              ; N/A     ;
+; risc_v_data_fwd:i_risc_v_data_fwd|intr_opcode_w_plus1[0]                                  ; post-fitting ; connected ; Top                            ; post-synthesis    ; risc_v_data_fwd:i_risc_v_data_fwd|intr_opcode_w_plus1[0]                                  ; N/A     ;
+; risc_v_data_fwd:i_risc_v_data_fwd|intr_opcode_w_plus1[0]                                  ; post-fitting ; connected ; Top                            ; post-synthesis    ; risc_v_data_fwd:i_risc_v_data_fwd|intr_opcode_w_plus1[0]                                  ; N/A     ;
+; risc_v_data_fwd:i_risc_v_data_fwd|intr_opcode_w_plus1[2]                                  ; post-fitting ; connected ; Top                            ; post-synthesis    ; risc_v_data_fwd:i_risc_v_data_fwd|intr_opcode_w_plus1[2]                                  ; N/A     ;
+; risc_v_data_fwd:i_risc_v_data_fwd|intr_opcode_w_plus1[2]                                  ; post-fitting ; connected ; Top                            ; post-synthesis    ; risc_v_data_fwd:i_risc_v_data_fwd|intr_opcode_w_plus1[2]                                  ; N/A     ;
+; risc_v_data_fwd:i_risc_v_data_fwd|intr_opcode_w_plus1[3]                                  ; post-fitting ; connected ; Top                            ; post-synthesis    ; risc_v_data_fwd:i_risc_v_data_fwd|intr_opcode_w_plus1[3]                                  ; N/A     ;
+; risc_v_data_fwd:i_risc_v_data_fwd|intr_opcode_w_plus1[3]                                  ; post-fitting ; connected ; Top                            ; post-synthesis    ; risc_v_data_fwd:i_risc_v_data_fwd|intr_opcode_w_plus1[3]                                  ; N/A     ;
+; risc_v_data_fwd:i_risc_v_data_fwd|intr_opcode_w_plus1[4]                                  ; post-fitting ; connected ; Top                            ; post-synthesis    ; risc_v_data_fwd:i_risc_v_data_fwd|intr_opcode_w_plus1[4]                                  ; N/A     ;
+; risc_v_data_fwd:i_risc_v_data_fwd|intr_opcode_w_plus1[4]                                  ; post-fitting ; connected ; Top                            ; post-synthesis    ; risc_v_data_fwd:i_risc_v_data_fwd|intr_opcode_w_plus1[4]                                  ; N/A     ;
+; risc_v_data_fwd:i_risc_v_data_fwd|intr_opcode_w_plus1[5]                                  ; post-fitting ; connected ; Top                            ; post-synthesis    ; risc_v_data_fwd:i_risc_v_data_fwd|intr_opcode_w_plus1[5]                                  ; N/A     ;
+; risc_v_data_fwd:i_risc_v_data_fwd|intr_opcode_w_plus1[5]                                  ; post-fitting ; connected ; Top                            ; post-synthesis    ; risc_v_data_fwd:i_risc_v_data_fwd|intr_opcode_w_plus1[5]                                  ; N/A     ;
+; risc_v_data_fwd:i_risc_v_data_fwd|intr_opcode_w_plus1[6]                                  ; post-fitting ; connected ; Top                            ; post-synthesis    ; risc_v_data_fwd:i_risc_v_data_fwd|intr_opcode_w_plus1[6]                                  ; N/A     ;
+; risc_v_data_fwd:i_risc_v_data_fwd|intr_opcode_w_plus1[6]                                  ; post-fitting ; connected ; Top                            ; post-synthesis    ; risc_v_data_fwd:i_risc_v_data_fwd|intr_opcode_w_plus1[6]                                  ; N/A     ;
+; risc_v_mem_ctrl:i_risc_v_mem_ctrl|data_mmio_wr_addr_val~0                                 ; post-fitting ; connected ; Top                            ; post-synthesis    ; risc_v_mem_ctrl:i_risc_v_mem_ctrl|data_mmio_wr_addr_val~0                                 ; N/A     ;
+; risc_v_mem_ctrl:i_risc_v_mem_ctrl|data_mmio_wr_addr_val~0                                 ; post-fitting ; connected ; Top                            ; post-synthesis    ; risc_v_mem_ctrl:i_risc_v_mem_ctrl|data_mmio_wr_addr_val~0                                 ; N/A     ;
+; risc_v_mem_ctrl:i_risc_v_mem_ctrl|data_mmio_wr_addr_val~1                                 ; post-fitting ; connected ; Top                            ; post-synthesis    ; risc_v_mem_ctrl:i_risc_v_mem_ctrl|data_mmio_wr_addr_val~1                                 ; N/A     ;
+; risc_v_mem_ctrl:i_risc_v_mem_ctrl|data_mmio_wr_addr_val~1                                 ; post-fitting ; connected ; Top                            ; post-synthesis    ; risc_v_mem_ctrl:i_risc_v_mem_ctrl|data_mmio_wr_addr_val~1                                 ; N/A     ;
+; risc_v_mike_clk_divider:i_risc_v_mike_clk_divider|rst_out                                 ; post-fitting ; connected ; Top                            ; post-synthesis    ; risc_v_mike_clk_divider:i_risc_v_mike_clk_divider|rst_out                                 ; N/A     ;
+; risc_v_mike_clk_divider:i_risc_v_mike_clk_divider|rst_out                                 ; post-fitting ; connected ; Top                            ; post-synthesis    ; risc_v_mike_clk_divider:i_risc_v_mike_clk_divider|rst_out                                 ; N/A     ;
+; rst                                                                                       ; post-fitting ; connected ; Top                            ; post-synthesis    ; rst                                                                                       ; N/A     ;
+; rst                                                                                       ; post-fitting ; connected ; Top                            ; post-synthesis    ; rst                                                                                       ; N/A     ;
+; rst~input                                                                                 ; post-fitting ; connected ; Top                            ; post-synthesis    ; rst                                                                                       ; N/A     ;
+; rst~input                                                                                 ; post-fitting ; connected ; Top                            ; post-synthesis    ; rst                                                                                       ; N/A     ;
++-------------------------------------------------------------------------------------------+--------------+-----------+--------------------------------+-------------------+-------------------------------------------------------------------------------------------+---------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Partition Merge Partition Statistics                                                                                                      ;
++---------------------------------------------+--------+------------------+--------------------------------+--------------------------------+
+; Statistic                                   ; Top    ; sld_hub:auto_hub ; sld_signaltap:auto_signaltap_0 ; hard_block:auto_generated_inst ;
++---------------------------------------------+--------+------------------+--------------------------------+--------------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 12681  ; 64               ; 936                            ; 0                              ;
+;                                             ;        ;                  ;                                ;                                ;
+; Combinational ALUT usage for logic          ; 8239   ; 93               ; 508                            ; 0                              ;
+;     -- 7 input functions                    ; 8      ; 1                ; 0                              ; 0                              ;
+;     -- 6 input functions                    ; 6873   ; 15               ; 268                            ; 0                              ;
+;     -- 5 input functions                    ; 433    ; 20               ; 43                             ; 0                              ;
+;     -- 4 input functions                    ; 423    ; 19               ; 46                             ; 0                              ;
+;     -- <=3 input functions                  ; 502    ; 38               ; 151                            ; 0                              ;
+; Memory ALUT usage                           ; 0      ; 0                ; 0                              ; 0                              ;
+;     -- 64-address deep                      ; 0      ; 0                ; 0                              ; 0                              ;
+;     -- 32-address deep                      ; 0      ; 0                ; 0                              ; 0                              ;
+;                                             ;        ;                  ;                                ;                                ;
+; Dedicated logic registers                   ; 18070  ; 90               ; 1558                           ; 0                              ;
+;                                             ;        ;                  ;                                ;                                ;
+;                                             ;        ;                  ;                                ;                                ;
+; I/O pins                                    ; 20     ; 0                ; 0                              ; 0                              ;
+; I/O registers                               ; 0      ; 0                ; 0                              ; 0                              ;
+; Total block memory bits                     ; 30720  ; 0                ; 3080192                        ; 0                              ;
+; Total block memory implementation bits      ; 0      ; 0                ; 0                              ; 0                              ;
+; JTAG                                        ; 0      ; 0                ; 0                              ; 1                              ;
+;                                             ;        ;                  ;                                ;                                ;
+; Connections                                 ;        ;                  ;                                ;                                ;
+;     -- Input Connections                    ; 0      ; 133              ; 3144                           ; 1                              ;
+;     -- Registered Input Connections         ; 0      ; 109              ; 1783                           ; 0                              ;
+;     -- Output Connections                   ; 1411   ; 619              ; 34                             ; 1214                           ;
+;     -- Registered Output Connections        ; 178    ; 619              ; 0                              ; 0                              ;
+;                                             ;        ;                  ;                                ;                                ;
+; Internal Connections                        ;        ;                  ;                                ;                                ;
+;     -- Total Connections                    ; 119704 ; 1271             ; 19381                          ; 1223                           ;
+;     -- Registered Connections               ; 73822  ; 1091             ; 15200                          ; 0                              ;
+;                                             ;        ;                  ;                                ;                                ;
+; External Connections                        ;        ;                  ;                                ;                                ;
+;     -- Top                                  ; 0      ; 0                ; 1411                           ; 0                              ;
+;     -- sld_hub:auto_hub                     ; 0      ; 20               ; 610                            ; 122                            ;
+;     -- sld_signaltap:auto_signaltap_0       ; 1411   ; 610              ; 64                             ; 1093                           ;
+;     -- hard_block:auto_generated_inst       ; 0      ; 122              ; 1093                           ; 0                              ;
+;                                             ;        ;                  ;                                ;                                ;
+; Partition Interface                         ;        ;                  ;                                ;                                ;
+;     -- Input Ports                          ; 8      ; 45               ; 351                            ; 4                              ;
+;     -- Output Ports                         ; 16     ; 62               ; 203                            ; 9                              ;
+;     -- Bidir Ports                          ; 0      ; 0                ; 0                              ; 0                              ;
+;                                             ;        ;                  ;                                ;                                ;
+; Registered Ports                            ;        ;                  ;                                ;                                ;
+;     -- Registered Input Ports               ; 0      ; 13               ; 194                            ; 0                              ;
+;     -- Registered Output Ports              ; 0      ; 29               ; 189                            ; 0                              ;
+;                                             ;        ;                  ;                                ;                                ;
+; Port Connectivity                           ;        ;                  ;                                ;                                ;
+;     -- Input Ports driven by GND            ; 0      ; 0                ; 10                             ; 0                              ;
+;     -- Output Ports driven by GND           ; 0      ; 28               ; 2                              ; 0                              ;
+;     -- Input Ports driven by VCC            ; 0      ; 0                ; 22                             ; 0                              ;
+;     -- Output Ports driven by VCC           ; 0      ; 0                ; 1                              ; 0                              ;
+;     -- Input Ports with no Source           ; 0      ; 25               ; 98                             ; 0                              ;
+;     -- Output Ports with no Source          ; 0      ; 0                ; 0                              ; 0                              ;
+;     -- Input Ports with no Fanout           ; 0      ; 30               ; 112                            ; 0                              ;
+;     -- Output Ports with no Fanout          ; 0      ; 29               ; 191                            ; 0                              ;
++---------------------------------------------+--------+------------------+--------------------------------+--------------------------------+
+Note: Resource usage numbers presented for Partitions containing post-synthesis logic are estimates.  For Partitions containing post-fit logic, resource usage numbers are accurate based on previous placement information.  Actual Fitter results may vary depending on current Fitter Preservation Level assignments.
+
+
++----------------------------------------------------------------------------------------+
+; Partition Merge Partition Pin Processing                                               ;
++-----------------------------------+-----------+---------------+----------+-------------+
+; Name                              ; Partition ; Type          ; Location ; Status      ;
++-----------------------------------+-----------+---------------+----------+-------------+
+; altera_reserved_tck               ; Top       ; Input Port    ; n/a      ;             ;
+;     -- altera_reserved_tck        ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- altera_reserved_tck~input  ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                   ;           ;               ;          ;             ;
+; altera_reserved_tdi               ; Top       ; Input Port    ; n/a      ;             ;
+;     -- altera_reserved_tdi        ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- altera_reserved_tdi~input  ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                   ;           ;               ;          ;             ;
+; altera_reserved_tdo               ; Top       ; Output Port   ; n/a      ;             ;
+;     -- altera_reserved_tdo        ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- altera_reserved_tdo~output ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                   ;           ;               ;          ;             ;
+; altera_reserved_tms               ; Top       ; Input Port    ; n/a      ;             ;
+;     -- altera_reserved_tms        ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- altera_reserved_tms~input  ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                   ;           ;               ;          ;             ;
+; asci_or_hexa_rx                   ; Top       ; Input Port    ; n/a      ;             ;
+;     -- asci_or_hexa_rx            ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- asci_or_hexa_rx~input      ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                   ;           ;               ;          ;             ;
+; asci_or_hexa_tx                   ; Top       ; Input Port    ; n/a      ;             ;
+;     -- asci_or_hexa_tx            ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- asci_or_hexa_tx~input      ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                   ;           ;               ;          ;             ;
+; clk_in                            ; Top       ; Input Port    ; n/a      ;             ;
+;     -- clk_in                     ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- clk_in~input               ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                   ;           ;               ;          ;             ;
+; rst                               ; Top       ; Input Port    ; n/a      ;             ;
+;     -- rst                        ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- rst~input                  ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                   ;           ;               ;          ;             ;
+; rx                                ; Top       ; Input Port    ; n/a      ;             ;
+;     -- rx                         ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- rx~input                   ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                   ;           ;               ;          ;             ;
+; seg_a                             ; Top       ; Output Port   ; n/a      ;             ;
+;     -- seg_a                      ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- seg_a~output               ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                   ;           ;               ;          ;             ;
+; seg_b                             ; Top       ; Output Port   ; n/a      ;             ;
+;     -- seg_b                      ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- seg_b~output               ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                   ;           ;               ;          ;             ;
+; seg_c                             ; Top       ; Output Port   ; n/a      ;             ;
+;     -- seg_c                      ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- seg_c~output               ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                   ;           ;               ;          ;             ;
+; seg_d                             ; Top       ; Output Port   ; n/a      ;             ;
+;     -- seg_d                      ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- seg_d~output               ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                   ;           ;               ;          ;             ;
+; seg_e                             ; Top       ; Output Port   ; n/a      ;             ;
+;     -- seg_e                      ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- seg_e~output               ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                   ;           ;               ;          ;             ;
+; seg_f                             ; Top       ; Output Port   ; n/a      ;             ;
+;     -- seg_f                      ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- seg_f~output               ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                   ;           ;               ;          ;             ;
+; seg_g                             ; Top       ; Output Port   ; n/a      ;             ;
+;     -- seg_g                      ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- seg_g~output               ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                   ;           ;               ;          ;             ;
+; tx                                ; Top       ; Output Port   ; n/a      ;             ;
+;     -- tx                         ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- tx~output                  ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                   ;           ;               ;          ;             ;
+; tx_seg_a                          ; Top       ; Output Port   ; n/a      ;             ;
+;     -- tx_seg_a                   ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- tx_seg_a~output            ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                   ;           ;               ;          ;             ;
+; tx_seg_b                          ; Top       ; Output Port   ; n/a      ;             ;
+;     -- tx_seg_b                   ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- tx_seg_b~output            ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                   ;           ;               ;          ;             ;
+; tx_seg_c                          ; Top       ; Output Port   ; n/a      ;             ;
+;     -- tx_seg_c                   ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- tx_seg_c~output            ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                   ;           ;               ;          ;             ;
+; tx_seg_d                          ; Top       ; Output Port   ; n/a      ;             ;
+;     -- tx_seg_d                   ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- tx_seg_d~output            ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                   ;           ;               ;          ;             ;
+; tx_seg_e                          ; Top       ; Output Port   ; n/a      ;             ;
+;     -- tx_seg_e                   ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- tx_seg_e~output            ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                   ;           ;               ;          ;             ;
+; tx_seg_f                          ; Top       ; Output Port   ; n/a      ;             ;
+;     -- tx_seg_f                   ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- tx_seg_f~output            ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                   ;           ;               ;          ;             ;
+; tx_seg_g                          ; Top       ; Output Port   ; n/a      ;             ;
+;     -- tx_seg_g                   ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- tx_seg_g~output            ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                   ;           ;               ;          ;             ;
++-----------------------------------+-----------+---------------+----------+-------------+
+
+
++---------------------------------------------------------------------------------------------------------+
+; Partition Merge Resource Usage Summary                                                                  ;
++---------------------------------------------+-----------------------------------------------------------+
+; Resource                                    ; Usage                                                     ;
++---------------------------------------------+-----------------------------------------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 13636                                                     ;
+;                                             ;                                                           ;
+; Combinational ALUT usage for logic          ; 8840                                                      ;
+;     -- 7 input functions                    ; 9                                                         ;
+;     -- 6 input functions                    ; 7156                                                      ;
+;     -- 5 input functions                    ; 496                                                       ;
+;     -- 4 input functions                    ; 488                                                       ;
+;     -- <=3 input functions                  ; 691                                                       ;
+;                                             ;                                                           ;
+; Dedicated logic registers                   ; 19718                                                     ;
+;                                             ;                                                           ;
+; I/O pins                                    ; 20                                                        ;
+; Total MLAB memory bits                      ; 0                                                         ;
+; Total block memory bits                     ; 3110912                                                   ;
+;                                             ;                                                           ;
+; Total DSP Blocks                            ; 0                                                         ;
+;                                             ;                                                           ;
+; Maximum fan-out node                        ; risc_v_mike_clk_divider:i_risc_v_mike_clk_divider|rst_out ;
+; Maximum fan-out                             ; 18429                                                     ;
+; Total fan-out                               ; 137938                                                    ;
+; Average fan-out                             ; 4.75                                                      ;
++---------------------------------------------+-----------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Partition Merge RAM Summary                                                                                                                                                                                                                                                                                                                         ;
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+---------+---------------------------------------------+
+; Name                                                                                                                                                                                                  ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size    ; MIF                                         ;
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+---------+---------------------------------------------+
+; risc_v_mike_instruction_memory:i_risc_v_mike_instruction_memory|altsyncram:Mux0_rtl_0|altsyncram_qt71:auto_generated|ALTSYNCRAM                                                                       ; AUTO ; ROM              ; 1024         ; 30           ; --           ; --           ; 30720   ; proj_quartus_final.risc_v_mike_top0.rtl.mif ;
+; sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|altsyncram:\stp_non_zero_ram_gen:stp_buffer_ram|altsyncram_sl84:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 32768        ; 94           ; 32768        ; 94           ; 3080192 ; None                                        ;
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+---------+---------------------------------------------+
+
+
++--------------------------+
+; Partition Merge Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Partition Merge
+    Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
+    Info: Processing started: Wed May  8 09:13:18 2024
+Info: Command: quartus_cdb --read_settings_files=off --write_settings_files=off proj_quartus_final -c risc_v_mike_top --merge=on
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (35007): Using synthesis netlist for partition "Top"
+Info (35007): Using synthesis netlist for partition "sld_hub:auto_hub"
+Info (35007): Using synthesis netlist for partition "sld_signaltap:auto_signaltap_0"
+Info (35024): Successfully connected in-system debug instance "auto_signaltap_0" to all 221 required data inputs, trigger inputs, acquisition clocks, and dynamic pins
+Info (35002): Resolved and merged 3 partition(s)
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 9 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Critical Warning (138067): Current license file does not support incremental compilation. The Quartus Prime software removes all the user-specified design partitions in the design automatically.
+Info (21057): Implemented 28509 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 8 input pins
+    Info (21059): Implemented 16 output pins
+    Info (21061): Implemented 28078 logic cells
+    Info (21064): Implemented 406 RAM segments
+Info: Quartus Prime Partition Merge was successful. 0 errors, 2 warnings
+    Info: Peak virtual memory: 4843 megabytes
+    Info: Processing ended: Wed May  8 09:13:21 2024
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:02
+
+

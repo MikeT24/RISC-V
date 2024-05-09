@@ -1,0 +1,65 @@
+	
+	
+	
+	
+	auipc s0, 0x0000fc10
+	addi s0, s0, 0
+	auipc s1, 0x0000fc10
+	addi s1, s1, 8
+	auipc s3, 0x0000fc10
+	addi s3, s3, 0x40
+	
+	
+	addi t0, zero, 0 ## i
+	addi t1, zero, 4 ## Value of both cycles, just appliable now because both are of value 4
+	
+	# UART BASE ADDRESSES	
+	li sp, 0x7fffeffc ## UART BASE ADDRESS, 
+	lui gp, 0xfffffff0 ## UART BASE ADDRESS
+	
+	# POPULATING TOP
+	addi t3, s0, 0x50
+	addi t6, zero, 1 	
+	add t4, s0, zero # Pointer for loop
+
+addi, t2, zero, 1 
+li t0, 0xDE  # H
+jal t6, uart_tx_send
+add zero, zero, zero
+add zero, zero, zero
+jal ra, uart_tx_poll
+add zero, zero, zero
+add zero, zero, zero
+li t0, 0xAD  # I
+jal t6, uart_tx_send
+add zero, zero, zero
+add zero, zero, zero
+jal ra, uart_tx_poll
+add zero, zero, zero
+add zero, zero, zero
+
+HERE:
+jal zero, HERE	
+add zero, zero, zero
+add zero, zero, zero	
+add zero, zero, zero	
+add zero, zero, zero	
+add zero, zero, zero	
+
+						
+uart_tx_send: # send value in t0
+	sw t0, 0(gp) # LOAD VALUE IN UART
+	sw t2, 4(gp) # SEND 
+	sw zero, 4(gp)
+	jalr t6
+	add zero, zero, zero
+	add zero, zero, zero
+	
+uart_tx_poll: # TX POLL UART 
+	lw s11, 20(gp)
+	bne s11, t2, uart_tx_poll
+	sw t2, 8(gp) # clr tx flag
+	sw zero, 8(gp) # clr tx flag
+	jalr zero, ra, 0	
+	add zero, zero, zero	
+	add zero, zero, zero	
