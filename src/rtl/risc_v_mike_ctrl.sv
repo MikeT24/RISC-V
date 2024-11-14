@@ -25,6 +25,32 @@ module risc_v_mike_ctrl (
     output t_instr_nmemonic intr_nmen
 );
 
+//--------------
+// OPCODES SIGNALS
+//--------------
+
+logic opcode_R_TYPE;
+logic opcode_S_TYPE;
+logic opcode_I_LOAD_TYPE;
+logic opcode_J_TYPE;
+logic opcode_I_JALR_TYPE;
+logic opcode_U_AUI_TYPE;
+logic opcode_U_LUI_TYPE;
+logic opcode_M_TYPE;
+
+
+assign opcode_R_TYPE        = ((opcode == R_TYPE) & (funct7[0] == 1'b0));
+assign opcode_S_TYPE        = (opcode == S_TYPE);
+assign opcode_I_TYPE        = (opcode == I_TYPE);
+assign opcode_B_TYPE        = (opcode == B_TYPE);
+assign opcode_I_LOAD_TYPE   = (opcode == I_LOAD_TYPE);
+assign opcode_J_TYPE        = (opcode == J_TYPE);
+assign opcode_I_JALR_TYPE   = (opcode == I_JALR_TYPE);
+assign opcode_U_AUI_TYPE    = (opcode == U_AUI_TYPE);
+assign opcode_U_LUI_TYPE    = (opcode == U_LUI_TYPE);
+assign opcode_M_TYPE        = ((opcode == R_TYPE) & (funct7[0] == 1'b1));
+
+
 t_instr_opcode opcode;
 
 assign opcode   = t_instr_opcode'(instruction[INST_OPCODE_MSB:0]);
@@ -35,6 +61,44 @@ assign funct3   = instruction[INST_FUNCT3_MSB:INST_FUNCT3_LSB];
 assign funct7   = instruction[INST_FUNCT7_MSB:INST_FUNCT7_LSB];
 
 
+// ADDITION OF MULTIPLICATION AND DIVISION
+
+t_alu_opcode mul_opcode;
+t_alu_opcode div_opcode;
+logic mul_opcode_valid;
+logic div_opcode_valid;
+
+assign mul_opcode_valid = (mul_opcode != ALU_MUL_NA);
+assign div_opcode_valid = (div_opcode != ALU_DIV_NA);
+
+//--------------
+// MULT EXE
+//--------------
+// MULTIPLICATION OPCODE SELECTOR
+always_comb begin
+    case (intr_nmen)
+        OP_MUL  : mul_opcode = ALU_MUL;
+        OP_MULH : mul_opcode = ALU_MULH;
+        OP_MULSU: mul_opcode = ALU_MULSU;
+        OP_MULHU: mul_opcode = ALU_MULHU;
+        default : mul_opcode = ALU_MUL_NA;
+    endcase
+
+end
+
+//--------------
+// DIV_EXE_VALID
+//--------------
+// DIVISION OPCODE SELECTOR
+always_comb begin
+    case (intr_nmen)
+        OP_DIV  : div_opcode = ALU_DIV;
+        OP_DIVU : div_opcode = ALU_DIVU;
+        OP_REM  : div_opcode = ALU_REM;
+        OP_REMU : div_opcode = ALU_REMU;
+        default : div_opcode = ALU_DIV_NA;
+    endcase
+end
 
 
 
@@ -48,14 +112,20 @@ always_comb
     case (opcode)
         R_TYPE: begin
             case (funct3) 
-                'h0: intr_nmen = (funct7[5] == 'b0) ? OP_ADD : (funct7[5] == 'b1) ? OP_SUB : OP_NA;
-                'h1: intr_nmen = OP_SLL;
-                'h2: intr_nmen = OP_SLT;
-                'h3: intr_nmen = OP_SLTU;
-                'h4: intr_nmen = OP_XOR;
-                'h5: intr_nmen = (funct7[5] == 'b0) ? OP_SRL : (funct7[5] == 'b1) ? OP_SRA : OP_NA;
-                'h6: intr_nmen = OP_OR;
-                'h7: intr_nmen = OP_AND;
+                'h0: intr_nmen =    ((funct7[5] == 'b0) & (~opcode_M_TYPE)) ?   OP_ADD :  // ADD
+                                    ((funct7[5] == 'b1) & (~opcode_M_TYPE)) ?   OP_SUB :  // SUB
+                                    ((opcode_M_TYPE)) ?                         OP_MUL :  // MUL
+                                                                                OP_NA;
+                'h1: intr_nmen =    (~opcode_M_TYPE) ? OP_SLL   : OP_MULH;
+                'h2: intr_nmen =    (~opcode_M_TYPE) ? OP_SLT   : OP_MULSU;
+                'h3: intr_nmen =    (~opcode_M_TYPE) ? OP_SLTU  : OP_MULHU;
+                'h4: intr_nmen =    (~opcode_M_TYPE) ? OP_XOR   : OP_DIV;
+                'h5: intr_nmen =    ((funct7[5] == 'b0) & (~opcode_M_TYPE)) ?   OP_SRL :
+                                    ((funct7[5] == 'b1) & (~opcode_M_TYPE)) ?   OP_SRA :
+                                    ((opcode_M_TYPE)) ?                         OP_DIVU :
+                                                                                OP_NA;
+                'h6: intr_nmen =    (~opcode_M_TYPE) ? OP_OR    : OP_REM;
+                'h7: intr_nmen =    (~opcode_M_TYPE) ? OP_AND   : OP_REMU;
                 default : intr_nmen = OP_NA;
             endcase
         end
@@ -128,6 +198,7 @@ always_comb
 
 
 // COMBINATORIAL LOGIC
+// Note -- This is obviously not the best way to code the decoder, but this was done with educational purposes.
 
 always_comb begin 
     case (intr_nmen) 
@@ -141,7 +212,6 @@ always_comb begin
             alu_ctrl    = ALU_ADD;
             imm_src     = 3'b0;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
-
         end            
         OP_SUB  : begin
             pc_src      = 2'b0;
@@ -540,7 +610,32 @@ always_comb begin
             imm_src     = 3'h4; // U-TYPE
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
         end        
+        
         default : begin
+            // This is not a correct implementation
+            // MULTIPLY AND DIVISION, JUST PASSING ALU_CTRL 
+            if (mul_opcode_valid) begin 
+                pc_src      = 2'b0;
+                result_src  = 2'b0;
+                mem_write   = 1'b0;
+                reg_write   = 1'b1;
+                alu_src_sel_a = 2'b1;
+                alu_src_sel_b = 2'h0;
+                alu_ctrl    = mul_opcode;
+                imm_src     = 3'b0;
+                alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
+            end
+            else if (div_opcode_valid) begin
+                pc_src      = 2'b0;
+                result_src  = 2'b0;
+                mem_write   = 1'b0;
+                reg_write   = 1'b1;
+                alu_src_sel_a = 2'b1;
+                alu_src_sel_b = 2'h0;
+                alu_ctrl    = div_opcode;
+                imm_src     = 3'b0;
+                alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation            
+            end
             pc_src      = 2'b0;
             result_src  = 2'b0;
             mem_write   = 1'b0;

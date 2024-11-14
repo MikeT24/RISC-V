@@ -32,6 +32,8 @@ typedef logic [REG_ADDR_W - 1:0] t_register_addr;
 //typedef logic [INSTR_OPCODE_W - 1:0] t_instr_opcode;
 typedef logic [ADDRESS_32_W - 1:0] t_pc_addr;
 //typedef logic [] t_mnemonic;
+typedef logic [DATA_32_W-1:0] t_data;
+typedef logic [(2*DATA_32_W)-1:0] t_data64;
 
 typedef struct packed {
     logic [6:0] funct7;
@@ -94,17 +96,27 @@ parameter INST_FUNCT7_MSB       = INST_FUNCT7_LSB + FUNCT7_W - 1;            //3
 // parameter OP_JALR 	= {3'b000,      7'b1100111};
 
 
-typedef enum logic [3:0] {
-    ALU_ADD,    //0
-    ALU_SUB,    //1
-    ALU_SLL,    //2
-    ALU_SLT,    //3
-    ALU_RSVD_4, //
-    ALU_XOR,    //5
-    ALU_SRL,    //6
-    ALU_SRA,    //7
-    ALU_OR,     //8
-    ALU_AND     //9
+typedef enum logic [4:0] {
+    ALU_ADD,    // 0
+    ALU_SUB,    // 1
+    ALU_SLL,    // 2
+    ALU_SLT,    // 3
+    ALU_ABS,    // 4 -- REUSED FOR MIPS
+    ALU_XOR,    // 5
+    ALU_SRL,    // 6
+    ALU_SRA,    // 7
+    ALU_OR,     // 8
+    ALU_AND     // 9
+    ALU_MUL,    // 10
+    ALU_MULH,   // 11
+    ALU_MULSU,  // 12
+    ALU_MULHU,  // 13
+    ALU_DIV,    // 14
+    ALU_DIVU,   // 15
+    ALU_REM,    // 16
+    ALU_REMU,    // 17
+    ALU_MUL_NA,
+    ALU_DIV_NA
 } t_alu_opcode;
 
 
