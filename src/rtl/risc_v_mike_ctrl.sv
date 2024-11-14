@@ -28,6 +28,8 @@ module risc_v_mike_ctrl (
 //--------------
 // OPCODES SIGNALS
 //--------------
+t_instr_opcode opcode;
+
 
 logic opcode_R_TYPE;
 logic opcode_S_TYPE;
@@ -51,7 +53,6 @@ assign opcode_U_LUI_TYPE    = (opcode == U_LUI_TYPE);
 assign opcode_M_TYPE        = ((opcode == R_TYPE) & (funct7[0] == 1'b1));
 
 
-t_instr_opcode opcode;
 
 assign opcode   = t_instr_opcode'(instruction[INST_OPCODE_MSB:0]);
 assign rsd      = t_instr_register'(instruction[INST_RD_MSB:INST_RD_LSB]);
@@ -67,10 +68,11 @@ t_alu_opcode mul_opcode;
 t_alu_opcode div_opcode;
 logic mul_opcode_valid;
 logic div_opcode_valid;
+logic val_mul_or_div;
 
 assign mul_opcode_valid = (mul_opcode != ALU_MUL_NA);
 assign div_opcode_valid = (div_opcode != ALU_DIV_NA);
-
+assign val_mul_or_div = mul_opcode_valid | div_opcode_valid;
 //--------------
 // MULT EXE
 //--------------
@@ -639,10 +641,11 @@ always_comb begin
             pc_src      = 2'b0;
             result_src  = 2'b0;
             mem_write   = 1'b0;
-            reg_write   = 1'b0;
+            reg_write   = val_mul_or_div;
             alu_src_sel_a = 2'b1;
             alu_src_sel_b = 2'h0;
-            alu_ctrl    = ALU_ADD;
+            alu_ctrl    =   mul_opcode_valid ? mul_opcode :
+                            div_opcode_valid ? div_opcode : ALU_ADD;
             imm_src     = 3'h0;
             alu_signed  = 1'b0; // if this is 1 then ALU will make an unsigned operation
         end

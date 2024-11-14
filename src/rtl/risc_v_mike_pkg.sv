@@ -13,7 +13,7 @@ parameter PC_CNT_ADDR_WIDTH = `INST_MEM_DEPTH ;
 parameter PC_CNT_ADDR_SIZE = $clog2(PC_CNT_ADDR_WIDTH);
 parameter GPIO_BYTE = 8;
 
-parameter CLK_DIV_NAT = 2; 
+parameter CLK_DIV_NAT = 0; 
 parameter CLK_DIV = $clog2(CLK_DIV_NAT) ; // ONLY COMPATIBLE WITH BINARY VALUES! 
 //parameter CLK_DIV = 500;
 
@@ -106,7 +106,7 @@ typedef enum logic [4:0] {
     ALU_SRL,    // 6
     ALU_SRA,    // 7
     ALU_OR,     // 8
-    ALU_AND     // 9
+    ALU_AND,     // 9
     ALU_MUL,    // 10
     ALU_MULH,   // 11
     ALU_MULSU,  // 12
@@ -180,6 +180,15 @@ typedef enum {
     //U-TYPE
     OP_LUI, 
     OP_AUIPC,
+    //MULT
+    OP_MUL,
+    OP_MULH,
+    OP_MULSU,
+    OP_MULHU,
+    OP_DIV,
+    OP_DIVU,
+    OP_REM,
+    OP_REMU,    
     //INVALID
     OP_NA
 } t_instr_nmemonic;

@@ -1,10 +1,5 @@
 
 import risc_v_mike_pkg::*;
-import UART_MIKE_pkg::*;
-
-`include "uart/UART_MIKE_header.svh"				
-`include "risc_v_mike_header.svh"
-
 
 module risc_v_mike_clk_divider (
     input logic clk_in,

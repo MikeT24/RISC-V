@@ -79,10 +79,10 @@ end
 assign alu_zero = ~(|alu_result);
 
 
-assign alu_mult_result64    = alu_mult_src_a*alu_mult_src_b;
-assign alu_multu_result64   = alu_mult_src_a*alu_mult_src_b;
-assign alu_div_result = alu_div_src_a / alu_div_src_b;
-assign alu_rem_result = alu_div_src_a % alu_div_src_b;
+assign alu_mult_result64    = alu_src_a * alu_src_b;
+assign alu_multu_result64   = alu_src_a * alu_src_b;
+assign alu_div_result = alu_src_a / alu_src_b;
+assign alu_rem_result = alu_src_a % alu_src_b;
 
 
 
