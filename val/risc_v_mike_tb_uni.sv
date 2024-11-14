@@ -41,10 +41,23 @@ risc_v_mike_top dut (
     #40;
     @(posedge clk);
     rst = 0;
-endtask
+  endtask
 
   initial begin 
     forever #5 clk = ~clk;
   end
+
+`ifdef GPIO_ENABLED
+  task send_uart();
+    #20;
+    rx = 0;
+    #630
+    rx = 1;
+    #935
+    rx = 0;
+    #3500;
+    rx = 1;
+  endtask
+`endif
 
 endmodule
